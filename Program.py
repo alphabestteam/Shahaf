@@ -1,6 +1,6 @@
 import math
 
-def factorial(number: float) -> float:
+def factorial(number: int) -> int:
     return math.factorial(number)
 
 def main():
@@ -10,7 +10,8 @@ def main():
 
     print(str(sum_1_to_100))
 
-    print(factorial(6.5))
+    print(factorial(5))
+    print(factorial(6))
     print(factorial(7))
     print(factorial(8))
 
