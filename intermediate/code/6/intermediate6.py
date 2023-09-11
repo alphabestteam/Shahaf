@@ -3,7 +3,7 @@ from monster import Monster
 
 def choose_action(action: str, hero: Hero, monster: Monster) -> None:
     if action == '1':
-        hero.attack()
+        hero.attack(monster)
 
     elif action == '2':
         hero.level_up()
@@ -31,7 +31,7 @@ def main():
     while hero.hp > 0:
 
         if turn % 2 != 0:
-            print('To attack enter 1')
+            print('To attack enter 1')  #prints action menu
             print('To level up enter 2')
             print('To heal enter 3')
             print('To defend enter 4')
@@ -43,9 +43,9 @@ def main():
             hero.increase_coins(1)
 
         else:
-            monster.attack(hero)
+            monster.attack(hero, action_history_hero)  #monster turn
 
-        if monster.hp == 0:
+        if monster.hp == 0:  #if the monster dies, create a new one
             name_monster = input('To create a new monster enter the name of the monster: ')
             monster = Monster(name_monster)
 

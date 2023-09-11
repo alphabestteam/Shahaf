@@ -1,5 +1,3 @@
-from hero import Hero
-
 class Monster:
     def __init__(self, name) -> None:
         self.name = name
@@ -7,10 +5,13 @@ class Monster:
         self.damage = 2
         self.level = 1
     
-    def attack(self, hero: Hero) -> None:
-        hero.reduce_health(self)
+    def attack(self, hero, action_history: list) -> None:
+        from hero import Hero
+        hero.reduce_health(self, action_history)
+        print(f'The monster attacked you, you have {hero.hp} lives!')
 
-    def reduce_health(self, hero: Hero) -> int:
+    def reduce_health(self, hero) -> int:
+        from hero import Hero
         self.hp = self.hp - hero.damage
 
         if self.hp < 0:
