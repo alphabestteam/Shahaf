@@ -12,4 +12,10 @@ __del__ - the destructor.
 
 4. Operator overloading means giving another meaning beyond their pre predicted meaning. Giving it meaning for each private instance.
 
-5.d.
+5.d. equal - it will print False even though they are equal but because they are not the same object it will print False.
+
+Print - it will the location in the memory of the objects.
+
+Add - won't be able to add them because it doesn't know how to add point type objects.
+
+To fix those problems we can create magic functions for the Point class.
