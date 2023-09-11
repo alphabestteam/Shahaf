@@ -33,9 +33,9 @@ class Hero:
         return damage * 0.2
 
     def reduce_health(self, monster: Monster, action_history: list) -> int:
-        if action_history[-2] == 'defend':
-            damage = self.defend(monster.damage)
-            self.hp = self.hp - damage
+        if action_history[-2] == '4':
+            self.hp = self.hp - monster.damage
+            monster.damage = monster.damage / 0.2
 
         else:
             self.hp = self.hp - monster.damage
