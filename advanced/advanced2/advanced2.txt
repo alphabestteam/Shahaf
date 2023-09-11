@@ -1,0 +1,26 @@
+1. We would like to have the option for unlimited parameters for functions that we don't know how many parameters they will get. For example if we want to print values and we don't know how many or if we want a function to do something for a number of objects but we don't know how many.
+
+2. *args - allows us to pass variable number non keyword arguments. The arguments are passed as tuple.
+
+3. **kwargs - allows us to pass variable length keyword arguments. The arguments are passed as dictionary.
+
+4. The differences between *args and **kwargs are that *args can pass non keyword variables and **kwargs can pass keyword variables and that *args is passed as tuple and **kwargs as dictionary. We can also use *args and **kwargs together in a function but *args must be put before **kwargs.
+
+5. Packing - when we don't know how many arguments are passed, we use packing to pack them together in a tuple.
+
+Unpacking - when we have a list for example, we use * so all items can be passed to the function as different parameters.
+
+6. Packing
+
+Def sum_of_numbers(*args):
+	return sun(args)
+
+print(sum_of_numbers(1, 2, 3, 4, 5)
+
+
+Unpacking
+
+my_list = [1, 2, 3, 4]
+
+function(*my_list)
+
