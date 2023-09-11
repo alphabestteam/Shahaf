@@ -16,6 +16,9 @@ def total_age(**ages):
     print(f'The total sum of the ages is {sum_ages}')
 
 def main():
+    words_length('shahaf', 'python', 'matzov')
+
+    total_age(shahaf=18, tomer=19, agam=5)
 
 if __name__ == '__main__':
     main()
