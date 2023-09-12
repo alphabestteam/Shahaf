@@ -1,0 +1,28 @@
+Threading + requests
+
+1. A thread is a sequence of instruction within the program that can be executed independently. We use threads to execute a couple of programs at the same time. We use it for example for server-client programs.
+
+2. To execute threading we will use the threading module. We can use it by importing 'threading'.
+
+3. The requests module allow us to send HTTP requests using python. We would prefer to use requests over sockets because requests is higher level and has much more functionality, making tasks in web way easier.
+
+
+Sockets
+
+1. Sockets are a way of connecting two nodes on a network to communicate with each other. One socket listens to the port and another one sends messages. It creates a server-client relationship. We don't have to use sockets, we can use requests for example. Requests is higher larval than sockets so sometimes we would like to use requests instead of sockets.
+
+2. First of all the client and server sockets are created with .socket(). The client socket then tries to connect to the server with .connect(). The server first use .bind() to assign an addressing port to the socket then we use .listen() so the server will start to listen to the port, after that the server use .accept() to accept the connection. Now the connection is established. Then both the client and server use .send() and .recv() to send and receive messages. When the client wants to close the connection it uses .close() then the server receives the request and uses .close() also to close the connection.
+
+3. The parameters passed to the socket constructor are host and port. The host can be a hostname, ip address or an empty string. The port represents the TCP port number to accept connections from. 
+
+
+Virtual environments
+
+1. Virtual environments are a tool that helps keep dependencies required by different projects separate by creating an isolated environment for them. We use then to separate projects that use different versions of a language like python. Another example is that it gives you a replicable and stable environment.
+
+2. When we create a virtual environment the module re-creates the file and folder structure of a standard python installation on your operating system. To make it as light weight as possible the virtual environment copies only the minimally necessary files.
+
+3. To create a virtual environment we use python -m venv venv to activate on Mac we use source venv/bin/activate and on windows venv\Scripts\activate then we can install packages on the virtual environments and your done, now you work on the virtual environment. 
+
+4. At first it won't let me run the project because the modules I imported are not installed in the virtual environment, I need to install all the packages and then run the project.
+
