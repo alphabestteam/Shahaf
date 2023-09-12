@@ -1,0 +1,35 @@
+Decorators
+
+1. They allow programers to modify behavior of a function or class. They wrap another function in order to extend the behavior of the wrapped function without permanently modifying it.
+
+2. When we use a decorator the wrapper function is called and is executed, inside the wrapper function we call the other function and then it is executed. The user inst aware that a second function is executed.
+
+3. Function pointers are variables that contain a function. Their advantage is that we can pass functions as parameters to other functions and use them.
+
+4. When we pass a function as a parameter it does not know how to pass its parameters so in order to get all the parameters needed we use *args and **kwargs that let us pass unlimited number of parameters to the function.
+
+5. We used decorators in the person class for the setters and getters when we wrote @property/@name.setter above the code.
+
+
+Iterators
+
+1. An iterator is an object that contain a number of values. An iterator can be iterated upon meaning we can run on all the values individually.
+
+2. Lists, dictionary, tuple.
+
+3. When we use __del__ inside an object it deletes the object when an object is garbage collected.
+
+4. If we want to make an object iterable we can use the __iter__ function that initializes the object to start running on its first value. We can also use the __next__ function that returns the next value in the object.
+
+
+Generators
+
+1. A generator in python is a function that returns an iterator using yield. They are just like regular functions except they use the yield keyword rather than return.
+
+2. Generators have many advantages for example, they save memory by producing items when they are required. This is important when we create a huge number of iterators. Moreover, they can be used to produce an infinite number of items.
+
+3. We keep generators in objects because they can be looped over similar to lists but unlike lists lazy iterator contents are not stored in the memory. Also it is more efficient to iterate through large databases with generators.
+
+4. The yield keyword is like return, it returns values, it differs from return because return terminates the execution of the function. Whereas yield only pauses the execution of the function and then resumes it. 
+
+
