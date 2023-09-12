@@ -24,3 +24,5 @@ Virtual environments
 
 3. To create a virtual environment we use python -m venv venv to activate on Mac we use source venv/bin/activate and on windows venv\Scripts\activate then we can install packages on the virtual environments and your done, now you work on the virtual environment. 
 
+4. At first it won't let me run the project because the modules I imported are not installed in the virtual environment, I need to install all the packages and then run the project.
+
