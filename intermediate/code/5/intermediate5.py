@@ -35,7 +35,7 @@ def main():
                     cost = float(input('Enter the cost of the item: '))
                     quantity = int(input('Enter the quantity: '))
                     item = Product(name, cost, quantity, (cost * quantity))
-                    costumer.AddProduct(item)
+                    costumer.add_product(item)
 
                     with open(f'./items/{name}.json', 'w') as file:
                         json.dump({'name': name, 'price': cost, 'units': quantity}, file)
@@ -43,7 +43,7 @@ def main():
                 elif action == '2':
                     name = input('Enter the name of the item: ')
                     quantity = int(input('Enter the quantity to remove: '))
-                    costumer.RemoveProduct(name, quantity)
+                    costumer.remove_product(name, quantity)
 
                 elif action == '3':
                     with open(f'{costumer.costumer_name}.json', 'w') as file:
@@ -56,7 +56,7 @@ def main():
                             shopping_dict.update({'name': name_of_item, 'price': price, 'units': units, 'total price': total_price})
                         json.dump({costumer.costumer_name: shopping_dict}, file)
 
-                    register.CheckoutCustomer(costumer)
+                    register.checkout_costumer(costumer)
                     print(f'Thank you for shopping {name}')
                     break
 
@@ -66,7 +66,7 @@ def main():
         elif action == '3':
             for number_of_register in range(len(register_list)):
                 print(f'Description for register number {number_of_register + 1}:')
-                print(register.PrintSummery())
+                print(register.print_summery())
             break
 
         else:

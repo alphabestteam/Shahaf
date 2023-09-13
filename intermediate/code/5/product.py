@@ -6,7 +6,7 @@ class Product:
         self.units = units
         self.total_price = total_price
 
-    def PrintItem(self) -> None:
+    def print_item(self) -> None:
         print(f'The name of the product: {self.name_of_product}')
         print(f'The price of the product: {self.price_of_item}')
         print(f'The number of units: {self.units}')
