@@ -3,12 +3,13 @@ class Hero:
     K = 2
     N = 1.7
 
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self.name = name
         self.hp = 10
         self.damage = 2
         self.level = 1
         self.coins = 0
+        self.is_last_defend = False
         
     def heal(self) -> None: 
         self.hp = self.hp * Hero.N
@@ -23,24 +24,22 @@ class Hero:
             print(f'Leveled up! you are now in level {self.level}')
 
     def attack(self, monster) -> None:
-        from monster import Monster
         monster_lives = monster.reduce_health(self)
         print('You attacked the monster!')
 
         if monster_lives == 0:
             self.coins = self.coins + self.level
 
-    def defend(self, damage) -> float:
-        return damage * 0.2
+    def defend(self) -> None:
+        self.is_last_defend = True
 
-    def reduce_health(self, monster, action_history: list) -> int:
-        from monster import Monster
-        if len(action_history) < 2 or action_history[-2] != '4':
+    def reduce_health(self, monster) -> int:
+        if not self.is_last_defend:
             self.hp = self.hp - monster.damage
 
         else:
-            self.hp = self.hp - monster.damage
-            monster.damage = monster.damage / 0.2
+            self.hp = self.hp - (monster.damage * 0.2)
+            self.is_last_defend = False
 
         if self.hp < 0:
             self.hp = 0

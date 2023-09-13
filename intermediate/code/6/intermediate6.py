@@ -12,7 +12,7 @@ def choose_action(action: str, hero: Hero, monster: Monster) -> None:
         hero.heal()
 
     elif action == '4':
-        monster.damage = hero.defend(monster.damage)
+        hero.defend()
 
     else:
         print('Invalid value!')
@@ -22,9 +22,7 @@ def main():
     name_monster = input('Enter the name of the monster: ')
 
     hero = Hero(name_hero)
-    monster = Monster(name_monster)
-
-    action_history_hero = []
+    monster = Monster(name_monster, hero.level)
 
     turn = 1
 
@@ -37,19 +35,18 @@ def main():
             print('To defend enter 4')
 
             action = input('Enter your desirable action: ')
-            action_history_hero.append(action)
             choose_action(action, hero, monster)
 
             hero.increase_coins(1)
 
         else:
-            monster.attack(hero, action_history_hero)  #monster turn
+            monster.attack(hero)  #monster turn
 
         if monster.hp == 0:  #if the monster dies, create a new one
             name_monster = input('To create a new monster enter the name of the monster: ')
-            monster = Monster(name_monster)
+            monster = Monster(name_monster, hero.level)
 
-        turn = turn + 1
+        turn += 1
 
     print('End of the game, no more lives!')
 

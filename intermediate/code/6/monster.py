@@ -1,17 +1,19 @@
+import random
+
 class Monster:
-    def __init__(self, name) -> None:
+    STRONG = 0.5
+
+    def __init__(self, name: str, level: int) -> None:
         self.name = name
-        self.hp = 10
-        self.damage = 2
-        self.level = 1
+        self.hp = 10 * (level * Monster.STRONG)
+        self.damage = 2 * (level * Monster.STRONG)
+        self.level = random.randrange(level - 1, level + 2)
     
-    def attack(self, hero, action_history: list) -> None:
-        from hero import Hero
-        hero.reduce_health(self, action_history)
+    def attack(self, hero) -> None:
+        hero.reduce_health(self)
         print(f'The monster attacked you, you have {hero.hp} lives!')
 
     def reduce_health(self, hero) -> int:
-        from hero import Hero
         self.hp = self.hp - hero.damage
 
         if self.hp < 0:
