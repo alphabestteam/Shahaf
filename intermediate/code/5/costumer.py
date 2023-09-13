@@ -13,8 +13,8 @@ class Costumer:
         for item in self.shopping_list:
             if item.name_of_product == product.name_of_product:
                 is_exist = True
-                self.list_total_price = product.total_price
-                units = item.units + product.units
+                self.list_total_price = self.list_total_price - item.total_price + self.product.total_price
+                units = product.units
                 self.shopping_list.pop(self.shopping_list.index(item))
                 product.units = units
                 product.total_price = units * product.price_of_item
