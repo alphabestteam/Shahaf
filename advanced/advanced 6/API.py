@@ -7,12 +7,17 @@ def new_account():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((HOST, PORT))
     
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     client_socket.sendall('1'.encode('utf-8'))
 
     name = input('Enter the name of client: ')
     client_socket.sendall(name.encode('utf-8'))
-    balance = int(input('Please enter the start balance of client: '))
+    balance = input('Please enter the start balance of client: ')
     client_socket.sendall(balance.encode('utf-8'))
+
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
 
     client_socket.close()
 
@@ -23,19 +28,30 @@ def deposit_or_withdraw():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((HOST, PORT))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     client_socket.sendall('2'.encode('utf-8'))
 
-    answer = input('To deposit enter 1 \nTo withdraw enter 2')
+    answer = input('To deposit enter 1 \nTo withdraw enter 2\n')
     client_socket.sendall(answer.encode('utf-8'))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     name = input()
     client_socket.sendall(name.encode('utf-8'))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     account_number = input()
     client_socket.sendall(account_number.encode('utf-8'))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     money = input()
     client_socket.sendall(money.encode('utf-8'))
+
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     
     client_socket.close()
 
@@ -46,16 +62,37 @@ def transfer():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((HOST, PORT))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     client_socket.sendall('3'.encode('utf-8'))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
+    sender_name = input()
+    client_socket.sendall(sender_name.encode('utf-8'))
+
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
+    sender_account_number = input()
+    client_socket.sendall(sender_account_number.encode('utf-8'))
+
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
+    money = input()
+    client_socket.sendall(money.encode('utf-8'))
+
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     name = input()
     client_socket.sendall(name.encode('utf-8'))
 
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     account_number = input()
     client_socket.sendall(account_number.encode('utf-8'))
 
-    money = input()
-    client_socket.sendall(money.encode('utf-8'))
+    data = client_socket.recv(1024).decode('utf-8')
+    print(data)
     
     client_socket.close()
 
