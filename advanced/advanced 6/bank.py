@@ -89,7 +89,7 @@ class Bank:
         is_exist = False
 
         for account in self.clients_list:
-            if account.name == name and account.account_number == account_number:
+            if account.name == name and str(account.account_number) == str(account_number):
                 is_exist = True
                 account.balance = int(account.balance)+ int(to_deposit)
                 self.clients_list.pop(self.clients_list.index(account))
@@ -115,7 +115,7 @@ class Bank:
         is_exist = False
 
         for account in self.clients_list:
-            if account.name == name and account.account_number == account_number:
+            if account.name == name and str(account.account_number) == str(account_number):
                 is_exist = True
                 account.balance = int(account.balance) - int(to_withdraw)
                 self.clients_list.pop(self.clients_list.index(account))
@@ -149,11 +149,11 @@ class Bank:
 
         for account in self.clients_list:
             for sender_account in self.clients_list:
-                if sender_account.name == sender_name and sender_account.account_number == sender_account_number:
+                if sender_account.name == sender_name and str(sender_account.account_number) == str(sender_account_number):
                     sender_is_exist = True
                     account_of_sender = sender_account
 
-            if account.name == name  and account.account_number == account_number:
+            if account.name == name  and str(account.account_number) == str(account_number):
                 is_exist = True
                 account_transfer = account
 

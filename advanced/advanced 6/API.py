@@ -13,6 +13,7 @@ def new_account():
 
     name = input('Enter the name of client: ')
     client_socket.sendall(name.encode('utf-8'))
+    
     balance = input('Please enter the start balance of client: ')
     client_socket.sendall(balance.encode('utf-8'))
 
