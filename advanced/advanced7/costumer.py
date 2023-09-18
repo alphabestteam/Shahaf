@@ -1,11 +1,24 @@
 from product import Product
+import socket
+from API import connect_new_account
 
 class Costumer:
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, account_number: str, balance: str) -> None:
         self.costumer_name = name
         self.shopping_list = []
         self.list_total_price = 0
+        self.account_number = account_number
+        self.balance = balance
+
+        if self.account_number == '0':
+            HOST = '127.0.0.1'
+            PORT = 12346
+
+            connect_new_account()
+
+            client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            client_socket.connect((HOST, PORT))
 
     def add_product(self, product: Product) -> None:
         is_exist = False

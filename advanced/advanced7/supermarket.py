@@ -14,7 +14,9 @@ def main():
         action = input('Enter your requested action: ')
 
         if action == '1':
-            register = Register()
+            account_number = input('Please enter register account number: ')
+            balance = input('Please enter register balance: ')
+            register = Register(account_number, balance)
             register_list.append(register)
             print('register was created!')
 
@@ -22,7 +24,9 @@ def main():
             register = register_list[-1]
 
             name = input('Enter the name: ')
-            costumer = Costumer(name)
+            account_number = input('Please enter costumer account number: ')
+            balance = input('Please enter costumer balance: ')
+            costumer = Costumer(name, account_number, balance)
 
             while True:
                 print('Enter 1 to add an item')  #prints action menu

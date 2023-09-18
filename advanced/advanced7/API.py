@@ -1,6 +1,24 @@
 import socket
 
-def new_account():
+def connect_new_account() -> None:
+    HOST = '127.0.0.1'
+    PORT = 12346
+
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((HOST, PORT))
+
+    new_account()
+
+def connect_transfer() -> None:
+    HOST = '127.0.0.1'
+    PORT = 12346
+
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((HOST, PORT))
+
+    transfer()
+
+def new_account() -> None:
     HOST = '127.0.0.1'
     PORT = 12345
 
@@ -22,7 +40,7 @@ def new_account():
 
     client_socket.close()
 
-def deposit_or_withdraw():
+def deposit_or_withdraw() -> None:
     HOST = '127.0.0.1'
     PORT = 12345
 
@@ -56,7 +74,7 @@ def deposit_or_withdraw():
     
     client_socket.close()
 
-def transfer():
+def transfer(register_account) -> None:
     HOST = '127.0.0.1'
     PORT = 12345
 
@@ -89,7 +107,13 @@ def transfer():
 
     data = client_socket.recv(1024).decode('utf-8')
     print(data)
-    account_number = input()
+    
+    if account_number != None:
+        account_number = register_account
+
+    else:
+        account_number = input()
+
     client_socket.sendall(account_number.encode('utf-8'))
 
     data = client_socket.recv(1024).decode('utf-8')
@@ -97,14 +121,14 @@ def transfer():
     
     client_socket.close()
 
-def main():
+# def main():
 
-    new_account()
+#     new_account()
 
-    deposit_or_withdraw()
+#     deposit_or_withdraw()
 
-    transfer()
+#     transfer()
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

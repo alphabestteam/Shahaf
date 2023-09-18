@@ -5,7 +5,7 @@ class Bank:
     def __init__(self) -> None:
         self.clients_list = []
 
-        dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers'
+        dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers'
         dir_list = os.listdir(dir_path)
 
         for file in dir_list:
@@ -68,7 +68,7 @@ class Bank:
             if not is_exist:
                 break
                 
-        dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers' #creates a file for new account
+        dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers' #creates a file for new account
         with open(f'{dir_path}/{account_number}.json', 'w') as file:
             account_dir = {'name': name, 'account_number': account_number, 'balance': balance}
             file.write(json.dumps(account_dir))
@@ -95,7 +95,7 @@ class Bank:
                 self.clients_list.pop(self.clients_list.index(account))
                 self.clients_list.append(account)
 
-                dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers'  #updates the json file
+                dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers'  #updates the json file
                 with open(f'{dir_path}/{account.account_number}.json', 'w') as file:
                     account_dir = {'name': account.name, 'account_number': account.account_number, 'balance': account.balance}
                     file.write(json.dumps(account_dir))
@@ -121,7 +121,7 @@ class Bank:
                 self.clients_list.pop(self.clients_list.index(account))
                 self.clients_list.append(account)
 
-                dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers'  #updates the json file
+                dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers'  #updates the json file
                 with open(f'{dir_path}/{account.account_number}.json', 'w') as file:
                     account_dir = {'name': account.name, 'account_number': account.account_number, 'balance': account.balance}
                     file.write(json.dumps(account_dir))
@@ -162,7 +162,7 @@ class Bank:
             self.clients_list.pop(self.clients_list.index(account_of_sender))
             self.clients_list.append(account_of_sender)
 
-            dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers'  #updates the json file
+            dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers'  #updates the json file
             with open(f'{dir_path}/{account_of_sender.account_number}.json', 'w') as file:
                 account_dir = {'name': account_of_sender.name, 'account_number': account_of_sender.account_number, 'balance': account_of_sender.balance}
                 file.write(json.dumps(account_dir))
@@ -171,7 +171,7 @@ class Bank:
             self.clients_list.pop(self.clients_list.index(account_transfer))
             self.clients_list.append(account_transfer)
 
-            dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced 6/costumers'  #updates the json file
+            dir_path = dir_path = '/Users/shahafgressel/Documents/צה״ל/הכשרה - git/Shahaf/advanced/advanced7/costumers'  #updates the json file
             with open(f'{dir_path}/{account_transfer.account_number}.json', 'w') as file:
                 account_dir = {'name': account_transfer.name, 'account_number': account_transfer.account_number, 'balance': account_transfer.balance}
                 file.write(json.dumps(account_dir))
