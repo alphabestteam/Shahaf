@@ -2,9 +2,7 @@ from mission import Mission
 import datetime
 
 class Project:
-    days_by_month = {1: 31, 2:28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
-
-    def __init__(self, description: str, start_date: datetime, mission_list: list, developer_list: list, to_do_list: list, done_list: list, cost_of_project: float) -> None:
+    def __init__(self, description: str, start_date: datetime, mission_list: list = [], developer_list: list = [], to_do_list: list  = [], done_list: list = [], cost_of_project: float  = 0) -> None:
         self.description = description, 
         self.start_date = start_date, 
 
@@ -16,43 +14,60 @@ class Project:
         self.finish_date = start_date + datetime.timedelta(days = work_days)
         self.mission_list = mission_list, 
         self.developer_list = developer_list, 
-        self.to_do_list = mission_list, 
-        self.done_list = [], 
+        self.to_do_list = to_do_list, 
+        self.done_list = done_list, 
         self.cost_of_project = cost_of_project,
         self.is_finished = False
 
-    def add_mission(self, mission: Mission) -> None:
+    def add_mission(self, mission) -> None:  #: Mission
         if mission not in self.mission_list and mission.project == None:
             self.mission_list.append(mission)
             self.to_do_list.append(mission)
             self.developer_list.append(mission.developer)
+            self.finish_date = self.finish_date + datetime.timedelta(days = mission.work_days)
 
             raise('Mission was added successfully!')
 
         else:
             raise Exception('Mission already added!')
 
-    def delete_mission(self, mission: Mission) -> None:
+    def delete_mission(self, mission) -> None:  #: Mission
         if mission in self.to_do_list and mission not in self.done_list:
             self.mission_list.pop(self.mission_list.index(mission))
             self.to_do_list.pop(self.to_do_list.index(mission))
             self.developer_list.pop(self.developer_list.index(mission.developer))
+            self.finish_date = self.finish_date - datetime.timedelta(days = mission.work_days)
 
             raise('Mission was deleted successfully!')
 
         else:
             raise Exception('Can not delete mission, mission status is done!')
 
-    def search_mission_by_description(self, description: str) -> Mission:
+    def search_mission_by_description(self, description: str):  #-> Mission
         for mission in self.mission_list:
             if mission.description == description:
                 return mission
             
         raise Exception('Mission not found!')
     
-    def _str_(self) -> str:
-        return f'name: {self._name}, tz: {self._TZ}, age: {self._age}'
+    def is_project_finished(self) -> None:
+        is_done = True
+
+        for mission in self.mission_list:
+            if not mission.is_finished:
+                is_done = False
+                break
+
+        if is_done:
+            self.is_finished = True
+            raise('Finished project!')
+        
+        else:
+            raise('Project not finished!')
     
+    def __str__(self) -> str:
+        print(f'Project description: \ndescription: {self.description}, \nstart date: {self.start_date}, \n end date: {self.finish_date}, \ncost of project: {self.cost_of_project}, \n is the project finished? {self.is_finished}')
+
     @property
     def description(self):
         return self.description

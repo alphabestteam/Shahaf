@@ -7,7 +7,7 @@ class Developer:
         self.work_days = 0, 
         self.payment = 0, 
         self.to_do_missions = [], 
-        self.seniority: 1
+        self.seniority = 1
 
     def finished_mission(self, mission: Mission) -> None:
         if mission.developer == self:
@@ -26,7 +26,7 @@ class Developer:
             raise Exception('Mission not allocated to this developer, can not change status to finished!')
         
     def __str__(self) -> str:
-        print(f'developer description: \nname: {self.name},\nfinished missions: {self.finished_mission}, \nwork days: {self.work_days}, \npayment: {self.payment}, \nunfinished missions: {self.to_do_missions}, \seniority: {self.seniority}')
+        print(f'developer description: \nname: {self.name}, \nwork days: {self.work_days}, \npayment: {self.payment}, \nseniority: {self.seniority}')
     
     @property
     def name(self):
@@ -55,48 +55,25 @@ class Developer:
 
     @name.setter
     def name(self, new_name: str):
-        if type(new_name) == str:
-            self.name = new_name
-
-        else:
-            raise Exception('Invalid value!')
+        self.name = new_name
 
     @finished_missions.setter
     def finished_missions(self, new_finished_missions: list):
-        if type(new_finished_missions) == list:
-            self.finished_missions = new_finished_missions
+        self.finished_missions = new_finished_missions
 
-        else:
-            raise Exception('Invalid value!')
     
     @work_days.setter
     def work_days(self, new_work_days: int):
-        if type(new_work_days) == int:
-            self.work_days = new_work_days
-
-        else:
-            raise Exception('Invalid value!')
+        self.work_days = new_work_days
 
     @payment.setter
     def payment(self, new_payment: float):
-        if type(new_payment) == float:
-            self.payment = new_payment
-
-        else:
-            raise Exception('Invalid value!')
+        self.payment = new_payment
 
     @to_do_missions.setter
     def to_do_missions(self, new_to_do_missions: list):
-        if type(new_to_do_missions) == list:
-            self.to_do_missions = new_to_do_missions
+        self.to_do_missions = new_to_do_missions
 
-        else:
-            raise Exception('Invalid value!')
-    
     @seniority.setter
     def seniority(self, new_seniority: int):
-        if type(new_seniority) == int:
-            self.seniority = new_seniority
-
-        else:
-            raise Exception('Invalid value!')
+        self.seniority = new_seniority
