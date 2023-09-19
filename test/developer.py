@@ -18,11 +18,15 @@ class Developer:
             mission.is_finished = True
             mission.project.to_do_list.pop(mission.project.to_do_list.index(mission))
             mission.project.done_list.append(mission)
+            mission.project.cost_of_project += mission.payment
 
             raise('Mission status updated to finished!')
         
         else:
             raise Exception('Mission not allocated to this developer, can not change status to finished!')
+        
+    def __str__(self) -> str:
+        print(f'developer description: \nname: {self.name},\nfinished missions: {self.finished_mission}, \nwork days: {self.work_days}, \npayment: {self.payment}, \nunfinished missions: {self.to_do_missions}, \seniority: {self.seniority}')
     
     @property
     def name(self):

@@ -3,8 +3,6 @@ from developer import Developer
 import datetime
 
 class Mission:
-    days_by_month = {1: 31, 2:28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
-
     def __init__(self, description: str, start_date: datetime, work_days: int, difficulty: int, developer: Developer, project: Project = None) -> None:
         self.description = description, 
         self.start_date = start_date, 
@@ -27,6 +25,18 @@ class Mission:
 
         raise('Mission was allocated!')
     
+    def assign_project(self, project: Project):
+        if self not in project.mission_list:
+            self.project = project
+            project.mission_list.append(self)
+            project.to_do_list.append(self)
+
+        else:
+            raise('Mission already assigned!')
+        
+    def __str__(self) -> str:
+        print(f'Mission description: \ndescription: {self.description}, \nstart date: {self.start_date}, \n end date: {self.finish_date}, \nproject: {self.project.description}, \nwork days: {self.work_days}, \ndifficulty: {self.difficulty}, \ndeveloper: {self.developer.name}')
+            
     @property
     def description(self):
         return self.description
