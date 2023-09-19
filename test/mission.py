@@ -5,7 +5,7 @@ import datetime
 class Mission:
     days_by_month = {1: 31, 2:28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
 
-    def __init__(self, description: str, start_date: datetime, project: Project, work_days: int, difficulty: int, developer: Developer) -> None:
+    def __init__(self, description: str, start_date: datetime, work_days: int, difficulty: int, developer: Developer, project: Project = None) -> None:
         self.description = description, 
         self.start_date = start_date, 
         self.finish_date = start_date + datetime.timedelta(days = work_days)
@@ -25,4 +25,60 @@ class Mission:
     def allocate_developer(self, developer: Developer) -> None:
         self.developer = developer
 
-        print('Mission was allocated!')
+        raise('Mission was allocated!')
+    
+    @property
+    def description(self):
+        return self.description
+    
+    @property
+    def start_date(self):
+        return self.start_date
+    
+    @property
+    def finish_date(self):
+        return self.finish_date
+    
+    @property
+    def project(self):
+        return self.project
+
+    @property
+    def work_days(self):
+        return self.work_days
+    
+    @property
+    def difficulty(self):
+        return self.difficulty
+    
+    @property
+    def developer(self):
+        return self.developer
+    
+    @description.setter
+    def description(self, new_description : str):
+        self.description = new_description
+
+    @start_date.setter
+    def start_date(self, new_start_date : datetime):
+        self.start_date = new_start_date
+
+    @finish_date.setter
+    def finish_date(self, new_finish_date : datetime):
+        self.finish_date = new_finish_date
+    
+    @project.setter
+    def project(self, new_project : Project):
+        self.project = new_project
+
+    @work_days.setter
+    def work_days(self, new_work_days : int):
+        self.work_days = new_work_days
+
+    @difficulty.setter
+    def difficulty(self, new_difficulty : int):
+        self.difficulty = new_difficulty
+    
+    @developer.setter
+    def developer(self, new_developer : bool):
+        self.developer = new_developer

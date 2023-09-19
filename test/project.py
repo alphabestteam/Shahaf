@@ -22,24 +22,105 @@ class Project:
         self.is_finished = False
 
     def add_mission(self, mission: Mission) -> None:
-        self.mission_list.append(mission)
-        self.to_do_list.append(mission)
+        if mission not in self.mission_list and mission.project == None:
+            self.mission_list.append(mission)
+            self.to_do_list.append(mission)
+            self.developer_list.append(mission.developer)
 
-        print('Mission was added successfully!')
+            raise('Mission was added successfully!')
+
+        else:
+            raise Exception('Mission already added!')
 
     def delete_mission(self, mission: Mission) -> None:
         if mission in self.to_do_list and mission not in self.done_list:
             self.mission_list.pop(self.mission_list.index(mission))
             self.to_do_list.pop(self.to_do_list.index(mission))
+            self.developer_list.pop(self.developer_list.index(mission.developer))
 
-            print('Mission was deleted successfully!')
+            raise('Mission was deleted successfully!')
 
         else:
-            print('Can not delete mission, mission status is done!')
+            raise Exception('Can not delete mission, mission status is done!')
 
     def search_mission_by_description(self, description: str) -> Mission:
         for mission in self.mission_list:
             if mission.description == description:
                 return mission
             
-        print('Mission not found!')
+        raise Exception('Mission not found!')
+    
+    def _str_(self) -> str:
+        return f'name: {self._name}, tz: {self._TZ}, age: {self._age}'
+    
+    @property
+    def description(self):
+        return self.description
+    
+    @property
+    def start_date(self):
+        return self.start_date
+    
+    @property
+    def finish_date(self):
+        return self.finish_date
+    
+    @property
+    def mission_list(self):
+        return self.mission_list
+    
+    @property
+    def developer_list(self):
+        return self.developer_list
+    
+    @property
+    def to_do_list(self):
+        return self.to_do_list
+
+    @property
+    def done_list(self):
+        return self.done_list
+    
+    @property
+    def cost_of_project(self):
+        return self.cost_of_project
+    
+    @property
+    def is_finished(self):
+        return self.is_finished
+    
+    @description.setter
+    def description(self, new_description : str):
+        self.description = new_description
+
+    @start_date.setter
+    def start_date(self, new_start_date : datetime):
+        self.start_date = new_start_date
+    
+    @finish_date.setter
+    def finish_date(self, new_finish_date : datetime):
+        self.finish_date = new_finish_date
+
+    @mission_list.setter
+    def mission_list(self, new_mission_list : list):
+        self.mission_list = new_mission_list
+
+    @developer_list.setter
+    def developer_list(self, new_developer_list : list):
+        self.developer_list = new_developer_list
+    
+    @to_do_list.setter
+    def to_do_list(self, new_to_do_list : list):
+        self.to_do_list = new_to_do_list
+
+    @done_list.setter
+    def done_list(self, new_done_list : list):
+        self.done_list = new_done_list
+
+    @cost_of_project.setter
+    def cost_of_project(self, new_cost_of_project : float):
+        self._cost_of_project = new_cost_of_project
+    
+    @is_finished.setter
+    def is_finished(self, new_is_finished : bool):
+        self.is_finished = new_is_finished
