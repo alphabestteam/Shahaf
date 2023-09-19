@@ -8,25 +8,7 @@ class Mission:
     def __init__(self, description: str, start_date: datetime, project: Project, work_days: int, difficulty: int, developer: Developer) -> None:
         self.description = description, 
         self.start_date = start_date, 
-
-        year = start_date.year
-        month = start_date.month
-        days = start_date.day
-
-        if (days + work_days) > Mission.days_by_month[month]:
-            left_days = (days + work_days) - Mission.days_by_month[month]
-            month += 1
-            if month > 12:
-                year += 1
-                month = month - 12
-                self.finish_date = datetime.date(year, month, left_days)
-
-            else: 
-                self.finish_date = datetime.date(year, month, left_days)
-
-        else:
-            self.finish_date = datetime.date(year, month, days + work_days)
-
+        self.finish_date = start_date + datetime.timedelta(days = work_days)
         self.project = project, 
         self.work_days = work_days, 
         self.difficulty = difficulty, 

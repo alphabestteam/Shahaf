@@ -1,14 +1,23 @@
 from mission import Mission
+import datetime
 
 class Project:
-    def __init__(self, description: str, start_date: str, finish_date: str, mission_list: list, developer_list: list, to_do_list: list, done_list: list, cost_of_project: float) -> None:
+    days_by_month = {1: 31, 2:28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
+
+    def __init__(self, description: str, start_date: datetime, mission_list: list, developer_list: list, to_do_list: list, done_list: list, cost_of_project: float) -> None:
         self.description = description, 
         self.start_date = start_date, 
-        self.finish_date = finish_date,
+
+        work_days = 0
+
+        for mission in mission_list:
+            work_days += mission.work_days
+
+        self.finish_date = start_date + datetime.timedelta(days = work_days)
         self.mission_list = mission_list, 
         self.developer_list = developer_list, 
-        self.to_do_list = to_do_list, 
-        self.done_list = done_list, 
+        self.to_do_list = mission_list, 
+        self.done_list = [], 
         self.cost_of_project = cost_of_project,
         self.is_finished = False
 
