@@ -57,28 +57,56 @@ class Mission:
     
     @description.setter
     def description(self, new_description : str):
-        self.description = new_description
+        if type(new_description) == str:
+            self.description = new_description
+
+        else:
+            raise Exception('Invalid value!')
 
     @start_date.setter
     def start_date(self, new_start_date : datetime):
-        self.start_date = new_start_date
+        if type(new_start_date) == datetime:
+            self.start_date = new_start_date
+
+        else:
+            raise Exception('Invalid value!')
 
     @finish_date.setter
     def finish_date(self, new_finish_date : datetime):
-        self.finish_date = new_finish_date
+        if type(new_finish_date) == datetime:
+            self.finish_date = new_finish_date
+
+        else:
+            raise Exception('Invalid value!')
     
     @project.setter
     def project(self, new_project : Project):
-        self.project = new_project
+        if type(new_project) == Project:
+            self.project = new_project
+
+        else:
+            raise Exception('Invalid value!')
 
     @work_days.setter
     def work_days(self, new_work_days : int):
-        self.work_days = new_work_days
+        if type(new_work_days) == int:
+            self.work_days = new_work_days
+
+        else:
+            raise Exception('Invalid value!')
 
     @difficulty.setter
     def difficulty(self, new_difficulty : int):
-        self.difficulty = new_difficulty
+        if type(new_difficulty) == int:
+            self.difficulty = new_difficulty
+
+        else:
+            raise Exception('Invalid value!')
     
     @developer.setter
     def developer(self, new_developer : bool):
-        self.developer = new_developer
+        if type(new_developer) == bool:
+            self.developer = new_developer
+
+        else:
+            raise Exception('Invalid value!')

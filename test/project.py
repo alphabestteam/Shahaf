@@ -91,36 +91,72 @@ class Project:
     
     @description.setter
     def description(self, new_description : str):
-        self.description = new_description
+        if type(new_description) == str:
+            self.description = new_description
+
+        else:
+            raise Exception('Invalid value!')
 
     @start_date.setter
     def start_date(self, new_start_date : datetime):
-        self.start_date = new_start_date
+        if type(new_start_date) == datetime:
+            self.start_date = new_start_date
+
+        else:
+            raise Exception('Invalid value!')
     
     @finish_date.setter
     def finish_date(self, new_finish_date : datetime):
-        self.finish_date = new_finish_date
+        if type(new_finish_date) == datetime:
+            self.finish_date = new_finish_date
+
+        else:
+            raise Exception('Invalid value!')
 
     @mission_list.setter
     def mission_list(self, new_mission_list : list):
-        self.mission_list = new_mission_list
+        if type(new_mission_list) == list:
+            self.mission_list = new_mission_list
+
+        else:
+            raise Exception('Invalid value!')
 
     @developer_list.setter
     def developer_list(self, new_developer_list : list):
-        self.developer_list = new_developer_list
+        if type(new_developer_list) == list:
+            self.developer_list = new_developer_list
+
+        else:
+            raise Exception('Invalid value!')
     
     @to_do_list.setter
     def to_do_list(self, new_to_do_list : list):
-        self.to_do_list = new_to_do_list
+        if type(new_to_do_list) == list:
+            self.to_do_list = new_to_do_list
+
+        else:
+            raise Exception('Invalid value!')
 
     @done_list.setter
     def done_list(self, new_done_list : list):
-        self.done_list = new_done_list
+        if type(new_done_list) == list:
+            self.done_list = new_done_list
+
+        else:
+            raise Exception('Invalid value!')
 
     @cost_of_project.setter
     def cost_of_project(self, new_cost_of_project : float):
-        self._cost_of_project = new_cost_of_project
+        if type(new_cost_of_project) == float:
+            self._cost_of_project = new_cost_of_project
+
+        else:
+            raise Exception('Invalid value!')
     
     @is_finished.setter
     def is_finished(self, new_is_finished : bool):
-        self.is_finished = new_is_finished
+        if type(new_is_finished) == bool:
+            self.is_finished = new_is_finished
+
+        else:
+            raise Exception('Invalid value!')
