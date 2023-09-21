@@ -44,8 +44,8 @@ def main():
     for member in collection_3.find():
         print(member)
 
-    original_michal = { 'name': 'Michal', 'age': 21, 'occupation': 'baker', '_id': '44' }
-    collection_2.delete_one(original_michal)
+    original_lihi = {'name': 'Lihi', 'age': 21, 'occupation': 'QA'}
+    collection_3.delete_one(original_lihi)
     
 
 if __name__ == "__main__":
