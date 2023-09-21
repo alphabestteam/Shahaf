@@ -1,1 +1,0 @@
-1. database from type no-sql is a database a non-relational database they are designed to handle and store large volumes of unstructured and semi-structured data.
