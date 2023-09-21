@@ -17,10 +17,10 @@ def main():
         print(member)
 
     collection_2 = database['friends']
-    friends = [{'name': 'Amit', 'age': 20, 'occupation': 'waiter', '_id': '111'},
-              {'name': 'Yonatan', 'age': 24, 'occupation': 'student', '_id': '222'},
-              {'name': 'Noa', 'age': 22, 'occupation': 'student', '_id': '333'},
-              {'name': 'Michal', 'age': 21, 'occupation': 'baker', '_id': '444'}]
+    friends = [{'name': 'Amit', 'age': 20, 'occupation': 'waiter', '_id': '1111'},
+              {'name': 'Yonatan', 'age': 24, 'occupation': 'student', '_id': '2222'},
+              {'name': 'Noa', 'age': 22, 'occupation': 'student', '_id': '3333'},
+              {'name': 'Michal', 'age': 21, 'occupation': 'baker', '_id': '4444'}]
     my_friends = collection_2.insert_many(friends)
 
     for member in collection_2.find():
@@ -52,11 +52,12 @@ def main():
 
     diff_occupation = collection_3.find_one({'age': devops_member['age'], 'occupation': {'$ne': 'DevOps'}})
 
-    collection_3.update_one({devops_member['occupation']}, {'$set': {diff_occupation['occupation']}})
+    collection_3.update_one({'occupation': devops_member['occupation'], 'name': devops_member['name']}, {'$set': {'occupation': diff_occupation['occupation']}})
 
     ordered_friends = collection_3.aggregate([{'$sort': {'age': 1}}])
+    print(ordered_friends)
 
-    for friend in ordered_friends.find():
+    for friend in collection_3.find():
         if friend['age'] > 23:
             collection_2.insert_one(friend)
             collection_3.delete_one(friend)
