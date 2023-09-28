@@ -166,7 +166,7 @@ progress {
     text-decoration: underline;
     text-underline-offset: -2em;
     text-decoration-thickness: 1px;
-    text-decoration-color: #6b6b6b;
+    text-decoration-color: #c5c5c5;
 }
 
 .overline-border{
@@ -192,7 +192,7 @@ progress {
     border-radius: 50%;
     background: 
       radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+      conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
 }
 
 .progress-bar::before {
@@ -203,7 +203,7 @@ progress {
 .one{
     background: 
     radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
     animation: progress1 2s 1 forwards;
 }
 
@@ -214,7 +214,7 @@ progress {
 .two{
     background: 
     radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
     animation: progress2 2s 1 forwards;
 }
 
@@ -225,7 +225,7 @@ progress {
 .three{
     background: 
     radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
     animation: progress3 2s 1 forwards;
 }
 
@@ -236,7 +236,7 @@ progress {
 .four{
     background: 
     radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
     animation: progress4 2s 1 forwards;
 }
 
@@ -247,7 +247,7 @@ progress {
 .five{
     background: 
     radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
     animation: progress5 2s 1 forwards;
 }
 
@@ -327,7 +327,7 @@ progress {
 
 #page-border {
     background-color: #f5f5f5;
-    margin: 20px;
+    margin: 20px 20px 0px 20px;
     line-height: 1.5;
     letter-spacing: 1px;
 }
