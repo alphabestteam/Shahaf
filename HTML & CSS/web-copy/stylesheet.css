@@ -1,51 +1,27 @@
-@property --progress-value1 {
+@property --progress-value{
     syntax: "<integer>";
-    initial-value: 40;
-    inherits: false;
-}
-
-@property --progress-value2 {
-    syntax: "<integer>";
-    initial-value: 80;
-    inherits: false;
-}
-
-@property --progress-value3 {
-    syntax: "<integer>";
-    initial-value: 57;
-    inherits: false;
-}
-
-@property --progress-value4 {
-    syntax: "<integer>";
-    initial-value: 83;
-    inherits: false;
-}
-
-@property --progress-value5 {
-    syntax: "<integer>";
-    initial-value: 90;
+    initial-value: 0;
     inherits: false;
 }
   
 @keyframes progress1 {
-   to { --progress-value1: 40; }
+   to { --progress-value: 40; }
 }
 
 @keyframes progress2 {
-    to { --progress-value2: 80; }
+    to { --progress-value: 80; }
 }
 
 @keyframes progress3 {
-    to { --progress-value3: 57; }
+    to { --progress-value: 57; }
 }
 
 @keyframes progress4 {
-    to { --progress-value4: 83; }
+    to { --progress-value: 83; }
 }
 
    @keyframes progress5 {
-    to { --progress-value5: 90; }
+    to { --progress-value: 90; }
 }
 
 body{
@@ -201,7 +177,7 @@ progress {
     padding-right: 60px;
 }
 
-.progress-bar1 {
+.progress-bar{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,104 +187,67 @@ progress {
     border-radius: 50%;
     background: 
       radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value1) * 1%), #6b6b6b 0);
+      conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
 }
 
-.progress-bar2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.progress-bar::before {
+    counter-reset: percentage var(--progress-value);
+    content: counter(percentage) '%';
+}
+
+.one{
     background: 
-      radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value2) * 1%), #6b6b6b 0);
-}
-
-.progress-bar3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: 
-      radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value3) * 1%), #6b6b6b 0);
-}
-
-.progress-bar4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: 
-      radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value4) * 1%), #6b6b6b 0);
-}
-
-.progress-bar5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: 
-      radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
-      conic-gradient(#16a6b6 calc(var(--progress-value5) * 1%), #6b6b6b 0);
-}
-
-.animation1{
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
     animation: progress1 2s 1 forwards;
 }
 
-.animation2{
+.one::before{
+    animation: progress1 2s 1 forwards;
+}
+
+.two{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
     animation: progress2 2s 1 forwards;
 }
 
-.animation3{
+.two::before{
+    animation: progress2 2s 1 forwards;
+}
+
+.three{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
     animation: progress3 2s 1 forwards;
 }
 
-.animation4{
+.three::before{
+    animation: progress3 2s 1 forwards;
+}
+
+.four{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
     animation: progress4 2s 1 forwards;
 }
 
-.animation5{
+.four::before{
+    animation: progress4 2s 1 forwards;
+}
+
+.five{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #6b6b6b 0);
     animation: progress5 2s 1 forwards;
 }
 
-.progress-bar1::before {
-    counter-reset: percentage var(--progress-value1);
-    content: counter(percentage) '%';
-}
-
-.progress-bar2::before {
-    counter-reset: percentage var(--progress-value2);
-    content: counter(percentage) '%';
-}
-
-.progress-bar3::before {
-    counter-reset: percentage var(--progress-value3);
-    content: counter(percentage) '%';
-}
-
-.progress-bar4::before {
-    counter-reset: percentage var(--progress-value4);
-    content: counter(percentage) '%';
-}
-
-.progress-bar5::before {
-    counter-reset: percentage var(--progress-value5);
-    content: counter(percentage) '%';
+.five::before{
+    animation: progress5 2s 1 forwards;
 }
 
 .status ul{
@@ -325,9 +264,24 @@ progress {
     vertical-align: middle;
 }
 
+.conect ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.conect li{
+    display: inline-block;
+    margin: 1%;
+    color: #6b6b6b;
+    vertical-align: middle;
+}
+
 #page-border {
     background-color: #f5f5f5;
     margin: 20px;
     line-height: 1.5;
     letter-spacing: 1px;
 }
+
