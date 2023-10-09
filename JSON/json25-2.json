@@ -1,0 +1,35 @@
+{
+    "New York":{
+        "time zone":"GMT-4",
+        "zip code":"10001",
+        "population":8468000,
+        "year established":1624,
+        "mayor of city":{
+            "name":"Eric Adams",
+            "year elected":2021,
+            "yearly salary":258750
+        }
+    },
+    "Paris":{
+        "time zone":"UTC+1",
+        "zip code":"75056",
+        "population":2161000,
+        "year established":259,
+        "mayor of city":{
+            "name":"Anne Hidalgo",
+            "year elected":2014,
+            "yearly salary":103800
+        }
+    },
+    "London":{
+        "time zone":"GMT+1",
+        "zip code":181300,
+        "population":898200,
+        "year established":43,
+        "mayor of city":{
+            "name":"Sadiq Khan",
+            "year elected":2016,
+            "yearly salary":152734
+        }
+    }
+}
