@@ -1,0 +1,342 @@
+@property --progress-value{
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+  
+@keyframes progress1 {
+   to { --progress-value: 40; }
+}
+
+@keyframes progress2 {
+    to { --progress-value: 80; }
+}
+
+@keyframes progress3 {
+    to { --progress-value: 57; }
+}
+
+@keyframes progress4 {
+    to { --progress-value: 83; }
+}
+
+   @keyframes progress5 {
+    to { --progress-value: 90; }
+}
+
+body{
+    color: #6b6b6b;
+    text-align: center;
+    font-family: 'freightsans_regular',sans-serif;
+    font-weight: lighter;
+    margin: 0px;
+}
+
+h1{
+    font-family: 'freightsans_regular',sans-serif;
+    color: black;
+    font-size: 80px;
+}
+
+h2{
+    font-size: 24px;
+    font-weight: lighter;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+h4{
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+h5{
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+h6{
+    font-size: 12px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+progress {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.honeycomb-container{
+    margin: 30px auto 250px auto;
+    position: static;
+}
+
+.honeycomb{
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto auto;
+    padding: 0;
+    transform: translateY(80px);
+}
+
+.honeycomb-cell{
+    -webkit-box-flex: 0;
+    flex: 0 1 250px;
+    max-width: 180px;
+    height: 95.5px;
+    margin: 45.4px 12.5px 25px;
+    position: relative;
+    padding: 0.5em;
+    text-align: center;
+    z-index: 1;
+}
+
+.honeycomb-cell-img{
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    display: block;
+    position: absolute; 
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+}
+
+.honeycomb-hidden{
+    display: none;
+    opacity: 0;
+    width: 250px;
+    margin: 0 12.5px;
+} 
+
+.navigation li:hover{
+    color: #16a6b6;
+}
+
+.navigation ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    margin: 25;
+}
+
+.navigation li{
+    display: inline-block;
+    margin: 1%;
+    color: black;
+    vertical-align: middle;
+}
+
+.img-footer{
+    display: inline-block;
+    margin: 1%;
+    vertical-align: middle;
+}
+
+.img-footer img{
+    height: 50px;
+}
+
+.footer-hover{
+    border-color: #16a6b6;
+    padding: 0;
+}
+
+.footer-hover:hover{
+    color: #16a6b6;
+}
+
+.border-underline{
+    padding-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.overline{
+    text-decoration: underline;
+    text-underline-offset: -2em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #c5c5c5;
+}
+
+.overline-border{
+    border-top: 1px solid #6b6b6b;
+    padding-top: 30px;
+}
+
+.left{
+    padding-left: 60px;
+}
+
+.right{
+    padding-right: 60px;
+}
+
+.progress-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: 
+      radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+      conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+}
+
+.progress-bar::before {
+    counter-reset: percentage var(--progress-value);
+    content: counter(percentage) '%';
+}
+
+.one{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+    animation: progress1 2s 1 forwards;
+}
+
+.one::before{
+    animation: progress1 2s 1 forwards;
+}
+
+.two{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+    animation: progress2 2s 1 forwards;
+}
+
+.two::before{
+    animation: progress2 2s 1 forwards;
+}
+
+.three{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+    animation: progress3 2s 1 forwards;
+}
+
+.three::before{
+    animation: progress3 2s 1 forwards;
+}
+
+.four{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+    animation: progress4 2s 1 forwards;
+}
+
+.four::before{
+    animation: progress4 2s 1 forwards;
+}
+
+.five{
+    background: 
+    radial-gradient(closest-side, #f5f5f5 79%, transparent 80% 100%),
+    conic-gradient(#16a6b6 calc(var(--progress-value) * 1%), #c5c5c5 0);
+    animation: progress5 2s 1 forwards;
+}
+
+.five::before{
+    animation: progress5 2s 1 forwards;
+}
+
+.status ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.status li{
+    display: inline-block;
+    margin: 1%;
+    color: #6b6b6b;
+    vertical-align: middle;
+}
+
+.conect ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.conect li{
+    display: inline-block;
+    margin: 1%;
+    color: #6b6b6b;
+    vertical-align: top;
+}
+
+.button{
+    background-color: #6b6b6b;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 12px 28px;
+}
+
+.button:hover{
+    background-color: #16a6b6;
+}
+
+.conect-img{
+    height: 100px;
+    width: 100px;
+}
+
+.middle{
+    margin: 1% 60px 1% 1% !important;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #6b6b6b;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px;
+}
+
+.dot:hover{
+    background-color: #16a6b6;
+}
+
+.quotes{
+    margin: 150px auto;
+}
+
+#page-border {
+    background-color: #f5f5f5;
+    margin: 20px 20px 0px 20px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+#quote{
+    margin-bottom: 1%;
+}
+
+#author{
+    margin: 1%;
+}
