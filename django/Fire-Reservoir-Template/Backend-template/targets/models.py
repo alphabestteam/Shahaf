@@ -1,15 +1,14 @@
 from django.db import models
 
 class Target(models.Model):
-    # Implement here a target model with a __str__ function
     name = models.CharField(max_length=100),
-    attack_priority = models.CharField(max_length=2, min_length = 1),
+    attack_priority = models.CharField(max_length=2),
     latitude = models.CharField(max_length = 100, null = False),
     longitude = models.CharField(max_length = 100, null = False),
     enemy_organization = models.CharField(max_length=100),
     target_goal = models.CharField(max_length=100),
-    target_id = models.CharField(null = False, min_length = 1)
+    target_id = models.CharField(null = False, primary_key = True)
     is_destroyed = models.BooleanField(blank = False, null = False),
 
     def __str__(self) -> str:
-        return super().__str__()
+        return f'name: {self.name}, attack priority: {self.attack_priority}, latitude: {self.latitude}, longitude: {self.longitude}, enemy organization: {self.enemy_organization}, target goal: {self.target_goal}, target id: {self.target_id}, is destroyed: {self.is_destroyed}'

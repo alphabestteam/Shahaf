@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
-
 from targets.models import Target
 from targets.serializers import TargetSerializer
 
@@ -12,10 +11,10 @@ def add_target(request):
     data_serializer = TargetSerializer(data)
     if data_serializer.is_valid():
         data_serializer.save()
-        return JsonResponse('Target was successfully saved!')
+        return JsonResponse('Target was successfully saved!', status = 200)
         
     else:
-        return JsonResponse('Cant save Target, try again!')
+        return JsonResponse('Cant save Target, try again!', status = 404)
 
 @csrf_exempt
 def update_target(request):
@@ -24,10 +23,10 @@ def update_target(request):
     target_serializer = TargetSerializer(data, target)
     if target_serializer.is_valid():
         target.save()
-        return JsonResponse('Target was updated!')
+        return JsonResponse('Target was updated!', status = 200)
     
     else:
-        return JsonResponse('cant update target, try again!')
+        return JsonResponse('cant update target, try again!', status = 404)
 
 def all_targets(request):
     all_targets = Target.objects.all().values()
