@@ -9,6 +9,10 @@ from targets.serializers import TargetSerializer
 @csrf_exempt
 def add_target(request):
     # Implement here an add function
+    if request.method == 'GET':
+
+    
+    elif request.method == 'POST':
 
 @csrf_exempt
 def update_target(request):
