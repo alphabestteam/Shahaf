@@ -8,15 +8,25 @@ from targets.serializers import TargetSerializer
 
 @csrf_exempt
 def add_target(request):
-    # Implement here an add function
-    if request.method == 'GET':
-
-    
-    elif request.method == 'POST':
+    data = JSONParser.parse(request)
+    data_serializer = TargetSerializer(data)
+    if data_serializer.is_valid():
+        data_serializer.save()
+        return JsonResponse('Target was successfully saved!')
+        
+    else:
+        return JsonResponse('Cant save Target, try again!')
 
 @csrf_exempt
 def update_target(request):
     # Implement here an update function
+    data = JSONParser.parse(request)
+    target = Target.objects.get(name = data['name'])
+    target = data
+    target.save()
+    return JsonResponse('Target was updated!')
 
 def all_targets(request):
     # Implement here a get all targets function
+    all_targets = Target.objects.all().values()
+    return render(all_targets)
