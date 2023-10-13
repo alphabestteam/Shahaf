@@ -7,7 +7,7 @@ class Target(models.Model):
     longitude = models.CharField(max_length = 100, null = False),
     enemy_organization = models.CharField(max_length=100),
     target_goal = models.CharField(max_length=100),
-    target_id = models.CharField(null = False, primary_key = True)
+    target_id = models.IntegerField(null = False, primary_key = True)
     is_destroyed = models.BooleanField(blank = False, null = False),
 
     def __str__(self) -> str:
