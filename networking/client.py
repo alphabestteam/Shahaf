@@ -1,4 +1,4 @@
-import socket
+import socket, json
 
 def client_program():
     RECV_BLOCK_SIZE = 8192 # Max size of input from socket in a single recv
@@ -8,7 +8,12 @@ def client_program():
     client_socket = socket.socket()  # Instantiate
     client_socket.connect((host, port))  # Connect to the server
 
-    client_socket.send("{SYN:1000}".encode()) 
+    client_socket.send("{'SYN':1, 'SEQ':1}".encode()) 
+    data = client_socket.recv(RECV_BLOCK_SIZE).decode()
+    print(data)
+    dict_data = json.loads(str(data))
+    seq = dict_data['SEQ']
+    client_socket.send(f"{'ACK':{seq+1}, 'SEQ':2}".encode()) 
     data = client_socket.recv(RECV_BLOCK_SIZE).decode()
     print(data)
 
