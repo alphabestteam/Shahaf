@@ -19,14 +19,16 @@ def add_target(request):
 
 @csrf_exempt
 def update_target(request):
-    # Implement here an update function
     data = JSONParser.parse(request)
-    target = Target.objects.get(name = data['name'])
-    target = data
-    target.save()
-    return JsonResponse('Target was updated!')
+    target = Target.objects.get(name = data['target_id'])
+    target_serializer = TargetSerializer(data, target)
+    if target_serializer.is_valid():
+        target.save()
+        return JsonResponse('Target was updated!')
+    
+    else:
+        return JsonResponse('cant update target, try again!')
 
 def all_targets(request):
-    # Implement here a get all targets function
     all_targets = Target.objects.all().values()
     return render(all_targets)
