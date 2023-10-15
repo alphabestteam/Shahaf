@@ -3,8 +3,8 @@ from .models import Target
 
 class TargetSerializer(serializers.ModelSerializer):
     class Meta:
-        Model = Target
-        Fields = ('name', 'attack_priority', 'latitude', 'longitude', 'enemy_organization', 'target_goal', 'is_destroyed', 'target_id')
+        model = Target
+        fields = ['name', 'attack_priority', 'longitude', 'latitude', 'enemy_organization', 'target_goal', 'was_target_destroyed', 'target_id']
 
     def create(self, validated_data):
         return Target(**validated_data)
@@ -16,7 +16,7 @@ class TargetSerializer(serializers.ModelSerializer):
         instance.longitude = validated_data.get('longitude', instance.longitude)
         instance.enemy_organization = validated_data.get('enemy_organization', instance.enemy_organization)
         instance.target_goal = validated_data.get('target_goal', instance.target_goal)
-        instance.is_destroyed = validated_data.get('is_destroyed', instance.is_destroyed)
+        instance.was_target_destroyed = validated_data.get('was_target_destroyed', instance.was_target_destroyed)
         instance.save()
         return instance
     
