@@ -7,17 +7,18 @@ from people.serializers import PersonSerializer
 
 @csrf_exempt
 def get_all_people(request):
-    all_people = Person.objects.all()
-    list_of_dict = []
-    for one_person in all_people.iterator():
-        serializer_person = PersonSerializer('json', one_person)
-        if serializer_person.is_valid():
-            list_of_dict.append(serializer_person)
+    if request.method == 'GET':
+        all_people = Person.objects.all()
+        list_of_dict = []
+        for one_person in all_people.iterator():
+            serializer_person = PersonSerializer('json', one_person)
+            if serializer_person.is_valid():
+                list_of_dict.append(serializer_person)
 
-        else:
-            return JsonResponse(status = 404)
-        
-    return JsonResponse(list_of_dict, status = 200)
+            else:
+                return JsonResponse(status = 404)
+            
+        return JsonResponse(list_of_dict, status = 200)
 
 
 @csrf_exempt
