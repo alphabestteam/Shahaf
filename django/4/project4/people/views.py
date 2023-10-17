@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from people.models import Person
 from people.serializers import PersonSerializer
+import json
 
 @csrf_exempt
 def get_all_people(request):
@@ -11,14 +12,14 @@ def get_all_people(request):
         all_people = Person.objects.all()
         list_of_dict = []
         for one_person in all_people.iterator():
-            serializer_person = PersonSerializer('json', one_person)
-            if serializer_person.is_valid():
-                list_of_dict.append(serializer_person)
+            try:
+                one_person = one_person.__dict__
+                list_of_dict.append(one_person)
 
-            else:
-                return JsonResponse(status = 404)
+            except:
+                return HttpResponse(one_person.errors, status = 404)
             
-        return JsonResponse(list_of_dict, status = 200)
+        return HttpResponse(list_of_dict, status = 200)
 
 
 @csrf_exempt
