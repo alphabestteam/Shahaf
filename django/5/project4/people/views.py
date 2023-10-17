@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
-from people.models import Person
-from people.serializers import PersonSerializer
+from people.models import Person, Parent
+from people.serializers import PersonSerializer, ParentSerializer
 import json
 
 @csrf_exempt
@@ -62,3 +62,62 @@ def update_person(request):
         
         else:
             return JsonResponse(person_serializer.errors, status = 404)
+
+@csrf_exempt
+def add_parent(request):
+    if request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        parent = Parent(
+            name = request_data["name"],
+            date_of_birth = request_data["date_of_birth"],
+            city = request_data["city"],
+            id = request_data["id"],
+            place_of_work = request_data["place_of_work"],
+            salary = request_data["salary"],
+            children = request_data["children"]
+        )
+        serializer = ParentSerializer(data = request_data)
+        if serializer.is_valid():
+            parent.save()
+            return JsonResponse(serializer.data, status = 200, safe= False)
+        return JsonResponse(serializer.errors, status = 400)
+
+@csrf_exempt
+def remove_parent(request, id):
+    if request.method == 'DELETE':
+        try:
+            parent = Parent.objects.get(id = id)
+            parent.delete
+            return HttpResponse('deleted', status = 200)
+            
+        except:
+            return HttpResponse('error', status = 404)
+
+@csrf_exempt
+def update_parent(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        parent = Parent.objects.get(id = data['id'])
+        print(parent)
+        parent_serializer = ParentSerializer(parent, data)
+        if parent_serializer.is_valid():
+            parent_serializer.save()
+            return JsonResponse(parent_serializer.data, status = 200)
+        
+        else:
+            return JsonResponse(parent_serializer.errors, status = 404)
+
+@csrf_exempt
+def get_all_parents(request):
+    if request.method == 'GET':
+        all_parents = Parent.objects.all()
+        list_of_dict = []
+        for one_parent in all_parents.iterator():
+            try:
+                one_parent = one_parent.__dict__
+                list_of_dict.append(one_parent)
+
+            except:
+                return HttpResponse(one_parent.errors, status = 404)
+            
+        return HttpResponse(list_of_dict, status = 200)
