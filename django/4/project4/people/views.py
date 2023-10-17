@@ -42,12 +42,12 @@ def add_person(request):
 def remove_person(request, id):
     if request.method == 'DELETE':
         try:
-            person = Person.objects.get(id)
+            person = Person.objects.get(id = id)
             person.delete
-            return JsonResponse(status = 200)
-        
+            return HttpResponse('deleted', status = 200)
+            
         except:
-            return JsonResponse(status = 404)
+            return HttpResponse('error', status = 404)
 
 @csrf_exempt
 def update_person(request):
