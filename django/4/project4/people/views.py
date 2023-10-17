@@ -34,7 +34,7 @@ def add_person(request):
         serializer = PersonSerializer(data = request_data)
         if serializer.is_valid():
             person.save()
-            return JsonResponse(status = 200, safe= False)
+            return JsonResponse(serializer.data, status = 200, safe= False)
         return JsonResponse(serializer.errors, status = 400)
 
 @csrf_exempt
