@@ -5,6 +5,7 @@ from rest_framework.parsers import JSONParser
 from people.models import Person, Parent
 from people.serializers import PersonSerializer, ParentSerializer
 import json
+from rest_framework import status
 
 @csrf_exempt
 def get_all_people(request):
@@ -68,19 +69,9 @@ def update_person(request):
 @csrf_exempt
 def add_parent(request):
     if request.method == 'POST':
-        request_data = JSONParser().parse(request)
-        parent = Parent(
-            name = request_data["name"],
-            date_of_birth = request_data["date_of_birth"],
-            city = request_data["city"],
-            id = request_data["id"],
-            place_of_work = request_data["place_of_work"],
-            salary = request_data["salary"],
-            children = request_data["children"]
-        )
-        serializer = ParentSerializer(data = request_data)
+        serializer = ParentSerializer(data = request.data)
         if serializer.is_valid():
-            parent.save()
+            serializer.save()
             return JsonResponse(serializer.data, status = 200, safe= False)
         return JsonResponse(serializer.errors, status = 400)
 
@@ -90,10 +81,10 @@ def remove_parent(request, id):
         try:
             parent = Parent.objects.get(id = id)
             parent.delete()
-            return HttpResponse('deleted', status = 200)
+            return HttpResponse('deleted', status=status.HTTP_204_NO_CONTENT)
             
         except:
-            return HttpResponse('error', status = 404)
+            return HttpResponse('error', status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt
 def update_parent(request):
