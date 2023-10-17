@@ -52,12 +52,13 @@ def remove_person(request, id):
 @csrf_exempt
 def update_person(request):
     if request.method == 'POST':
-        data = JSONParser.parse(request)
-        person = Person.objects.get(name = data['id'])
-        person_serializer = PersonSerializer(data, person)
+        data = JSONParser().parse(request)
+        person = Person.objects.get(id = data['id'])
+        print(person)
+        person_serializer = PersonSerializer(person, data)
         if person_serializer.is_valid():
-            person.save()
-            return JsonResponse(status = 200)
+            person_serializer.save()
+            return JsonResponse(person_serializer.data, status = 200)
         
         else:
-            return JsonResponse(status = 404)
+            return JsonResponse(person_serializer.errors, status = 404)
