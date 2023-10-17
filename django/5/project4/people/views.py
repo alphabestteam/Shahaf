@@ -43,7 +43,7 @@ def remove_person(request, id):
     if request.method == 'DELETE':
         try:
             person = Person.objects.get(id = id)
-            person.delete
+            person.delete()
             return HttpResponse('deleted', status = 200)
             
         except:
@@ -57,11 +57,13 @@ def update_person(request):
         print(person)
         person_serializer = PersonSerializer(person, data)
         if person_serializer.is_valid():
-            person_serializer.save()
+            person_serializer.update()
             return JsonResponse(person_serializer.data, status = 200)
         
         else:
             return JsonResponse(person_serializer.errors, status = 404)
+
+#5 section
 
 @csrf_exempt
 def add_parent(request):
@@ -87,7 +89,7 @@ def remove_parent(request, id):
     if request.method == 'DELETE':
         try:
             parent = Parent.objects.get(id = id)
-            parent.delete
+            parent.delete()
             return HttpResponse('deleted', status = 200)
             
         except:
@@ -101,7 +103,7 @@ def update_parent(request):
         print(parent)
         parent_serializer = ParentSerializer(parent, data)
         if parent_serializer.is_valid():
-            parent_serializer.save()
+            parent_serializer.update()
             return JsonResponse(parent_serializer.data, status = 200)
         
         else:
@@ -121,3 +123,31 @@ def get_all_parents(request):
                 return HttpResponse(one_parent.errors, status = 404)
             
         return HttpResponse(list_of_dict, status = 200)
+    
+@csrf_exempt
+def get_information(request, id):
+    if request.method == 'GET':
+        try:
+            parent = Parent.objects.get(id = id)
+            return JsonResponse(parent.data, status = 200)
+
+        except:
+            return JsonResponse(parent.errors, status = 404)
+        
+@csrf_exempt
+def rich_children(request):
+    if request.method == 'GET':
+        all_parents = Parent.objects.all()
+        list_of_rich = []
+        for one_parent in all_parents.iterator():
+            try:
+                if one_parent.salary >= 50000.00:
+                    list_of_rich.append(one_parent.children)
+
+            except:
+                return HttpResponse(one_parent.errors, status = 404)
+            
+        return HttpResponse(list_of_rich, status = 200)
+    
+@csrf_exempt
+def find_parents(request, id):

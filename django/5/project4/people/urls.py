@@ -11,4 +11,7 @@ urlpatterns = [
     path("removeParent/<int:id>/", views.remove_parent),
     path("updateParent/", views.update_parent),
     path("getAllParents/", views.get_all_parents),
+    path("getInformation/<int:id>/", views.get_information),
+    path("richChildren/", views.rich_children),
+    path("findParents/<int:id>/", views.find_parents),
 ]
