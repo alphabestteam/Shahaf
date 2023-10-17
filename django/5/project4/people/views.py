@@ -57,7 +57,7 @@ def update_person(request):
         print(person)
         person_serializer = PersonSerializer(person, data)
         if person_serializer.is_valid():
-            person_serializer.update()
+            person_serializer.update(person, data)
             return JsonResponse(person_serializer.data, status = 200)
         
         else:
@@ -151,3 +151,62 @@ def rich_children(request):
     
 @csrf_exempt
 def find_parents(request, id):
+    if request.method == 'GET':
+        all_parents = Parent.objects.all()
+        list_of_parents = []
+        for one_parent in all_parents.iterator():
+            try:
+                if one_parent.children.id == id:
+                    list_of_parents.append(one_parent)
+
+            except:
+                return HttpResponse(one_parent.errors, status = 404)
+            
+        return HttpResponse(list_of_parents, status = 200)
+    
+@csrf_exempt
+def find_parents_serializer(request, id):  #fix
+    if request.method == 'GET':
+        all_parents = Parent.objects.all()
+        list_of_parents = []
+        for one_parent in all_parents.iterator():
+            try:
+                if ParentSerializer.parent_by_id(id, one_parent):
+                    list_of_parents.append(one_parent)
+
+            except:
+                return HttpResponse(one_parent.errors, status = 404)
+            
+        return HttpResponse(list_of_parents, status = 200)
+    
+@csrf_exempt
+def information_children(request, id):
+    if request.method == 'GET':
+        try:
+            parent = Parent.objects.get(id = id)
+            return JsonResponse(parent.children, status = 200)
+            
+        except:
+            return HttpResponse(parent.errors, status = 404)
+        
+@csrf_exempt
+def find_grandparents(request, id):
+    if request.method == 'GET':
+        try:
+            person = Person.objects.get(id = id)
+            grandparents = person.parents.parents
+            return JsonResponse(grandparents.data, status = 200)
+        
+        except:
+            return JsonResponse(grandparents.errors, status = 404)
+
+@csrf_exempt
+def find_siblings(request, id):
+    if request.method == 'GET':
+        try:
+            parent = Parent.objects.filter(parent.children.id == id).first()
+            siblings = parent.children
+            return JsonResponse(siblings.data, status = 200)
+
+        except:
+            return JsonResponse(siblings.errors, status = 404)

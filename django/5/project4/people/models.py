@@ -14,4 +14,7 @@ class Person(models.Model):
 class Parent(Person):
     place_of_work = models.CharField(max_length=50)
     salary = models.DecimalField(max_digits = 8, decimal_places = 2)
-    children = models.ManyToManyField(Person)
+    children = models.ManyToManyField(Person, related_name='parents')
+
+    def __str__(self):
+        return f'Parent: {self.name} with children: {[child.name for child in self.children.all()]}'
