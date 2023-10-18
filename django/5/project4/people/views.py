@@ -219,9 +219,10 @@ def find_grandparents(request, id):
 def find_siblings(request, id):
     if request.method == 'GET':
         try:
-            parent = Parent.objects.filter(parent.children.id == id).first()
-            siblings = parent.children
-            return JsonResponse(siblings.data, status = 200)
+            person = Person.objects.get(id = id)
+            parent = person.parents.first()
+            siblings = parent.children.all()
+            return HttpResponse(siblings, status = 200)
 
         except:
-            return JsonResponse(siblings.errors, status = 404)
+            return HttpResponse(status = 404)
