@@ -69,11 +69,14 @@ def update_person(request):
 @csrf_exempt
 def add_parent(request):
     if request.method == 'POST':
-        serializer = ParentSerializer(data = request.data)
+        data = JSONParser().parse(request)
+        serializer = ParentSerializer(data=data)
         if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status = 200, safe= False)
-        return JsonResponse(serializer.errors, status = 400)
+            parent = parent = Parent(name = data['name'], date_of_birth = data['date_of_birth'], city = data['city'], id = data['id'], place_of_work = data['place_of_work'], salary = data['salary'])
+            parent.save()
+            parent.children.set(data.get('children', []))
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def remove_parent(request, id):
