@@ -66,7 +66,7 @@ def update_person(request):
 
 #5 section
 
-@csrf_exempt
+@csrf_exempt  #checked
 def add_parent(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -124,7 +124,7 @@ def set_child(request):
             dict_id = JSONParser().parse(request)
             parent = Parent.objects.get(id = dict_id["parent_id"])
             child = Person.objects.get(id = dict_id["child_id"])
-            parent.children.set(child)
+            parent.children.set([child])
             return HttpResponse('connected child to parent', status = 200)
         
         except:
@@ -135,10 +135,10 @@ def get_information(request, id):
     if request.method == 'GET':
         try:
             parent = Parent.objects.get(id = id)
-            return JsonResponse(parent.data, status = 200)
+            return HttpResponse(parent, status = 200)
 
         except:
-            return JsonResponse(parent.errors, status = 404)
+            return HttpResponse(parent, status = 404)
         
 @csrf_exempt
 def rich_children(request):

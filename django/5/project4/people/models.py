@@ -17,4 +17,4 @@ class Parent(Person):
     children = models.ManyToManyField(Person, related_name='parents', blank = True)
 
     def __str__(self):
-        return f'Parent: {self.name} with children: {[child.name for child in self.children.all()]}'
+        return f'parent info: name: {self.name} date of birth: {self.date_of_birth} city: {self.city} id: {self.id} place of work: {self.place_of_work} salary: {self.salary} with children: {[print(child) for child in self.children.all()]}'
