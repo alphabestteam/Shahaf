@@ -96,7 +96,7 @@ def update_parent(request):
         parent = Parent.objects.get(id = data['id'])
         parent_serializer = ParentSerializer(parent, data)
         if parent_serializer.is_valid():
-            parent_serializer.update(parent, data)
+            parent_serializer.save()
             return JsonResponse(parent_serializer.data, status = 200)
         
         else:
@@ -124,8 +124,12 @@ def set_child(request):
             dict_id = JSONParser().parse(request)
             parent = Parent.objects.get(id = dict_id["parent_id"])
             child = Person.objects.get(id = dict_id["child_id"])
-            parent.children.set([child])
-            return HttpResponse('connected child to parent', status = 200)
+            if child not in parent.children.all():
+                parent.children.add(child)
+                return HttpResponse('connected child to parent', status = 200)
+            
+            else:
+                return HttpResponse('child already added', status = 404)
         
         except:
             return HttpResponse('error', status = 404)
@@ -145,10 +149,12 @@ def rich_children(request):
     if request.method == 'GET':
         all_parents = Parent.objects.all()
         list_of_rich = []
-        for one_parent in all_parents.iterator():
+        for one_parent in all_parents.all():
             try:
                 if one_parent.salary >= 50000.00:
-                    list_of_rich.append(one_parent.children)
+                    children = one_parent.children.all()
+                    if children not in list_of_rich:
+                        list_of_rich.append(children)
 
             except:
                 return HttpResponse(one_parent.errors, status = 404)
@@ -160,13 +166,14 @@ def find_parents(request, id):
     if request.method == 'GET':
         all_parents = Parent.objects.all()
         list_of_parents = []
-        for one_parent in all_parents.iterator():
+        for one_parent in all_parents.all():
             try:
-                if one_parent.children.id == id:
-                    list_of_parents.append(one_parent)
+                for child in one_parent.children.all():
+                    if int(child.id) == int(id):
+                        list_of_parents.append(one_parent)
 
             except:
-                return HttpResponse(one_parent.errors, status = 404)
+                return HttpResponse(one_parent, status = 404)
             
         return HttpResponse(list_of_parents, status = 200)
     
@@ -177,11 +184,12 @@ def find_parents_serializer(request, id):  #fix
         list_of_parents = []
         for one_parent in all_parents.iterator():
             try:
-                if ParentSerializer.parent_by_id(id, one_parent):
+                print(one_parent.parent_by_id(id, one_parent).is_valid())
+                if one_parent.parent_by_id(id, one_parent).is_valid():
                     list_of_parents.append(one_parent)
 
             except:
-                return HttpResponse(one_parent.errors, status = 404)
+                return HttpResponse(one_parent, status = 404)
             
         return HttpResponse(list_of_parents, status = 200)
     
