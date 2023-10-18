@@ -116,7 +116,20 @@ def get_all_parents(request):
                 return HttpResponse(one_parent.errors, status = 404)
             
         return HttpResponse(list_of_dict, status = 200)
-    
+
+@csrf_exempt
+def set_child(request):
+    if request.method == 'POST':
+        try:
+            dict_id = JSONParser().parse(request)
+            parent = Parent.objects.get(id = dict_id["parent_id"])
+            child = Person.objects.get(id = dict_id["child_id"])
+            parent.children.set(child)
+            return HttpResponse('connected child to parent', status = 200)
+        
+        except:
+            return HttpResponse('error', status = 404)
+
 @csrf_exempt
 def get_information(request, id):
     if request.method == 'GET':
