@@ -32,7 +32,7 @@ class ParentSerializer(serializers.ModelSerializer):
         instance.id = validated_data.get('id', instance.id)
         instance.place_of_work = validated_data.get('place_of_work', instance.place_of_work)
         instance.salary = validated_data.get('salary', instance.salary)
-        instance.children = validated_data.get('children', instance.children)
+        instance.children.set(validated_data.get('children', []))
         instance.save()
         return instance
         

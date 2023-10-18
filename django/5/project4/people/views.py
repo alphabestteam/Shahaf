@@ -94,10 +94,9 @@ def update_parent(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         parent = Parent.objects.get(id = data['id'])
-        print(parent)
         parent_serializer = ParentSerializer(parent, data)
         if parent_serializer.is_valid():
-            parent_serializer.update()
+            parent_serializer.update(parent, data)
             return JsonResponse(parent_serializer.data, status = 200)
         
         else:
