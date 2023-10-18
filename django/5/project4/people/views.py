@@ -205,11 +205,15 @@ def find_grandparents(request, id):
     if request.method == 'GET':
         try:
             person = Person.objects.get(id = id)
-            grandparents = person.parents.parents
-            return JsonResponse(grandparents.data, status = 200)
-        
+            all_parents = person.parents.all()
+            grandparents = []
+            for parent in all_parents:
+                grandparents.append(parent.parents.all())
+
+            return HttpResponse(grandparents, status = 200)
+
         except:
-            return JsonResponse(grandparents.errors, status = 404)
+            return HttpResponse(grandparents, status = 404)
 
 @csrf_exempt
 def find_siblings(request, id):
