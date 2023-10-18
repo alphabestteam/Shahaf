@@ -194,10 +194,11 @@ def information_children(request, id):
     if request.method == 'GET':
         try:
             parent = Parent.objects.get(id = id)
-            return JsonResponse(parent.children, status = 200)
+            children = parent.children.all()
+            return HttpResponse(children, status = 200)
             
         except:
-            return HttpResponse(parent.errors, status = 404)
+            return HttpResponse('cant find parent', status = 404)
         
 @csrf_exempt
 def find_grandparents(request, id):
