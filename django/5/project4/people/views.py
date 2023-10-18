@@ -180,18 +180,14 @@ def find_parents(request, id):
 @csrf_exempt
 def find_parents_serializer(request, id):  #fix
     if request.method == 'GET':
-        all_parents = Parent.objects.all()
-        list_of_parents = []
-        for one_parent in all_parents.iterator():
-            try:
-                print(one_parent.parent_by_id(id, one_parent).is_valid())
-                if one_parent.parent_by_id(id, one_parent).is_valid():
-                    list_of_parents.append(one_parent)
-
-            except:
-                return HttpResponse(one_parent, status = 404)
-            
-        return HttpResponse(list_of_parents, status = 200)
+        try:
+            person = Person.objects.get(id = id)
+            parents = person.parents.all()
+            serializer = ParentSerializer(parents)
+            return HttpResponse(parents, status = 200)
+        
+        except:
+            return HttpResponse(status = 404)
     
 @csrf_exempt
 def information_children(request, id):
