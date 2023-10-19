@@ -9,31 +9,21 @@ import json
 @csrf_exempt
 def get_all_people(request):
     if request.method == 'GET':
-        all_people = Person.objects.all()
-        list_of_dict = []
-        for one_person in all_people.iterator():
-            try:
-                one_person = one_person.__dict__
-                list_of_dict.append(one_person)
-
-            except:
-                return HttpResponse(one_person.errors, status = 404)
-            
-        return HttpResponse(list_of_dict, status = 200)
+        try:
+            all_people = Person.objects.all()
+            list_of_dict = PersonSerializer(all_people, many = True)
+            return HttpResponse(list_of_dict.data, status = 200)
+        except:
+            return HttpResponse(status = 404)
 
 
 @csrf_exempt
 def add_person(request):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        person = Person(
-            name = request_data["name"],
-            date_of_birth = request_data["date_of_birth"],
-            city = request_data["city"],
-            id = request_data["id"]
-        )
         serializer = PersonSerializer(data = request_data)
         if serializer.is_valid():
+            person = PersonSerializer(request_data)
             person.save()
             return JsonResponse(serializer.data, status = 200, safe= False)
         return JsonResponse(serializer.errors, status = 400)
@@ -43,7 +33,12 @@ def remove_person(request, id):
     if request.method == 'DELETE':
         try:
             person = Person.objects.get(id = id)
-            person.delete
+
+        except:
+            return HttpResponse('no such person', status = 404)
+        
+        try:
+            person.delete()
             return HttpResponse('deleted', status = 200)
             
         except:
@@ -53,12 +48,14 @@ def remove_person(request, id):
 def update_person(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        person = Person.objects.get(id = data['id'])
-        print(person)
-        person_serializer = PersonSerializer(person, data)
+        try:
+            person = Person.objects.get(id = data['id'])
+        except:
+            return HttpResponse('no such person', status = 404)
+        person_serializer = PersonSerializer(data = data)
         if person_serializer.is_valid():
-            person_serializer.save()
-            return JsonResponse(person_serializer.data, status = 200)
+            person.update(person, data)
+            return HttpResponse(person, status = 200)
         
         else:
-            return JsonResponse(person_serializer.errors, status = 404)
+            return HttpResponse(person, status = 404)
