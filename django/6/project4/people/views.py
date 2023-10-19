@@ -303,7 +303,7 @@ def parent_name_children_number(request):
 def sum_all_children(request):
     if request.method == 'GET':
         try:
-            all_children = Parent.objects.annotate(sum_children = Sum('children__count'))
+            all_children = Parent.objects.annotate(sum_children = Sum('children')).count()
             return HttpResponse(all_children, status = 200)
 
         except:

@@ -31,3 +31,4 @@ urlpatterns = [
     path("sumAllChildren", views.sum_all_children),
     path("highestSalary", views.highest_salary),
     path("parentsAvgSalary", views.parents_avg_salary),
+]
