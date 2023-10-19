@@ -66,7 +66,7 @@ def update_person(request):
 
 #5 section
 
-@csrf_exempt  #checked
+@csrf_exempt  
 def add_parent(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -226,3 +226,33 @@ def find_siblings(request, id):
 
         except:
             return HttpResponse(status = 404)
+        
+@csrf_exempt
+def query1(request):
+
+@csrf_exempt
+def query2(request):
+
+@csrf_exempt
+def query3(request):
+
+@csrf_exempt
+def query4(request):
+
+@csrf_exempt
+def query5(request):
+
+@csrf_exempt
+def query6(request):
+
+@csrf_exempt
+def query7(request):
+
+@csrf_exempt
+def query8(request):
+
+@csrf_exempt
+def query9(request):
+
+@csrf_exempt
+def query10(request):
