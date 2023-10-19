@@ -6,6 +6,7 @@ from people.models import Person, Parent
 from people.serializers import PersonSerializer, ParentSerializer
 import json
 from rest_framework import status
+from django.db.models import Q, Avg, Count, Sum
 
 @csrf_exempt
 def get_all_people(request):
@@ -178,7 +179,7 @@ def find_parents(request, id):
         return HttpResponse(list_of_parents, status = 200)
     
 @csrf_exempt
-def find_parents_serializer(request, id):  #fix
+def find_parents_serializer(request, id): 
     if request.method == 'GET':
         try:
             person = Person.objects.get(id = id)
@@ -226,33 +227,104 @@ def find_siblings(request, id):
 
         except:
             return HttpResponse(status = 404)
+
+#6 section
         
 @csrf_exempt
-def query1(request):
+def info_on_parent(request):
+    if request.method == 'GET':
+        try:
+            parents_info = Parent.objects.all().values()
+            return HttpResponse(parents_info, status = 200)
+        
+        except:
+            return HttpResponse(status = 400)
 
 @csrf_exempt
-def query2(request):
+def number_google_parents(request):
+    if request.method == 'GET':
+        try:
+            google_parents = Parent.objects.filter(Q(place_of_work = 'Google')| Q(place_of_work = 'google')).count()
+            return HttpResponse(f'The number of parents working in google is: {google_parents}', status = 200)
+        except:
+            return HttpResponse('query failed', status = 404)
 
 @csrf_exempt
-def query3(request):
+def ordered_parents_by_child_birth(request):  #fix
+    if request.method == 'GET':
+        try:
+            parents = Parent.objects.filter(children__isnull = False).order_by('children__date_of_birth')
+            return HttpResponse(parents, status = 200)
+
+        except:
+            return HttpResponse(status = 404)
 
 @csrf_exempt
-def query4(request):
+def name_start_i(request):
+    if request.method == 'GET':
+        try:
+            people_with_i_names = Person.objects.filter(Q(name__startswith='I')| Q(name__startswith='i'))
+            return HttpResponse(people_with_i_names, status = 200)
+
+        except:
+            return HttpResponse('cant find people', status = 404)
 
 @csrf_exempt
-def query5(request):
+def tlv_or_raanana(request):
+    if request.method == 'GET':
+        try:
+            tlv_or_raanana = Person.objects.filter(Q(city='Tel Aviv')| Q(name__startswith='Raanana')| Q(city='tel aviv')| Q(name__startswith='raanana'))
+            return HttpResponse(tlv_or_raanana, status = 200)
+
+        except:
+            return HttpResponse('cant find people', status = 404)
 
 @csrf_exempt
-def query6(request):
+def avg_salary(request):
+    if request.method == 'GET':
+        try:
+            avg = Parent.objects.aggregate(avg_salary_parent = Avg('salary'))
+            return HttpResponse(avg, status = 200)
+
+        except:
+            return HttpResponse('cant find avg', status = 404)
 
 @csrf_exempt
-def query7(request):
+def parent_name_children_number(request):
+    if request.method == 'GET':
+        try:
+            parents_with_children_count = Parent.objects.annotate(num_children = Count('children'))
+            return HttpResponse([{'name': parent.name, 'num_children': parent.num_children} for parent in parents_with_children_count], status = 200)
+
+        except:
+            return HttpResponse('error', status = 404)
 
 @csrf_exempt
-def query8(request):
+def sum_all_children(request):
+    if request.method == 'GET':
+        try:
+            all_children = Parent.objects.annotate(sum_children = Sum('children__count'))
+            return HttpResponse(all_children, status = 200)
+
+        except:
+            return HttpResponse('error', status = 404)
 
 @csrf_exempt
-def query9(request):
+def highest_salary(request):
+    if request.method == 'GET':
+        try:
+            highest_salary_parent = Parent.objects.all().order_by('salary').first()
+            return HttpResponse(highest_salary_parent, status = 200)
+        
+        except:
+            return HttpResponse('error', status = 200)
 
 @csrf_exempt
-def query10(request):
+def parents_avg_salary(request):
+    if request.method == 'GET':
+        try:
+            parents_avg = Person.objects.annotate(avg_parent_salary = Avg('parents__salary')).filter(avg_parent_salary__gte=50000)
+            return HttpResponse(parents_avg, status = 200)
+        
+        except:
+            return HttpResponse('error', status = 200)
