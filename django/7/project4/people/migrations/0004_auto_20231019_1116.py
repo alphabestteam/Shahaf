@@ -23,3 +23,7 @@ class Migration(migrations.Migration):
             field = models.IntegerField(MaxValueValidator(999999)),
         ),
     ]
+
+#IntegerField
+
+#we need to run python3 manage.py migrate people 0004_auto_20231019_1116
