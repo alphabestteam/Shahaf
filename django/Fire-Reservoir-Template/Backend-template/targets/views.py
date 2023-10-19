@@ -9,18 +9,9 @@ from targets.serializers import TargetSerializer
 def add_target(request):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        target = Target(
-            name = request_data["name"],
-            attack_priority=request_data["attack_priority"],
-            longitude = request_data["latitude"],
-            latitude = request_data["longitude"],
-            enemy_organization=request_data["enemy_organization"],
-            target_goal = request_data["target_goal"],
-            was_target_destroyed = request_data["was_target_destroyed"],
-            target_id = request_data["target_id"]
-        )
-        serializer = TargetSerializer(data = request_data)
+        serializer = TargetSerializer(data =request_data)
         if serializer.is_valid():
+            target = TargetSerializer(request_data)
             target.save()
             return JsonResponse(serializer.data, status = 200, safe= False)
         return JsonResponse(serializer.errors, status = 400)
