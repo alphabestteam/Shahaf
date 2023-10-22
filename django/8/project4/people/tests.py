@@ -69,7 +69,14 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    # def test_get_all_parents(self):
+    def test_get_all_parents(self):
+        factory = APIRequestFactory()
+        url = reverse("get_all_parents") 
+        request = factory.get(url, content_type='application/json')
+        response = get_all_parents(request)
+
+        self.assertEqual(response.status_code, 200)
+
 
     # def test_set_child(self):
 
