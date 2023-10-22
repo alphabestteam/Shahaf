@@ -37,7 +37,11 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    # def test_remove_parent(self):
+    def test_remove_parent(self):  #return error
+        parent_id = '214653602'  
+        url = reverse('remove_parent', args=[parent_id])
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     # def test_update_parent(self):
 
