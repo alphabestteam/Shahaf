@@ -10,7 +10,7 @@ urlpatterns = [
     # section 5
     path("addParent/", views.add_parent, name='add_parent'),
     path("removeParent/<int:id>/", views.remove_parent, name='remove_parent'),
-    path("updateParent/", views.update_parent),
+    path("updateParent/", views.update_parent, name='update_parent'),
     path("getAllParents/", views.get_all_parents),
     path("setChildToParent/", views.set_child),
     path("getInformation/<int:id>/", views.get_information),

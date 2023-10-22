@@ -43,7 +43,31 @@ class PersonTestCase(TestCase):
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    # def test_update_parent(self):
+    def test_update_parent(self):  #return error (person not found)
+        factory = APIRequestFactory()
+        url = reverse("update_parent") 
+        parent = Parent.objects.create(
+            name= 'John',
+            date_of_birth= '1990-01-15',
+            city= 'New York',
+            id= '123456789',
+            place_of_work= 'Company X',
+            salary= 75000.0,
+            )
+        data = {
+            'name': 'Matan',
+            'date_of_birth': '1990-01-15',
+            'city': 'New York',
+            'id': '123456789',
+            'place_of_work': 'Company X',
+            'salary': 95000.0,
+            'children': []  
+        }
+        data_json = json.dumps(data)
+        request = factory.post(url, data_json, content_type='application/json')
+        response = update_parent(request)
+
+        self.assertEqual(response.status_code, 200)
 
     # def test_get_all_parents(self):
 
