@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('get_all_books/', views.get_all_books, name='get_all_books'),
     path('get_jk_rowling/', views.get_jk_rowling, name='get_jk_rowling'),
+    path('create_book/', views.create_book, name='create_book'),
+    path('retrieve_book/', views.retrieve_book, name='retrieve_book'),
+    path('update_book/', views.update_book, name='update_book'),
+    path('delete_book/', views.delete_book, name='delete_book'),
 ]
