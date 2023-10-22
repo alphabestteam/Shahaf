@@ -14,7 +14,7 @@ urlpatterns = [
     path("getAllParents/", views.get_all_parents, name = 'get_all_parents'),
     path("setChildToParent/", views.set_child, name = 'set_child'),
     path("getInformation/<int:id>/", views.get_information, name = 'get_info'),
-    path("richChildren/", views.rich_children),
+    path("richChildren/", views.rich_children, name = 'rich_children'),
     path("findParents/<int:id>/", views.find_parents),
     path("findParentsSerializer/<int:id>/", views.find_parents_serializer),
     path("informationChildren/<int:id>/", views.information_children),

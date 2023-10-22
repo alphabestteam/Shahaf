@@ -111,13 +111,18 @@ class PersonTestCase(TestCase):
             place_of_work= 'Company X',
             salary= 75000.0,
             )
-        url = reverse('remove_parent', args=['123456789'])
         request = factory.get(url)
         response = get_information(request, id = parent.id)
 
         self.assertEqual(response.status_code, 200)
 
-    # def test_rich_children(self):
+    def test_rich_children(self):
+        factory = APIRequestFactory()
+        url = reverse('rich_children')
+        request = factory.get(url)
+        response = rich_children(request)
+
+        self.assertEqual(response.status_code, 200)
 
     # def test_find_parents(self):
 
