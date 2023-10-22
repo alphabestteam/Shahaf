@@ -138,6 +138,21 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    # def test_information_children(self):
+    def test_information_children(self):
+        factory = APIRequestFactory()
+        url = reverse('info_children', args=['123456789'])
+        parent = Parent.objects.create(
+            name= 'John',
+            date_of_birth= '1990-01-15',
+            city= 'New York',
+            id= '123456789',
+            place_of_work= 'Company X',
+            salary= 75000.0,
+            )
+        request = factory.get(url)
+        response = find_parents(request, id = parent.id)
+
+        self.assertEqual(response.status_code, 200)
+
 
     # def test_find_siblings(self):
