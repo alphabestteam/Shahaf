@@ -77,8 +77,28 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
+    def test_set_child(self):
+        factory = APIRequestFactory()
+        url = reverse("set_child")
+        child = Person.objects.create(
+            name = 'Agam',
+            date_of_birth = '2004-01-15',
+            city = 'New York',
+            id = '1111'
+        )
+        parent = Parent.objects.create(
+            name= 'John',
+            date_of_birth= '1990-01-15',
+            city= 'New York',
+            id= '123456789',
+            place_of_work= 'Company X',
+            salary= 75000.0,
+            )
+        data_json = json.dumps({'parent_id': '123456789', 'child_id': '1111'})
+        request = factory.post(url, data_json, content_type='application/json')
+        response = set_child(request)
 
-    # def test_set_child(self):
+        self.assertEqual(response.status_code, 200)
 
     # def test_get_information(self):
 
