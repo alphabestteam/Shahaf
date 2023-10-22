@@ -1,0 +1,5 @@
+.DS_Store
+
+books/__pycache__/
+
+myProject/__pycache__/
