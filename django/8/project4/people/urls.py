@@ -8,7 +8,7 @@ urlpatterns = [
     path("removePerson/<int:id>/", views.remove_person),
     path("updatePerson/", views.update_person),
     # section 5
-    path("addParent/", views.add_parent),
+    path("addParent/", views.add_parent, name='add_parent'),
     path("removeParent/<int:id>/", views.remove_parent),
     path("updateParent/", views.update_parent),
     path("getAllParents/", views.get_all_parents),
