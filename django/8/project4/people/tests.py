@@ -37,13 +37,24 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+        data = json.loads(response.content.decode('utf-8'))
+
+        self.assertEqual(data['name'], 'John')
+        self.assertEqual(data['date_of_birth'], '1990-01-15')
+        self.assertEqual(data['city'], 'New York')
+        self.assertEqual(data['id'], '123456789')
+        self.assertEqual(data['place_of_work'], 'Company X')
+        self.assertEqual(data['salary'], 75000.0)
+
     def test_remove_parent(self):  #return error
         parent_id = '214653602'  
         url = reverse('remove_parent', args=[parent_id])
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_update_parent(self):  #return error (person not found)
+        self.assertEqual(response.content, b'error')
+
+    def test_update_parent(self):  
         factory = APIRequestFactory()
         url = reverse("update_parent") 
         parent = Parent.objects.create(
@@ -69,6 +80,15 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
+        data = json.loads(response.content.decode('utf-8'))
+
+        self.assertEqual(data['name'], 'Matan')
+        self.assertEqual(data['date_of_birth'], '1990-01-15')
+        self.assertEqual(data['city'], 'New York')
+        self.assertEqual(data['id'], '123456789')
+        self.assertEqual(data['place_of_work'], 'Company X')
+        self.assertEqual(data['salary'], 95000.0)
+
     def test_get_all_parents(self):
         factory = APIRequestFactory()
         url = reverse("get_all_parents") 
@@ -77,7 +97,7 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_set_child(self):
+    def test_set_child(self):  #sets child to parent
         factory = APIRequestFactory()
         url = reverse("set_child")
         child = Person.objects.create(
@@ -99,8 +119,9 @@ class PersonTestCase(TestCase):
         response = set_child(request)
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b'connected child to parent')
 
-    def test_get_information(self):
+    def test_get_information(self):  #gets info on parent
         factory = APIRequestFactory()
         url = reverse("get_info", args=['123456789'])
         parent = Parent.objects.create(
@@ -115,16 +136,21 @@ class PersonTestCase(TestCase):
         response = get_information(request, id = parent.id)
 
         self.assertEqual(response.status_code, 200)
+        data = response.content.decode('utf-8')
 
-    def test_rich_children(self):
+        self.assertEqual(data, 'parent info: name: John date of birth: 1990-01-15 city: New York id: 123456789 place of work: Company X salary: 75000 with children: <QuerySet []>')
+
+    def test_rich_children(self): #finds rich children ( no rich children )
         factory = APIRequestFactory()
         url = reverse('rich_children')
         request = factory.get(url)
         response = rich_children(request)
+        data = response.content.decode('utf-8')
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(data, '')
 
-    def test_find_parents(self):
+    def test_find_parents(self): #finds parents (has no parents)
         factory = APIRequestFactory()
         url = reverse('find_parents', args=['1111'])
         child = Person.objects.create(
@@ -135,10 +161,12 @@ class PersonTestCase(TestCase):
         )
         request = factory.get(url)
         response = find_parents(request, id = child.id)
+        data = response.content.decode('utf-8')
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(data, '')
 
-    def test_information_children(self):
+    def test_information_children(self): #gets info on children (has no children)
         factory = APIRequestFactory()
         url = reverse('info_children', args=['123456789'])
         parent = Parent.objects.create(
@@ -151,8 +179,10 @@ class PersonTestCase(TestCase):
             )
         request = factory.get(url)
         response = find_parents(request, id = parent.id)
+        data = response.content.decode('utf-8')
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(data, '')
 
 
     def test_find_siblings(self):  #return error (no siblings found)
