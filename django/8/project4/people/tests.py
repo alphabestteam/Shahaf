@@ -100,7 +100,22 @@ class PersonTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    # def test_get_information(self):
+    def test_get_information(self):
+        factory = APIRequestFactory()
+        url = reverse("get_info", args=['123456789'])
+        parent = Parent.objects.create(
+            name= 'John',
+            date_of_birth= '1990-01-15',
+            city= 'New York',
+            id= '123456789',
+            place_of_work= 'Company X',
+            salary= 75000.0,
+            )
+        url = reverse('remove_parent', args=['123456789'])
+        request = factory.get(url)
+        response = get_information(request, id = parent.id)
+
+        self.assertEqual(response.status_code, 200)
 
     # def test_rich_children(self):
 
