@@ -26,4 +26,8 @@ urlpatterns = [
     path('retrieve_book/', views.retrieve_book, name='retrieve_book'),
     path('update_book/', views.update_book, name='update_book'),
     path('delete_book/', views.delete_book, name='delete_book'),
+    path('create_book_cbv/', views.BookCRUD.create_book_cbv, name='create_book_cbv'),
+    path('retrieve_books_cbv/', views.BookCRUD.retrieve_books_cbv, name='retrieve_bookS_cbv'),
+    path('update_book_cbv/<str:title>/', views.BookCRUD.update_book_cbv, name='update_book_cbv'),
+    path('delete_book_cbv/<str:title>/', views.BookCRUD.delete_book_cbv, name='delete_book_cbv'),
 ]

@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
+#Q1:
 def get_all_books(request):
     if request.method == 'GET':
         try:
@@ -29,6 +30,7 @@ def get_jk_rowling(request):
         except:
             return HttpResponse('cant get books', status = 404)
 
+#Q2:
 # .data returns the parsed content of the request.
 
 @api_view(['POST'])
@@ -76,11 +78,14 @@ def delete_book(request, name):
             
         except:
             return HttpResponse('error', status = 404)
-        
+
+#Q3:        
 #query params is a more correct name for request.GET. IT is a dictionary-like object that allows you to access the query parameters sent with a URL as part of an HTTP request.
 
+#Q4:
 #the difference between Response() and HttpResponse() is that unlike HttpResponse  objects, you dont instantiate Response objects with rendered content.
 
+#Q5:
 #class-based-views : drf provides an APIView class which subclasses Django view class.
 #Requests passed to the handler methods will be Request instances and not HttpRequest instances.
 #Handler methods may return Response and not HttpResponse. The view will manage content negotiation and setting the correct renderer on the response.
@@ -88,7 +93,7 @@ def delete_book(request, name):
 #function-based-views : provides a set of simple decorators that wrap your function based views to ensure they receive an instance of Request. 
 #and allows them to return a Response.
 
-class ListUsers(APIView):
+class BookCRUD(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAdminUser]
 
@@ -116,3 +121,16 @@ class ListUsers(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#Q6:
+#to make a function based view include a couple of http methods we can put in the decorator all the http methods we want to use for example @api_view(['GET', 'POST']).
+
+#Q7:
+#When you call the save() method on a new instance, Django generates a new primary key value for it and inserts a new record into the database. It effectively creates a new object.
+#If you modify any fields of the retrieved object and then call the save() method, Django knows to update the existing record in the database rather than creating a new one.
+
+#Q8:
+#we can print the validation error by returning the serializer_data.error
+
+#Q9:
+#this line checks if the serializer data is valid and if it is it continues and if not it raises an exception.
