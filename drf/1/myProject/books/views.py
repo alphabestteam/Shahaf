@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .serializers import BookSerializer
 from django.http import HttpResponse, JsonResponse
+from rest_framework.request import Request
 
 def get_all_books(request):
     if request.method == 'GET':
@@ -30,32 +31,38 @@ def get_jk_rowling(request):
 def create_book(request):
     if request.method == 'POST':
         request_data = request.data
-        serializer = BookSerializer(data = request_data)
+        serializer = BookSerializer(data =request_data)
         if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status = status.status.HTTP_201_CREATED, safe= False)
-        return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+            target = BookSerializer(request_data)
+            target.save()
+            return JsonResponse(serializer.data, status = 200, safe= False)
+        return JsonResponse(serializer.errors, status = 400)
 
-def retrieve_book(request, name):
+@api_view(['GET'])
+def retrieve_book(request):
     if request.method == 'GET':
         try:
+            drf_request = Request(request)
+            name = drf_request.query_params.get('title')
             book = Book.objects.get(title = name)
             return JsonResponse(book.data, status = 200, safe= False)
         except:
             return JsonResponse(book.errors, status = 400)
 
+@api_view(['POST'])
 def update_book(request):
     if request.method == 'POST':
         data = request.data
-        book = Book.objects.get(id = data['id'])
-        book_serializer = BookSerializer(book, data)
+        book = Book.objects.get(name = data['title'])
+        book_serializer = BookSerializer(data, book)
         if book_serializer.is_valid():
-            data.save()
-            return JsonResponse(book_serializer.data, status = 200)
+            book.save()
+            return JsonResponse('Book was updated!', status = 200)
         
         else:
-            return JsonResponse(book_serializer.errors, status = 404)
+            return JsonResponse('cant update book, try again!', status = 404)
 
+@api_view(['DELETE'])
 def delete_book(request, name):
     if request.method == 'DELETE':
         try:
@@ -65,3 +72,5 @@ def delete_book(request, name):
             
         except:
             return HttpResponse('error', status = 404)
+        
+#query params is a more correct name for request.GET. IT is a dictionary-like object that allows you to access the query parameters sent with a URL as part of an HTTP request.
