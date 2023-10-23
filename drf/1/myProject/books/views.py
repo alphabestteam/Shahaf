@@ -7,6 +7,9 @@ from rest_framework.decorators import api_view
 from .serializers import BookSerializer
 from django.http import HttpResponse, JsonResponse
 from rest_framework.request import Request
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
 
 def get_all_books(request):
     if request.method == 'GET':
@@ -27,6 +30,7 @@ def get_jk_rowling(request):
             return HttpResponse('cant get books', status = 404)
 
 # .data returns the parsed content of the request.
+
 @api_view(['POST'])
 def create_book(request):
     if request.method == 'POST':
@@ -74,3 +78,41 @@ def delete_book(request, name):
             return HttpResponse('error', status = 404)
         
 #query params is a more correct name for request.GET. IT is a dictionary-like object that allows you to access the query parameters sent with a URL as part of an HTTP request.
+
+#the difference between Response() and HttpResponse() is that unlike HttpResponse  objects, you dont instantiate Response objects with rendered content.
+
+#class-based-views : drf provides an APIView class which subclasses Django view class.
+#Requests passed to the handler methods will be Request instances and not HttpRequest instances.
+#Handler methods may return Response and not HttpResponse. The view will manage content negotiation and setting the correct renderer on the response.
+
+#function-based-views : provides a set of simple decorators that wrap your function based views to ensure they receive an instance of Request. 
+#and allows them to return a Response.
+
+class ListUsers(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+
+    def retrieve_books_cbv(self, request, format=None):
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
+
+    def create_book_cbv(self, request, format=None):
+        serializer = BookSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete_book_cbv(self, request, title):
+        book = self.get_object(title = title)
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def update_book_cbv(self, request, title):
+        book = self.get_object(title = title)
+        serializer = BookSerializer(book, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
