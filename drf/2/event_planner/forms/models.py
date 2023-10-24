@@ -15,6 +15,7 @@ class Form(models.Model):
     can_open_event = models.BooleanField(default= False)
     can_download_event = models.BooleanField(default= False)
     users = models.ManyToManyField('users.User', related_name= 'form_users')
+    id = models.CharField(primary_key= True, max_length= 255)
 
 class ChatForm(Form):
     messages = models.ManyToManyField('message.Message', related_name= 'form_messages')
