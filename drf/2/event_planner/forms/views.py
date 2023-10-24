@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
+from users.models import User
 
 class FormViewSet(viewsets.ModelViewSet):
     queryset = Form.objects.all()
@@ -28,10 +29,11 @@ def get_status(request, form_id):
     return Response(status, status= 200)
 
 @api_view(['POST'])
-def set_user_to_file(request): #gets query params: id_form, username
+def set_user_to_file(request): #gets id_form, username
     try:
-        id_form = request.query_params.get('id_form')
-        username = request.query_params.get('username')
+        data = request.data
+        id_form = data['id_form']
+        username = data['username']
         form = get_object_or_404(Form, id = id_form)
         user = get_object_or_404(User, username = username)
         if user not in form.users:

@@ -6,4 +6,4 @@ class User(models.Model):
     username = models.CharField(max_length=50)
     id = models.CharField(max_length = 9, primary_key = True)
     email = models.EmailField(max_length=254)
-    unread_messages = models.ManyToManyField('message.Message', related_name= 'unread_messages')
+    unread_messages = models.ManyToManyField('message.Message', related_name= 'unread_messages', blank= True)
