@@ -1,6 +1,6 @@
 from django.db import models
 from users import User
-from my_messages import Message, File
+from message import Message, File
 
 status_options = {
     'closed': 'Closed',
