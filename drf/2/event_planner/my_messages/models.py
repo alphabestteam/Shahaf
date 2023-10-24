@@ -6,4 +6,4 @@ class Message(models.Model):
     text = models.TextField()
     sending_date = models.DateField()
     chat_pointer = models.ForeignKey(Chat)
-    sender = models.OneToOneField(User)
+    sender = models.ForeignKey(User)

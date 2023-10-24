@@ -1,5 +1,5 @@
 from django.db import models
-from messages import Message
+from my_messages import Message
 
 class User(models.Model):
     first_name = models.CharField(max_length=50)
