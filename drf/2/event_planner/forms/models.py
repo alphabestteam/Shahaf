@@ -1,25 +1,23 @@
 from django.db import models
-from users import User
-from message import Message, File
 
-status_options = {
-    'closed': 'Closed',
-    'open': 'Open',
-    'waiting for response': 'Waiting for response',
-    'waiting for treatment': 'Waiting for treatment'
-}
+status_options = [
+    ('closed', 'Closed'),
+    ('open', 'Open'),
+    ('waiting for response', 'Waiting for response'),
+    ('waiting for treatment', 'Waiting for treatment')
+]
 
 class Form(models.Model):
     open_date = models.DateField()
     close_date = models.DateField()
     report_username = models.CharField(max_length=50)
-    status = models.CharField(choices= status_options)
+    status = models.CharField(choices= status_options, max_length= 255)
     can_open_event = models.BooleanField(default= False)
     can_download_event = models.BooleanField(default= False)
-    users = models.ManyToManyField(User, related_name= 'users')
+    users = models.ManyToManyField('users.User', related_name= 'form_users')
 
 class ChatForm(Form):
-    messages = models.ManyToManyField(Message, related_name= 'messages')
+    messages = models.ManyToManyField('message.Message', related_name= 'form_messages')
 
 class FileForm(Form):
-    files = models.ManyToManyField(File, related_name= 'files')
+    files = models.ManyToManyField('message.File', related_name= 'form_files')

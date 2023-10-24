@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chats',
     'forms',
-    'my_messages',
+    'message',
     'users',
 ]
 
