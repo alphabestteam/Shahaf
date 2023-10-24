@@ -7,3 +7,8 @@ class Message(models.Model):
     sending_date = models.DateField()
     chat_pointer = models.ForeignKey(Chat)
     sender = models.ForeignKey(User)
+
+class File(models.Model):
+    upload_date = models.DateField()
+    sender = models.ForeignKey(User)
+    file = models.FileField()
