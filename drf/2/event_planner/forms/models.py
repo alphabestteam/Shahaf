@@ -18,7 +18,7 @@ class Form(models.Model):
     id = models.CharField(primary_key= True, max_length= 255)
 
 class ChatForm(Form):
-    messages = models.ManyToManyField('message.Message', related_name= 'form_messages')
+    chats = models.ManyToManyField('chats.Chat', related_name= 'form_chats')
 
 class FileForm(Form):
     files = models.ManyToManyField('message.File', related_name= 'form_files')

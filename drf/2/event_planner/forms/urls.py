@@ -7,10 +7,10 @@ form_router = DefaultRouter()
 form_router.register(r'forms', FormViewSet)
 
 form_chat_router = DefaultRouter()
-form_chat_router.register(r'forms', ChatFormViewSet)
+form_chat_router.register(r'chat_forms', ChatFormViewSet)
 
 form_file_router = DefaultRouter()
-form_file_router.register(r'forms', FileFormViewSet)
+form_file_router.register(r'file_forms', FileFormViewSet)
 
 urlpatterns = [
     path('', include(form_router.urls)),

@@ -16,7 +16,5 @@ class ChatViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 def get_all_messages(request, id):
     chat = get_object_or_404(Chat, id = id)
-    print(chat)
-    chat_data = ChatSerializer(chat).data
-    messages = chat.messages
+    messages = chat.messages.all()
     return Response(messages, status= 200)

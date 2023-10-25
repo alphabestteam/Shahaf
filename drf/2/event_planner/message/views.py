@@ -43,3 +43,12 @@ def set_message_to_user(request): #gets id_message, username
             return Response('message was already read or is already in unread messages', status= 404)
     except:
         return Response(status= 404)
+    
+@api_view(['POST'])
+def set_read(request, id):
+    try:
+        message = get_object_or_404(Message, id = id)
+        message.is_read = True
+        return Response('message was read!', status= 200)
+    except:
+        return Response('cant set message as read!', status= 404)

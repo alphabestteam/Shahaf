@@ -32,11 +32,16 @@ def get_status(request, form_id):
 def set_user_to_file(request): #gets id_form, username
     try:
         data = request.data
+        print(data)
         id_form = data['id_form']
+        print(id_form)
         username = data['username']
+        print(username)
         form = get_object_or_404(Form, id = id_form)
+        print(form)
         user = get_object_or_404(User, username = username)
-        if user not in form.users:
+        print(user)
+        if user not in form.users.all():
             form.users.add(user)
             return Response('user was added to form!', status= 200)
         else:

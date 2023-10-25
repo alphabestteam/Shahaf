@@ -9,4 +9,5 @@ message_router.register(r'messages', MessageViewSet)
 urlpatterns = [
     path('', include(message_router.urls)),
     path('set_message_to_user/', views.set_message_to_user),
+    path('set_read/<str:id>/', views.set_read),
 ]
