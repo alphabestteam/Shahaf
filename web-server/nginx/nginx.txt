@@ -1,0 +1,9 @@
+1. nginx is an open source software for web server. started for maximum performance and stability.
+it has HTTP server capabilities, proxy server for email and reverse proxy and load balancer for HTTP, TCP and UDP server capabilities.
+
+advantages:
+1. memory ans resources - it is more memory and resources efficient than other server software options.
+
+2. serving static and non application content - nginx acts like a router that inspect requests and decide how each one should be satisfied.
+
+3. scalability and fault tolerance - on nginx we can add and remove microservices and the end user will not experience failure.
