@@ -1,0 +1,6 @@
+users/__pycache__/
+event_planner/__pycache__/
+forms/__pycache__/
+messages/__pycache__/
+chats/__pycache__/
+.DS_Store
