@@ -1,1 +1,27 @@
-1.
+1. a web application is a computer program that can be accessed using a web browser to preform tasks over the internet. 
+
+2. a web server is software and hardware that uses HTTP to respond to client requests made in the web.
+the main purpose of the web server is to display the content through storing, processing and delivering webpages to the client.
+
+3. the main use is to store, process and deliver webpages to clients. they also support email and file transfer and storage.
+the advantages of uploading a web application on a web server are:
+- improve performance - it helps manage the download speed for any web application.
+- it provides permission for fixing broken links. 
+- ensures transparency between the website and server.
+
+4. java servlet is a java software that extends the capabilities of a server. the usually host web applications on web servers.
+
+5. apache tomcat is an open source implantation of java servlet, JEL and websocket tech. provides a java HTTP web server environment.
+tomcat is developed and maintained by an open community of developers.
+tomcat was released with 3 different components:
+catalina - is tomcat servlet container. Many implementations of Realm (database of usernames, passwords, and roles) allow Catalina to be integrated into environments where these authentication information is already being maintained.
+coyote - is a Connector component for Tomcat. it supports HTTP as a web server. allows Catalina to act as a web server that serves local files. 
+it listens on a specific TCP port for incoming connections and forward them to the tomcat engin.
+jasper - is Tomcat's JSP Engine. it parses JSP files to java code as servlets. it detects changes to JSP files and recompiles them at runtime.
+
+6. advantages: 
+- open source - has large community of developers that maintain it and it is free.
+- scalability - it is capable of supporting large applications.
+disadvantages:
+- slow - under heavy load the server can be slow.
+- not user friendly - the interface is not very user friendly.
