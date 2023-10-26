@@ -1,0 +1,3 @@
+1. i put the sample.war in the weapps folder and then restarted the tomcat and run http://localhost:9000/sample/.
+
+2. i went into the manager app in http://localhost:9000 and then deployed the sample.war (choose file and deploy) than clicked on /sample.
