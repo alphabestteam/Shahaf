@@ -1,5 +1,5 @@
 let para = document.createElement(`p`);
-document.getElementById("parent").appendChild(para);
+
 
 function verbalDescription(){
     const grade = parseInt(document.getElementById("grade").value);
@@ -36,40 +36,41 @@ function verbalDescription(){
     }
 
     else{
-        para.innerHTML = "Invalid value";
+        para.innerText = "Invalid value";
+        return;
 
     }
 
-    let para = document.createElement(`p`);
     switch(letter_grade){
         case "A+":
-            para.innerHTML = "Perfect!";
+            para.innerText = "Perfect!";
             break;
 
         case "A":
-            para.innerHTML = "Amazing!";
+            para.innerText = "Amazing!";
             break;
 
         case "B":
-            para.innerHTML = "Nicely done!";
+            para.innerText = "Nicely done!";
             break;
 
         case "C":
-            para.innerHTML = "This is fine!";
+            para.innerText = "This is fine!";
             break;
 
         case "D":
-            para.innerHTML = "You can do better!";
+            para.innerText = "You can do better!";
             break;
 
         case "E":
-            para.innerHTML = "Moed B is an option!";
+            para.innerText = "Moed B is an option!";
             break;
 
         case "F":
-            para.innerHTML = "Moed B is a must!";
+            para.innerText = "Moed B is a must!";
             break;
     }
+    document.getElementById("parent").appendChild(para);
 }
 
 let button = document.getElementById("button");
