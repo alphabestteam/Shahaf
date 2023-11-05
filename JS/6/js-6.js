@@ -2,7 +2,7 @@ function evalNumbers(number_one, number_two, operator){
     if (operator == 'add'){
         console.log(`Sum of ${number_one} and ${number_two} is ${number_one + number_two}`)
     }
-    else if (operator == 'Subtract'){
+    else if (operator == 'subtract'){
         console.log(`Difference of ${number_one} and ${number_two} is ${number_one - number_two}`)
     }
     else if (operator == 'multiply'){
@@ -19,10 +19,10 @@ function evalNumbers(number_one, number_two, operator){
     }
 }
 
-let number_one = 8;
+let number_one = 1;
 
 let number_two = 2;
 
-let operator = 'add'
+let operator = 'subtract'
 
 console.log(evalNumbers(number_one, number_two, operator))
