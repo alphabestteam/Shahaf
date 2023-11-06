@@ -80,7 +80,7 @@ const arrWords = document.getElementsByClassName("random-word")
 
 function changeColor(){
     for (let i = 0; i < arrWords.length; i++){
-        const style = "background-color: " + randomColor();
+        const style = "background-color: " + `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         arrWords[i].setAttribute("style", style);
     }
 }
