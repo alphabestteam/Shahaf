@@ -1,4 +1,12 @@
-function addEvent() {
-
+function eventLoop() {
+    let count = 0;
+    function updateCount (){
+        count += 1;
+        const countElement = document.getElementById("counter-display");
+        countElement.innerText = count;
+    }
+    return updateCount
 }
-addEvent();
+
+const button = document.getElementById("my-button");
+button.addEventListener("click", updateCount)
