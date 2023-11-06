@@ -70,3 +70,17 @@ function loremIpsumWord (word){
 }
 
 wordArr.forEach(loremIpsumWord);
+
+randomWords.innerHTML += "<br><br><button type='button' id='button'>Change Background color!</button>";
+button = document.getElementById('button');
+
+button.addEventListener("click", changeColor);
+
+const arrWords = document.getElementsByClassName("random-word")
+
+function changeColor(){
+    for (let i = 0; i < arrWords.length; i++){
+        const style = "background-color: " + randomColor();
+        arrWords[i].setAttribute("style", style);
+    }
+}
