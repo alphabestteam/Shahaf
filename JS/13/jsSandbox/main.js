@@ -33,3 +33,40 @@ mainHeading.innerHTML += "<br><span>its me SpongeBob!</span>"
 console.log(mainHeading);
 
 //14
+const cloned = mainHeading.cloneNode(true);
+console.log(cloned);
+
+//15
+const subheading = document.createElement('h2');
+subheading.textContent = "jellyfish hunting is the best";
+
+//16
+document.body.appendChild(subheading);
+
+//17
+let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue tempus erat. Aliquam feugiat congue augue, eu pharetra ligula tincidunt vitae. Sed nec tempor massa. Integer interdum vitae nisi sed malesuada. Maecenas id augue quis urna lobortis sollicitudin. Cras accumsan eros ac dolor suscipit, ac dapibus magna consequat. Quisque tempus justo ac nulla vehicula, et ullamcorper tortor rhoncus. Mauris sit amet efficitur sem, vitae tempor ex. Aliquam porta, metus eu mollis viverra, sem justo tempus ipsum, a posuere nisi nibh a sem. Sed at erat mollis, finibus metus et, auctor tortor. Suspendisse in quam purus."
+
+//18
+const wordArr = string.split(' ');
+
+//19
+const colors = ["red", "orange", "yellow", "greenyellow", "lightblue", "mediumpurple"];
+
+//20
+const randomColor = () => colors[Math.floor(Math.random()*colors.length)];
+
+//21
+let randomWords = document.getElementById("random-words")
+
+//22
+function loremIpsumWord (word){
+    const span = document.createElement("span");
+    const style = "background-color: " + randomColor();
+    span.setAttribute("style", style);
+    span.textContent = word;
+    span.className = "random-word";
+    //23
+    randomWords.appendChild(span);
+}
+
+wordArr.forEach(loremIpsumWord);
