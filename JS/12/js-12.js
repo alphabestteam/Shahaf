@@ -90,3 +90,18 @@ for (let i = 0; i < students.length; i++){
 
 const adults = students.filter(student => student.age >= 18);
 console.log(adults);
+
+const myCar = {
+    manufacturer: 'Hyundai',
+    model: 'i10',
+    year: 2020,
+    age: function(){
+        const now = new Date();
+        return now.getFullYear() - this.year;
+    }
+}
+
+console.log(`manufacturer: ${myCar.manufacturer}`);
+console.log(`model: ${myCar.model}`);
+console.log(`year: ${myCar.year}`);
+console.log(`age: ${myCar.age()}`);
