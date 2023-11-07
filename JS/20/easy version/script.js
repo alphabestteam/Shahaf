@@ -41,6 +41,7 @@ function startGame() {
     */
     result.innerHTML = '';
     input.value = '';
+    quote.innerHTML = '';
 
     button.setAttribute('name', 'on');
     let seconds = 0;
