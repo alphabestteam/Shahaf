@@ -50,7 +50,10 @@ function questionE(){
 
 //the promise is printed first because promise is the first function to be in the job queue
 
-// questionC();
+//questionC();
+
+//the promise is printed first because even though it has bigger time out js executes promises first
+//and because it is single threaded it waited for the timeout of the promise to end and then moves on to other tasks
 
 // questionD();
 
