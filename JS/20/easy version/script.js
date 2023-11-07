@@ -39,14 +39,17 @@ function startGame() {
     2 - generate a random quote and display it in the relevant html element
     2* - think carefully how to do it such that you can change the background of each char individually
     */
+    result.innerHTML = '';
+    input.value = '';
 
     button.setAttribute('name', 'on');
     let seconds = 0;
     quoteString = getRandomQuote();
-    quote.innerHTML = '';
 
     quoteString.split('').forEach(word => {
         const letterSpan = document.createElement('span');
+        letterSpan.classList.remove('correct');
+        letterSpan.classList.remove('incorrect');
         letterSpan.innerText = word;
         quote.appendChild(letterSpan);
     });
@@ -98,11 +101,18 @@ function endGame() {
     //  b) in how many seconds it was done
     //  c) the speed (wpm)
     //  d) the accuracy as percentage
+    console.log(quote.textContent)
+    const wordsCount = input.value.split('').length;
+    const quoteCount = quote.textContent.split('').length;
+    let seconds = timer.textContent.split('')[0];
+    let wpm = (seconds / 60) * wordsCount;
+    const correctWords = document.getElementsByClassName("correct");
+    let accuracy = (correctWords.length / quoteCount) * 100;
+
+    result.innerHTML = `<br><span>You typed ${wordsCount} words</span><br><span>in ${seconds} seconds</span><br><span>Your speed is ${wpm} wpm</span><br><span>with ${accuracy}% accuracy</span>`;
 
     button.setAttribute('name', 'off');
-    clearInterval(clock)
-
-    location.reload();
+    clearInterval(clock);
 
     button.removeEventListener('click', endGame);
     button.addEventListener('click', startGame);
@@ -113,6 +123,7 @@ let clock;
 const quote = document.getElementById("quote");
 const timer = document.getElementById("timer");
 const input = document.getElementById("input");
+const result = document.getElementById("result")
 const button = document.getElementById("start-btn");
 
 button.addEventListener('click', startGame);
