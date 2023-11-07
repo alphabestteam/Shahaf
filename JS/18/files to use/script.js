@@ -48,7 +48,7 @@ function addPoints(species) {
     if (species != 'common'){
         return speciesPoints[species];
     }
-    return 0;
+    return 1;
 }
 
 // Helper functions
@@ -59,7 +59,7 @@ function identifySpecies(jellyfish) {
     else if (jellyfish == 'blue'){
         return 'blue stinger';
     }
-    else if (jellyfish == 'blue'){
+    else if (jellyfish == 'green'){
         return 'green itches';
     }
     else{
@@ -74,7 +74,7 @@ for (let i = 0; i < jellyfishDays.length; i++){
     const jellyfishesArr = jellyfishDays[i];
     let score = 0;
 
-    for (let jellyfish = 0; jellyfish < jellyfishDays.length; jellyfish++){
+    for (let jellyfish = 0; jellyfish < jellyfishesArr.length; jellyfish++){
         console.log(`SpongeBob caught a ${jellyfishesArr[jellyfish].color} jellyfish!`);
         score += catchJellyfish(jellyfishesArr[jellyfish].color, identifyJellyfishAndAddPoints);
         console.log(`score: ${score}`);
