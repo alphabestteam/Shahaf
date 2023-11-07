@@ -46,7 +46,12 @@ function questionE(){
 //the sequence of printing is bob ans than sponge
 // bob is first because sponge is in time out which takes it out of the function execution stack and put it last
 
-// questionB();
+//questionB();
+
+//the promise is printed first because promise is the first function to be in the job queue
+
 // questionC();
+
 // questionD();
+
 // questionE();
