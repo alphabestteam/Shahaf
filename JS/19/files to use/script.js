@@ -55,6 +55,10 @@ function questionE(){
 //the promise is printed first because even though it has bigger time out js executes promises first
 //and because it is single threaded it waited for the timeout of the promise to end and then moves on to other tasks
 
-// questionD();
+//questionD();
+
+//it prints sponge then bob then pants then square
+//the order is this way because js executes the synchronic things (static things like console log)
+//then the promise is executed and lat one the timeout
 
 // questionE();
