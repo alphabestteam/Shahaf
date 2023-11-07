@@ -46,10 +46,9 @@ function startGame() {
     quote.innerHTML = '';
 
     quoteString.split('').forEach(word => {
-        const wordSpan = document.createElement('span');
-        wordSpan.setAttribute('class', 'splitWords');
-        wordSpan.innerText = word;
-        quote.appendChild(wordSpan);
+        const letterSpan = document.createElement('span');
+        letterSpan.innerText = word;
+        quote.appendChild(letterSpan);
     });
 
     function secTimer() {
@@ -67,6 +66,25 @@ function startGame() {
 function checkInput() {
     //implement checking input, ending the game by calling the endGame() function when needed. 
     //add the relevant css class to each letter
+    const arrQuote = quote.querySelectorAll('span');
+    const arrInput = input.value.split('');
+
+    arrQuote.forEach((letterSpan, index) => {
+        const character = arrInput[index];
+        if (character == null){
+            letterSpan.classList.remove('correct');
+            letterSpan.classList.remove('incorrect');
+        }
+        else if (character === letterSpan.innerText){
+            letterSpan.classList.add('correct');
+            letterSpan.classList.remove('incorrect');
+        }
+        else{
+            letterSpan.classList.add('incorrect');
+            letterSpan.classList.remove('correct');
+        }
+    })
+
 }
 
 function countMatchingChars(strA, strB) {
@@ -83,6 +101,8 @@ function endGame() {
 
     button.setAttribute('name', 'off');
     clearInterval(clock)
+
+    location.reload();
 
     button.removeEventListener('click', endGame);
     button.addEventListener('click', startGame);
