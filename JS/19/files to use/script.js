@@ -41,7 +41,11 @@ function questionE(){
     sequenceC();
 }
 
-// questionA();
+//questionA();
+
+//the sequence of printing is bob ans than sponge
+// bob is first because sponge is in time out which takes it out of the function execution stack and put it last
+
 // questionB();
 // questionC();
 // questionD();
