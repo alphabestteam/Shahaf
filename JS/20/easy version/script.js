@@ -30,6 +30,7 @@ const quotes = [
 
 function getRandomQuote() {
     //implement getting a random quote from the array.
+    return (quotes[Math.floor(Math.random(0, (quotes.length + 1)))]);
 }
 
 function startGame() {
@@ -38,6 +39,17 @@ function startGame() {
     2 - generate a random quote and display it in the relevant html element
     2* - think carefully how to do it such that you can change the background of each char individually
     */
+    button.setAttribute('name', 'on');
+    let seconds = 0;
+    quote.innerText = getRandomQuote();
+    function secTimer(){
+        seconds += 1;
+        timer.innerText = `${seconds} s`;
+    }
+    clock = setInterval(secTimer, 1000);
+
+    button.removeEventListener('click', startGame);
+    button.addEventListener('click', endGame);
 }
 
 function checkInput() {
@@ -56,5 +68,19 @@ function endGame() {
     //  b) in how many seconds it was done
     //  c) the speed (wpm)
     //  d) the accuracy as percentage
+
+    button.setAttribute('name', 'off');
+    clearInterval(clock)
     
+    button.removeEventListener('click', endGame);
+    button.addEventListener('click', startGame);
 }
+
+let clock;
+
+const quote = document.getElementById("quote");
+const timer = document.getElementById("timer");
+
+const button = document.getElementById("start-btn");
+
+button.addEventListener('click', startGame);
