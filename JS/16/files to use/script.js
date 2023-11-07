@@ -5,8 +5,8 @@ function eventLoop() {
         const countElement = document.getElementById("counter-display");
         countElement.innerText = count;
     }
-    return updateCount
+    return updateCount;
 }
 
 const button = document.getElementById("my-button");
-button.addEventListener("click", updateCount)
+button.addEventListener("click", eventLoop());
