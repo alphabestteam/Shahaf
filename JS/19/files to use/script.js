@@ -61,4 +61,7 @@ function questionE(){
 //the order is this way because js executes the synchronic things (static things like console log)
 //then the promise is executed and lat one the timeout
 
-// questionE();
+//questionE();
+
+//js reads all the tasks he has to do and than reorganize them in the correct way
+//promise has a priority on timeout
