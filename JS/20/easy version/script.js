@@ -25,12 +25,12 @@ const quotes = [
     "SpongeBob: I'm a Goofy Goober, yeah. You're a Goofy Goober, yeah. We're all Goofy Goobers, yeah. Goofy, goofy, goober, goober, yeah!",
     "SpongeBob: Once there was an ugly barnacle. He was so ugly that everyone died. The end."
 ];
-  
-  
+
+
 
 function getRandomQuote() {
     //implement getting a random quote from the array.
-    return (quotes[Math.floor(Math.random(0, (quotes.length + 1)))]);
+    return (quotes[Math.floor(Math.random() * (quotes.length + 1))]);
 }
 
 function startGame() {
@@ -39,15 +39,27 @@ function startGame() {
     2 - generate a random quote and display it in the relevant html element
     2* - think carefully how to do it such that you can change the background of each char individually
     */
+
     button.setAttribute('name', 'on');
     let seconds = 0;
-    quote.innerText = getRandomQuote();
-    function secTimer(){
+    quoteString = getRandomQuote();
+    quote.innerHTML = '';
+
+    quoteString.split('').forEach(word => {
+        const wordSpan = document.createElement('span');
+        wordSpan.setAttribute('class', 'splitWords');
+        wordSpan.innerText = word;
+        quote.appendChild(wordSpan);
+    });
+
+    function secTimer() {
         seconds += 1;
         timer.innerText = `${seconds} s`;
     }
+
     clock = setInterval(secTimer, 1000);
 
+    input.addEventListener('input', checkInput);
     button.removeEventListener('click', startGame);
     button.addEventListener('click', endGame);
 }
@@ -71,7 +83,7 @@ function endGame() {
 
     button.setAttribute('name', 'off');
     clearInterval(clock)
-    
+
     button.removeEventListener('click', endGame);
     button.addEventListener('click', startGame);
 }
@@ -80,7 +92,7 @@ let clock;
 
 const quote = document.getElementById("quote");
 const timer = document.getElementById("timer");
-
+const input = document.getElementById("input");
 const button = document.getElementById("start-btn");
 
 button.addEventListener('click', startGame);
