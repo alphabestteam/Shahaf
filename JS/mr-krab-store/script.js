@@ -18,18 +18,18 @@ async function changeDisplay (){
     console.log('Failed to load data')
   }
   const menuData = await responseMenu.json()
-  console.log('here')
+  const hideImg = await hideGif()
   const change = await gifToMenu(menuData)
-  console.log('jdfk')
   
 }
 
-function gifToMenu (jsonMenu){
-  document.getElementById('loader').hidden = true
+function hideGif(){
+  img = document.getElementById('loader')
+  img.setAttribute('src', '')
+}
 
+function gifToMenu (jsonMenu){
   for (let item in jsonMenu['items']){
-    console.log(item)
-    console.log(jsonMenu['items'][item])
     let description = jsonMenu['items'][item]['description']
     let name = jsonMenu['items'][item]['name']
     let price = jsonMenu['items'][item]['price']
