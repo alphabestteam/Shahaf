@@ -3,7 +3,7 @@
 List of endpoints:
   GET - http://localhost:8000/hello -> {'Hello': 'World'} Here as an example
   GET - http://localhost:8000/menu -> {'items': menu} A dict of the menu
-  POST - http://localhost:8000/latest-order -> A dict of the latest order
+  GET - http://localhost:8000/latest-order -> A dict of the latest order
   POST - http://localhost:8000/orders -> An endpoint to handle an order. The order is in the http body as so: { 'items': items }
 
 */
@@ -21,6 +21,7 @@ async function changeDisplay() {
   const hideImg = await hideGif()
   const change = await gifToMenu(menuData)
   const summary = await displaySummary()
+  const button = await buttons()
 }
 
 function hideGif() {
@@ -80,10 +81,11 @@ function orderSummary() {
       const addItem = document.createElement('span')
       let name = title.split('(')[0]
       let price = title.split('(')[1].split('$')[1].split(')')[0]
-      console.log(name)
-      console.log(price)
       addItem.innerText = `${name} (${itemQuantity.value} x ${price} = ${price * itemQuantity.value})\n`
       summary.appendChild(addItem)
+    }
+    if (summary.querySelectorAll('span').length == 0) {
+      summary.querySelector('p').innerText = 'Empty Order'
     }
   }
 }
@@ -95,6 +97,25 @@ function displaySummary(){
       return;
     }
   });
+}
+
+function getLastOrder(){
+  fetch('http://localhost:8000/latest-order')
+    .then(response => {
+      if (response.ok){
+        console.log(response)
+      }
+      else(
+        console.log('error')
+      )
+    })
+    .then(data => console.log(data))
+    .catch(console.error())
+}
+
+function buttons(){
+  const lastOrder = document.getElementById("submit-button")
+  lastOrder.addEventListener('click', getLastOrder)
 }
 
 const menu = document.getElementById("menu");
