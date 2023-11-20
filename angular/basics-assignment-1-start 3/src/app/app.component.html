@@ -13,9 +13,9 @@
   </div>
 </div> -->
 
-<button (click)="showWarning()">warning</button>
+<button mat-raised-button (click)="showWarning()">warning</button>
 
-<button (click)="showSuccess()">success</button>
+<button mat-raised-button (click)="showSuccess()">success</button>
 
 <div *ngIf = "isSuccess, else elseBlock" ><app-success-alert></app-success-alert></div>
 <ng-template #elseBlock><app-warning-alert></app-warning-alert></ng-template>
