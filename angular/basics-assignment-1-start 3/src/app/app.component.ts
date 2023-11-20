@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isSuccess = true
+
+  showWarning(): void {
+    this.isSuccess = false
+  }
+
+  showSuccess(): void {
+    this.isSuccess = true
+  }
 }
