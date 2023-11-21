@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-xs-12">
       <ol>
@@ -10,4 +10,12 @@
       </ol>
     </div>
   </div>
+</div> -->
+
+<button (click)="onClick()">Display Details</button>
+
+<p *ngIf="showContent">{{ paragraph }}</p>
+
+<div>
+  <p *ngFor="let counter of getRepeatArray(click)" [ngClass]="{ 'white-text': counter >= 5 }" [ngStyle]="{'background-color': counter >= 5 ? setBackgroundColor(): 'transparent'}">{{ counter }}</p>
 </div>
