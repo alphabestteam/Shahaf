@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+div{
+    border: 2px solid #3498db;
+    padding: 10px; 
+    border-radius: 8px; 
+}
+
+button{
+    margin: 5px;
+}
