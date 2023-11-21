@@ -26,6 +26,7 @@ export class AppComponent {
     for the small band of rebels
     struggling to restore freedom
     to the galaxy...`;
+
 }
 
 export interface StarWarsMovie {

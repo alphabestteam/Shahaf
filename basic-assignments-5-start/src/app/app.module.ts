@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { MovieCardComponentComponent } from './movie-card-component/movie-card-component.component';
 
 const starWarsMovies: Routes = [
+  
   {path: 'starWarsMovies', component: DisplayMoviesComponent}
 ]
 
