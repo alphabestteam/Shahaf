@@ -12,18 +12,23 @@ export class MyInnerComponent {
   @Output() greaterThan10 = new EventEmitter<number>();
   @Output() smallerThanMinus10 = new EventEmitter<number>();
 
-  incrementInnerTotal() {
+  increaseInnerTotal() {
     this.innerTotal++;
 
     if (this.innerTotal > 10) {
       this.innerTotal = 0;
       this.greaterThan10.emit(this.outerTotal + 10);
     }
+  }
 
-    else if (this.innerTotal < -10) {
+  decreaseInnerTotal() {
+    this.innerTotal--;
+
+    if (this.innerTotal < -10) {
       this.innerTotal = 0;
       this.smallerThanMinus10.emit(this.outerTotal - 10);
     }
   }
 
 }
+

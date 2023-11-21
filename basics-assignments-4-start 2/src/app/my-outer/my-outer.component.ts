@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-outer.component.css']
 })
 export class MyOuterComponent {
-  total = 0;
+  outerTotal = 0;
+
+  onIncreaseInnerTotal(addTotal: number): void{
+    this.outerTotal = addTotal;
+  }
+
+  onDecreaseInnerTotal(subtractTotal: number): void{
+    this.outerTotal = subtractTotal;
+  }
 }

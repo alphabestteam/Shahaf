@@ -1,5 +1,5 @@
 <div>
     <p>my-outer works!</p>
-    <app-my-inner></app-my-inner>
-    <p>total: {{total}}</p>
+    <app-my-inner [outerTotal]="outerTotal" (greaterThan10)="onIncreaseInnerTotal($event)" (smallerThanMinus10)="onDecreaseInnerTotal($event)"></app-my-inner>
+    <p>total: {{outerTotal}}</p>
 </div>
