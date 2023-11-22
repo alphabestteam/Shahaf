@@ -10,7 +10,7 @@ export class AppComponent {
   click = 0;
   showContent = true;
 
-  onClick(): void{
+  toggleOnClick(): void{
     this.showContent = !this.showContent;
     this.click += 1;
 
@@ -18,9 +18,5 @@ export class AppComponent {
 
   getRepeatArray(count: number): number[] {
     return Array.from({ length: count }, (_, i) => i);
-  }
-
-  setBackgroundColor(): string {
-    return 'blue';
   }
 }

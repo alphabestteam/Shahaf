@@ -12,10 +12,10 @@
   </div>
 </div> -->
 
-<button (click)="onClick()">Display Details</button>
+<button (click)="toggleOnClick()">Display Details</button>
 
 <p *ngIf="showContent">{{ paragraph }}</p>
 
 <div>
-  <p *ngFor="let counter of getRepeatArray(click)" [ngClass]="{ 'white-text': counter >= 5 }" [ngStyle]="{'background-color': counter >= 5 ? setBackgroundColor(): 'transparent'}">{{ counter }}</p>
+  <p *ngFor="let counter of getRepeatArray(click)" [ngClass]="{ 'white-text': counter >= 5 }" [ngStyle]="{'background-color': counter >= 5 ? 'blue': 'transparent'}">{{ counter }}</p>
 </div>
