@@ -8,5 +8,4 @@
 <h1>username</h1>
 <input [(ngModel)]="username" placeholder="Enter your username" class="form-control"/>
 <p>{{username}}</p>
-<div *ngIf="username.length == 0, else elseBlock"><button (click)="reset()" [disabled]="true" class="btn btn-primary">Reset User</button></div>
-<ng-template #elseBlock><button (click)="reset()" class="btn btn-primary">Reset User</button></ng-template>
+<button (click)="reset()" [disabled]="username.length == 0" class="btn btn-primary">Reset User</button>
