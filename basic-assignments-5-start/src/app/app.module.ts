@@ -8,11 +8,6 @@ import { DisplayMoviesComponent } from './display-movies/display-movies.componen
 import { RouterModule } from '@angular/router';
 import { MovieCardComponentComponent } from './movie-card-component/movie-card-component.component';
 
-const starWarsMovies: Routes = [
-  
-  {path: 'starWarsMovies', component: DisplayMoviesComponent}
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +18,6 @@ const starWarsMovies: Routes = [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    RouterModule.forRoot(starWarsMovies)
   ],
   providers: [],
   bootstrap: [AppComponent]
