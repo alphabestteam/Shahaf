@@ -9,10 +9,10 @@ export class MyOuterComponent {
   outerTotal = 0;
 
   onIncreaseInnerTotal(addTotal: number): void{
-    this.outerTotal = addTotal;
+    this.outerTotal = this.outerTotal + addTotal;
   }
 
   onDecreaseInnerTotal(subtractTotal: number): void{
-    this.outerTotal = subtractTotal;
+    this.outerTotal = this.outerTotal + subtractTotal;
   }
 }
