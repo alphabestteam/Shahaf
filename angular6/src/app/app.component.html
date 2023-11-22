@@ -1,0 +1,20 @@
+<h1>Form Builder, Form Group, Form Control, Validators and ngsubmit</h1>
+
+<form class="form" [formGroup]="userForm" (ngSubmit)="outputForm()">
+  <div class="field" [ngClass]="{'invalid': usernameIsTouched()}">
+    <label class="label" for="username">username</label>
+    <input type="text" id="username" class="input"formControlName="username"/>
+  </div>
+  <div class="field" [ngClass]="{'invalid': emailIsTouched()}">
+    <label class="label" for="email">email</label>
+    <input type="text" id="email" class="input" formControlName="email"/>
+  </div>
+  <div class="field" [ngClass]="{'invalid': passwordIsTouched()}">
+    <label class="label" for="password">password</label>
+    <input type="text" id="password" class="input" formControlName="password"/>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="userForm.invalid" class="button">Register</button>
+  </div>
+</form>
