@@ -1,0 +1,21 @@
+OOP – Special Functions
+
+1. Magic functions are methods that two prefix underscores and two suffix underscores in the name. They are commonly used for operator overloading. Some examples for magic functions:
+__init__ - for initialization of a class instance. The constructor.
+__str__ - to determine what happens to the object when we print it.
+__eq__ - defines behavior for equal operator.
+__del__ - the destructor.
+
+2. If we won't create the __str__ magic function, the location in the memory will be printed.
+
+3. If we won't create the __eq__ magic function, it will return True just if they are the same object, not if they are equal.
+
+4. Operator overloading means giving another meaning beyond their pre predicted meaning. Giving it meaning for each private instance.
+
+5.d. equal - it will print False even though they are equal but because they are not the same object it will print False.
+
+Print - it will the location in the memory of the objects.
+
+Add - won't be able to add them because it doesn't know how to add point type objects.
+
+To fix those problems we can create magic functions for the Point class.
