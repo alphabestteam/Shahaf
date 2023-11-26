@@ -1,0 +1,31 @@
+docker stop mysql-container
+
+docker rm mysql-container
+
+docker run -d \
+  --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD= \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+  -p 3306:3306 \
+  -e MYSQL_DATABASE=shahaf \
+  -v "$(pwd)/mysql-data:/var/lib/mysql" \
+  mysql:latest \
+  --skip-innodb
+
+the info to the container is stored in mysql-data. all the logs are stored in there.
+
+docker stop mysql-container
+
+docker rm mysql-container
+
+docker run -d \
+  --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD= \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+  -p 3306:3306 \
+  -e MYSQL_DATABASE=shahaf \
+  -v "$(pwd)/mysql-data:/var/lib/mysql" \
+  mysql:latest \
+  --skip-innodb
+
+the volume saved the info of the container from last time (we can see the db table).
