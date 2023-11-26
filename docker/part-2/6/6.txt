@@ -1,0 +1,7 @@
+1. the layering mechanism helps make the development faster by caching each layer in the building process, reusing layer components,
+once an image is built it is consistent and layers can br built in parallel.  
+
+2. method 1 is better to run command one after the other because method 2 makes the execution in parallel in contrast to method 1 that 
+execute the commands one by one.
+
+3. the command docker history <IMAGE_NAME> can show us the history of image including the layers and the commands used to create each layer.
