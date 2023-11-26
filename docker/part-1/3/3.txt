@@ -1,0 +1,9 @@
+docker load -i mysql.tar
+
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD= -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -e MYSQL_DATABASE=shahaf mysql:latest 
+
+docker stop mysql-container
+
+docker rm mysql-container
+
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD= -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -e MYSQL_DATABASE=shahaf mysql:latest 
