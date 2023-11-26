@@ -1,0 +1,5 @@
+docker load -i hello-world.tar
+
+docker run -d --name hello-world hello-world:latest
+
+docker start hello-world
