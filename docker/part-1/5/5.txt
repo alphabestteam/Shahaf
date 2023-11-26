@@ -1,0 +1,3 @@
+docker save -o my_tar_from_image.tar image_to_tar:latest
+
+docker load -i my_tar_from_image.tar
