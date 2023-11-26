@@ -1,0 +1,20 @@
+1. docker is a platform for managing applications, we can develop , ship and run applications.
+docker help us reduce the delay between writing code and running it in production.
+docker provides the ability to package and run an application in an isolated environment (container).
+this lets you run many containers on one host and the application will run successfully on any computer that has docker.
+
+2. docker image is the package with all the necessary parts that the application will need to run.
+with the image we create a container. it is created by building a dockerfile.
+
+3. docker container is the instance of the image. the container runs the application in an isolated space with all the parts it needs to run successfully.
+the container is portable and can run the same across different devices.
+
+4. the difference between a docker image and a docker container is that the image is the package of parts of the application and the container actually runs the app.
+images are writable, static and used for distribution, container is dynamic and execute the app.
+we can create many containers from one image.
+
+5. environment variable is is a value that can affect the way running processes behave on a computer.
+ the variable is part of the isolated environment that the app is executed on.
+
+6. a volume is a way to change and share between the container and the host system and it also can share data between containers.
+the volume helps store and manage data that needs to stay after the lifecycle of one container.
