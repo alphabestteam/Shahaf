@@ -1,0 +1,11 @@
+docker build -t app1:1 .
+
+docker run --name docker_is_the_best -p 5001:5001 app1:1 (i changes the port to 5001 because 5000 was occupied so it works in http://localhost:5001/Dan)
+
+docker ps -a 
+
+docker stop docker_is_the_best
+
+docker rm docker_is_the_best
+
+docker run --name docker_is_the_best -v "$(pwd)/app1-data:/app/logs/" -p 5001:5001 app1:1
