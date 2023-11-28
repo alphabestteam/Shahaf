@@ -1,0 +1,24 @@
+1. version - the version of the docker compose
+services - define the containers to run
+mongo \ mongo-express - the name of the container
+image - the image the container is using to run the container
+container-name - assigns a name for the container
+environment - sets environment variables
+ports - sets ports for the container
+volumes - sets volumes for the container
+
+2. the error rising is site cant be reached, localhost refused to connect. this indicates there is problem in the connection definition 
+in th docker compose, probably problem with the ports.
+
+3. the solution to this problem is to add a port field to the mongo-express in the docker compose file.
+
+4. docker compose up
+docker compose down
+
+
+
+1. the easier way to configure the environment variables is with an env or .env file.
+
+2. the .env file 
+
+3. docker compose up (everything works)
