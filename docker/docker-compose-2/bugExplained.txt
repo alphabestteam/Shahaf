@@ -1,0 +1,4 @@
+the bug i had is mongo insert error, from what i saw on the internet the bug is because i had a problem with the json data i was sending to
+the mongodb server. it could be incorrect syntax, missing field, data type mismatch and more problems with the format.
+i tries many ways to change the data that i was sending but it didn't help. tried to look in the mongo code but i didn't understand why there would be a problem.
+i also attempted to add a volume (i dont know maybe it would help to understand) but it didnt help.
