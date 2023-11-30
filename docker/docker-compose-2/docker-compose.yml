@@ -4,9 +4,6 @@ services:
   mongoDB:
     image: mongo:latest
     container_name: mongoDB
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - "27017:27017" 
     restart: always
@@ -26,6 +23,6 @@ volumes:
   mongo-data:
     name: mongo-data
 
-# networks:
-#   api:
-#     driver: bridge
+networks:
+  api:
+    driver: bridge
