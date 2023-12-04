@@ -1,0 +1,8 @@
+the problem with the way we used the env vars is that when we want to change the values we will need to config the yaml file and reapply it.
+also it is very not secure to write the env vars and their values in the config file.
+
+to solve this problem we will use configmap.yaml of kind ConfigMap. in this file we will config the env vars as key, value pairs.
+to use the env vars we will write in the other yaml the key to the value.
+we can also use secret.yaml with type Opaque which is used for sensitive info that needs to be secured.
+
+to make the backend-url secured we will use the secret.yaml.
