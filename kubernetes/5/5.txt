@@ -1,0 +1,8 @@
+1. kubectl scale deployment backend-deployment --replicas=3 -n my-namespace
+kubectl get pods -n my-namespace #to check number of replicas
+
+2. kubectl scale deployment frontend-deployment --replicas=3 -n my-namespace
+
+3. the scaling allows us to increase or decrease (according to demand) the number of pods running of our app to handle higher or lower demand of the app.
+if we have high demand we will increase the number of running pods.
+if we have low demand we will decrease the number of running pods.
