@@ -1,0 +1,12 @@
+1. in kubernetes the object that exposes your application to the external world is typically a Service of type NodePort.
+a NodePort service exposes the app on a specific port. external traffic can reach the NodePort service by accessing the specific port.
+
+2. i created nodeport-service.yaml
+
+kubectl apply -f nodeport-service.yaml
+
+kubectl get svc -n my-namespace #to check if the service works
+
+minikube service my-nodeport-service -n my-namespace --url
+
+(the url i got http://127.0.0.1:52273)
