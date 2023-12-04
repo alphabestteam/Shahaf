@@ -1,0 +1,3 @@
+1. the object that enables network communication is service.
+
+2. 
