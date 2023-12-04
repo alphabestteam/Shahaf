@@ -1,5 +1,6 @@
-1. in kubernetes the object that exposes your application to the external world is typically a Service of type NodePort.
-a NodePort service exposes the app on a specific port. external traffic can reach the NodePort service by accessing the specific port.
+1. in kubernetes the object that exposes your application to the external world is typically a Service of type Ingress.
+it exposes HTTP and HTTPS routes outside the cluster to services inside the cluster.
+we will use ingress instead of nodeport because ingress is secured better with ssl and nodeport use only http/HTTPS.
 
 2. i created nodeport-service.yaml
 
