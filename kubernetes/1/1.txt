@@ -1,0 +1,10 @@
+one way to create a logical workspace is with cli:
+kubectl create namespace <a name>
+
+the other way is with yaml
+
+kubectl apply -f backend.yaml 
+
+kubectl apply -f frontend.yaml 
+
+kubectl get deployments -n my-namespace 
