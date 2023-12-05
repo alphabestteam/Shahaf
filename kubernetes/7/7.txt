@@ -1,0 +1,12 @@
+1. Readiness Probes is a functionality that ensures the health of the container (if it can accept traffic).
+this is super important because it ensures that the container in the pod can handle requests before it gets traffic.
+it improves the reliability of the app.
+
+2. the risks of not using Readiness Probes are:
+- requests may be sent to unhealthy containers and then users may experience errors and bad performance.
+- it may increase downtime because traffic might be sent to unready containers.
+- when scaling traffic might be sent to not fully functioning containers.
+- we will have limited control over the lifecycle of the app in the container. we wont be able to determine if the app is filly ready.
+- Readiness Probes can help with diagnosing issues and it can be harder to find the root cause without it.
+
+3. in the yaml
