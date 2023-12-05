@@ -1,0 +1,1 @@
+kubectl get pods --all-namespaces --field-selector=status.phase=Running -o wide
