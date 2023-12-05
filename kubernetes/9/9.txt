@@ -1,0 +1,4 @@
+3. if we didn't configured the service account manually it uses the default service account.
+
+4. service account helps the pod interact with the kubernetes API and other clusters or services. 
+it secure and control access within a kubernetes cluster.
