@@ -1,0 +1,19 @@
+1. kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml #download metrics server
+
+kubectl get pods -n kube-system #to check status
+
+kubectl top pod --namespace=my-namespace #show CPU and memory usage
+
+2. to limit resources i added 
+resources:
+    requests:
+        memory: "100Mi"
+        cpu: "1"
+    limits:
+        memory: "200Mi"
+        cpu: "2"
+
+to each pod, requests is the base resources and and limits is the limit that it can get when it needs more memory and cpu.
+then i re-applied each pod.
+kubectl apply -f backend.yaml 
+kubectl apply -f frontend.yaml
