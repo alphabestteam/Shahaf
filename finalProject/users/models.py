@@ -7,6 +7,6 @@ class User(models.Model):
     password = models.TextField(blank = False)
     birthday = models.DateField(blank = False)
     email = models.EmailField(blank = False)
-    my_recipes = models.ManyToManyField(Recipe, related_name='favorite_recipes', blank=True)
-    my_comments = models.ForeignKey(Comment, related_name='my_comments', blank=True)
+    my_recipes = models.ManyToManyField(Recipe, related_name='favorite_recipes', on_delete=models.CASCADE, blank=True)
+    my_comments = models.ForeignKey(Comment, related_name='my_comments', on_delete=models.CASCADE, blank=True)
     id = models.PositiveIntegerField(max_length = 9, blank = False, unique = True, primary_key = True)
