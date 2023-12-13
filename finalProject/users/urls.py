@@ -1,17 +1,17 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from users.views import UserViewSet, UserViewSetByID
+from users.views import UserViewSet
 from . import views
 
 user_router = DefaultRouter()
-user_router.register(r'users', UserViewSet)
+user_router.register(r'', UserViewSet)
 
 urlpatterns = [
     path('', include(user_router.urls)),
-    path('/get', views.get_user_by_id),
-    path('/update', views.update_user_by_id),
-    path('/delete', views.delete_user_by_id),
-    path('/recipes', views.get_all_recipes_by_id),
-    path('/comments', views.get_all_comments_by_id),
-    path('/login', views.is_user_exist),
+    path('get/<int:id>/', views.get_user_by_id),
+    path('update/<int:id>/', views.update_user_by_id),
+    path('delete/<int:id>/', views.delete_user_by_id),
+    path('recipes/<int:id>/', views.get_all_recipes_by_id),
+    path('comments/<int:id>/', views.get_all_comments_by_id),
+    path('login/<int:id>/', views.is_user_exist),
 ]

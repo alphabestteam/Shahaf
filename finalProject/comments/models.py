@@ -1,10 +1,17 @@
 from django.db import models
-from users import User
-from recipes import Recipe
+from django import forms 
+
+STARS = (
+    ('1', 'one'),
+    ('2', 'two'),
+    ('3', 'three'),
+    ('4', 'four'),
+    ('5', 'five'),
+)
 
 class Comment(models.Model):
-    user_id = models.OneToOneField(User, related_name= 'user_id', on_delete=models.CASCADE, blank = False)
+    user_id = models.ForeignKey('users.User', related_name= 'comment_user_id', on_delete=models.CASCADE, blank = False)
     text = models.TextField(blank= False)
-    stars = models.PositiveIntegerField(blank= False, limit_value = 5)
-    recipe_id = models.OneToOneField(Recipe, related_name= 'recipe_id', on_delete=models.CASCADE, blank = False)
-    comment_id = models.AutoField(primary_key= True)
+    stars = forms.MultipleChoiceField(choices = STARS)
+    recipe_id = models.ForeignKey('recipes.Recipe', related_name= 'comment_recipe_id', on_delete=models.CASCADE, blank = False)
+    comment_id = models.AutoField(primary_key= True, blank= False)
