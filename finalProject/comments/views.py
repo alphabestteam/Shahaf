@@ -14,13 +14,6 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-@api_view(["GET"])
-def get_comment_by_id(request, id):  # to get recipe by id
-    comment_id = id
-    comment = get_object_or_404(Comment, id=comment_id)
-    comment_data = CommentSerializer(comment).data
-    return Response(comment_data, status = 200)
-
 @api_view(["DELETE"])
 def delete_comment_by_id(request, comment_id, user_id):  # to delete recipe by id
     comment = get_object_or_404(Comment, id=comment_id)

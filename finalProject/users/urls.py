@@ -8,10 +8,8 @@ user_router.register(r'', UserViewSet)
 
 urlpatterns = [
     path('', include(user_router.urls)),
-    path('get/<int:id>/', views.get_user_by_id),
-    path('update/<int:id>/', views.update_user_by_id),
-    path('delete/<int:id>/', views.delete_user_by_id),
     path('recipes/<int:id>/', views.get_all_recipes_by_id),
-    path('comments/<int:id>/', views.get_all_comments_by_id),
     path('login/<int:id>/', views.is_user_exist),
+    path('addfav/<int:id_recipe>/<int:id_user>/', views.add_recipe_favorite),
+    path('removefav/<int:id>/', views.remove_recipe_favorite),
 ]

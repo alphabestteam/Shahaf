@@ -11,6 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
         instance.password = validated_data.get('password', instance.password)
         instance.birthday = validated_data.get('birthday', instance.birthday)
         instance.email = validated_data.get('email', instance.email)
-        instance.my_recipes = validated_data.get('my_recipes', instance.my_recipes)
+        instance.my_recipes.set(validated_data.get('my_recipes', instance.my_recipes))
         instance.id = validated_data.get('id', instance.id)
         return instance

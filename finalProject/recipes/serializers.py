@@ -14,7 +14,6 @@ class RecipeSerializer(serializers.ModelSerializer):
         instance.time = validated_data.get('time', instance.time)
         instance.level = validated_data.get('level', instance.level)
         instance.avg_starts = validated_data.get('avg_starts', instance.avg_starts)
-        instance.image = validated_data.get('image', instance.image)
-        instance.recipe_comments = validated_data.get('recipe_comments', instance.recipe_comments)
+        instance.recipe_comments.set(validated_data.get('recipe_comments', instance.recipe_comments))
         instance.recipe_id = validated_data.get('recipe_id', instance.recipe_id)
         return instance

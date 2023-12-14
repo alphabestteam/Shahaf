@@ -8,7 +8,5 @@ recipe_router.register(r'', RecipeViewSet)
 
 urlpatterns = [
     path('', include(recipe_router.urls)),
-    path('get/<int:id>/', views.get_recipe_by_id),
-    path('update/<int:id>/', views.update_recipe_by_id),
-    path('delete/<int:id>/', views.delete_recipe_by_id),
+    path('get/<int:id>/', views.get_all_comments_by_id),
 ]

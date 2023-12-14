@@ -7,37 +7,11 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
+from recipes.models import Recipe
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-@api_view(["GET"])
-def get_user_by_id(request, id):  # to get user by id
-    user_id = id
-    user = get_object_or_404(User, id=user_id)
-    user_data = UserSerializer(user).data
-    return Response(user_data, status=200)
-
-@api_view(["PUT"])
-def update_user_by_id(request, id):  # to update user by id
-    data = request.data
-    user = get_object_or_404(User, id = data["id"])
-    data_serializer = UserSerializer(data)
-    user_serializer = UserSerializer(user, data_serializer)
-    if user_serializer.is_valid():
-        user_serializer.update(user, data)
-        return Response("User was updated!", status=200)
-
-    else:
-        return Response(user_serializer.errors, status=404)
-
-@api_view(["DELETE"])
-def delete_user_by_id(request, id):  # to delete user by id
-    user_id = id
-    user = get_object_or_404(User, id = user_id)
-    user.delete()
-    return Response("User deleted successfully!", status=200)
 
 @api_view(["GET"])
 def get_all_recipes_by_id(request, id):  # to get all recipes
@@ -47,14 +21,21 @@ def get_all_recipes_by_id(request, id):  # to get all recipes
     return Response(user_recipes, status=200)
 
 @api_view(["GET"])
-def get_all_comments_by_id(request, id):  # to get all comments
-    user_id = id
-    user = get_object_or_404(User, id=user_id)
-    user_comments = UserSerializer(user).data.comments
-    return Response(user_comments, status=200)
-
-@api_view(["GET"])
-def is_user_exist(request):  # check if user exist in db
+def is_user_exist(request, id):  # check if user exist in db
     user_id = id
     user = get_object_or_404(User, id=user_id)
     return Response(status= 200)
+
+@api_view(["PUT"])
+def add_recipe_favorite(request, id_recipe, id_user):  # add a recipe to favorites
+    recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
+    user = get_object_or_404(User, id = id_user)
+    user.my_recipes.add(recipe)
+    return Response(user, status=200)
+
+@api_view(["PUT"])
+def remove_recipe_favorite(request, id_recipe, id_user):  # remove a recipe from  favorites
+    recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
+    user = get_object_or_404(User, id = id_user)
+    user.my_recipes.remove(recipe)
+    return Response(user, status=200)
