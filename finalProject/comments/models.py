@@ -2,11 +2,11 @@ from django.db import models
 from django import forms 
 
 STARS = (
-    ('1', 'one'),
-    ('2', 'two'),
-    ('3', 'three'),
-    ('4', 'four'),
-    ('5', 'five'),
+    ('1', 1),
+    ('2', 2),
+    ('3', 3),
+    ('4', 4),
+    ('5', 5),
 )
 
 class Comment(models.Model):
