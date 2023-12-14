@@ -13,4 +13,5 @@ class UserSerializer(serializers.ModelSerializer):
         instance.email = validated_data.get('email', instance.email)
         instance.my_recipes.set(validated_data.get('my_recipes', instance.my_recipes))
         instance.id = validated_data.get('id', instance.id)
+        instance.save()
         return instance

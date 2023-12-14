@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from recipes.models import Recipe
+from recipes.serializers import RecipeSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -17,8 +18,9 @@ class UserViewSet(viewsets.ModelViewSet):
 def get_all_recipes_by_id(request, id):  # to get all recipes
     user_id = id
     user = get_object_or_404(User, id=user_id)
-    user_recipes = UserSerializer(user).data.recipes
-    return Response(user_recipes, status=200)
+    user_recipes = user.my_recipes.all()
+    recipes_serializer = RecipeSerializer(user_recipes, many = True)
+    return Response(recipes_serializer.data, status=200)
 
 @api_view(["GET"])
 def is_user_exist(request, id):  # check if user exist in db
@@ -31,11 +33,13 @@ def add_recipe_favorite(request, id_recipe, id_user):  # add a recipe to favorit
     recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
     user = get_object_or_404(User, id = id_user)
     user.my_recipes.add(recipe)
-    return Response(user, status=200)
+    user_serializer = UserSerializer(user)
+    return Response(user_serializer.data, status=200)
 
 @api_view(["PUT"])
 def remove_recipe_favorite(request, id_recipe, id_user):  # remove a recipe from  favorites
     recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
     user = get_object_or_404(User, id = id_user)
     user.my_recipes.remove(recipe)
-    return Response(user, status=200)
+    user_serializer = UserSerializer(user)
+    return Response(user_serializer.data, status=200)

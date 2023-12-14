@@ -14,6 +14,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 @api_view(["GET"])
 def get_all_comments_by_id(request, id):  # to get all comments
-    recipe = get_object_or_404(Recipe, recipe_id=id)
-    recipe_comments = RecipeSerializer(recipe).data.comments
+    recipe = get_object_or_404(Recipe, recipe_id = id)
+    recipe_comments = recipe.recipe_comments
     return Response(recipe_comments, status=200)

@@ -16,8 +16,8 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 @api_view(["DELETE"])
 def delete_comment_by_id(request, comment_id, user_id):  # to delete recipe by id
-    comment = get_object_or_404(Comment, id=comment_id)
-    if comment.user_id == user_id:
+    comment = get_object_or_404(Comment, comment_id=comment_id)
+    if comment.user_id.id == user_id:
         comment.delete()
         return Response("Comment deleted successfully!", status = 200)
     
