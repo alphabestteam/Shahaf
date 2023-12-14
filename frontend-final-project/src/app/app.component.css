@@ -1,0 +1,26 @@
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFEEEE !important; 
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    margin: 1%;
+    vertical-align: middle;
+    display: block;
+    padding: 8px;
+    color: #AEC3AE;
+}
+
+img {
+    height: 350px;
+    width: 350px;
+}
