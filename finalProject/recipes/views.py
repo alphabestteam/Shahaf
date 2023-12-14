@@ -17,7 +17,3 @@ def get_all_comments_by_id(request, id):  # to get all comments
     recipe = get_object_or_404(Recipe, recipe_id=id)
     recipe_comments = RecipeSerializer(recipe).data.comments
     return Response(recipe_comments, status=200)
-
-#update comments when comment created
-
-#update avg when comment created
