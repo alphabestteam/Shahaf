@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend-final-project';
+  title = 'living the food life';
+
+  loader = true;
+  ngOnInit(): void {
+    
+    //Loader variable set false after page load
+    setTimeout(()=>{                           
+      this.loader = false;
+    }, 5000);
+  } 
+  
 }

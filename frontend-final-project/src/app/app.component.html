@@ -1,5 +1,10 @@
 <router-outlet></router-outlet>
-<nav>
+
+<div class="loader-gif" role="status" *ngIf="loader">
+  <img src="../assets/images/gif.gif"/>
+</div>
+
+<nav *ngIf="!loader">
   <ul>
     <li><a href="">ABOUT</a></li>
     <li><a href="">CONTACT</a></li>
