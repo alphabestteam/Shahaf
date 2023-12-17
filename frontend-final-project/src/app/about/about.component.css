@@ -6,32 +6,27 @@
 
 mat-card{
     background-color: #D7C0AE !important;
+    border-radius: 25px;
+    margin: 40px;
+    opacity: 80%;
     border-color: #967E76;
     border-width: thin;
   }
 
-.mat-form-field {
-    width: 100%;
-    min-width: 300px;
-    color: #967E76;
-  }
+mat-card-title {
+    font-size: 28px;
+    opacity: 1.0 !important;
+}
+
+mat-card-content {
+    font-size: 20px;
+    opacity: 1.0 !important;
+}
 
 mat-card-title, mat-card-content {
     display: flex;
     justify-content: center;
     color: #967E76;
     margin-top: 20px;
-  }
-
-.error {
-    padding: 16px;
-    width: 300px;
-    color: white;
-    background-color: red;
-  }
-
-button {
-    display: flex;
-    justify-content: center;
-    color: #967E76 !important;
+    text-align: center;
   }

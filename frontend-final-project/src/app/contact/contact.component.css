@@ -1,13 +1,25 @@
+.overline {
+    text-decoration: underline;
+    text-underline-offset: -2em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #606C5D;
+}
+
 :host {
-    display: flex;
     justify-content: center;
     margin: 100px 0px;
   }
 
 mat-card{
     background-color: #D7C0AE !important;
+    border-radius: 25px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 240px;
+    margin-right: 240px;
     border-color: #967E76;
     border-width: thin;
+    opacity: 80%;
   }
 
 .mat-form-field {

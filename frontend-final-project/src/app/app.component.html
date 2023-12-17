@@ -1,18 +1,18 @@
-<router-outlet></router-outlet>
-
 <div class="loader-gif" role="status" *ngIf="loader">
   <img src="../assets/images/gif.gif"/>
 </div>
 
 <nav *ngIf="!loader">
+  <a routerLink="profile"><img class="profile" src="../assets/images/profile-icon-removebg-preview.png"/></a>
   <ul>
-    <li><a href="">ABOUT</a></li>
-    <li><a href="">CONTACT</a></li>
-    <li><a><img style="height: 90px; width: 180px;" src="../assets/images/CREATIVE_STUDIO-removebg-preview.png"/></a></li>
-    <li><a href="">CATEGORY</a></li>
-    <li><a href="">BROWSE</a></li>
+    <li><a class="nav-hover" routerLink="about">ABOUT</a></li>
+    <li><a class="nav-hover" routerLink="contact">CONTACT</a></li>
+    <li><a routerLink="home"><img style="height: 90px; width: 180px;" src="../assets/images/CREATIVE_STUDIO-removebg-preview.png"/></a></li>
+    <li><a class="nav-hover" routerLink="category">CATEGORY</a></li>
+    <li><a class="nav-hover" routerLink="browse">BROWSE</a></li>
   </ul>
 </nav>
 
-<app-login></app-login>
-<app-signin></app-signin>
+<div *ngIf="!loader">
+  <router-outlet></router-outlet>
+</div>
