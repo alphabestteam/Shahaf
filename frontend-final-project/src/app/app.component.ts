@@ -14,7 +14,7 @@ export class AppComponent {
     //Loader variable set false after page load
     setTimeout(()=>{                           
       this.loader = false;
-    }, 5000);
+    }, 1000);
   } 
   
 }

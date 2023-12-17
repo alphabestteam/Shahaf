@@ -1,26 +1,21 @@
-
-ul {
+nav ul {
     list-style-type: none;
+    text-align: center;
+    background-color: #FFF4F4;
     margin: 0;
-    padding-inline-start: 0 0 0 100 !important; 
-    overflow: hidden;
-    background-color: #99A98F !important; 
 }
 
-li {
-    float: left;
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
 }
 
-li a {
-    display: inline-block;
-    margin: 1%;
-    vertical-align: middle;
-    display: block;
-    padding: 8px;
-    color: #AEC3AE;
-    margin-left: auto; 
-    margin-right: auto; 
-    display: block
+
+nav ul li a {
+    text-decoration: none;
+    color: #606C5D;
+    position: relative;
 }
 
 .loader-gif img{
