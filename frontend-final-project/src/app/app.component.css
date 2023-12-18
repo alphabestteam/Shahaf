@@ -23,7 +23,7 @@ nav ul li {
 }
 
 
-.nav-hover :hover{
+.nav-hover:hover{
     text-decoration: underline;
     color: #F1C376;
 }
