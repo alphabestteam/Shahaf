@@ -16,5 +16,9 @@ export class AppComponent {
       this.loader = false;
     }, 3000);
   } 
+
+  get(){
+    return sessionStorage.getItem('username');
+  }
   
 }

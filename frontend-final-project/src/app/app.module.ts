@@ -40,6 +40,8 @@ const appRoute: Routes = [
   {path: 'italian-recipe', component: ItalianRecipesComponent},
   {path: 'dessert-recipe', component: DessertsRecipesComponent},
   {path: 'other-recipe', component: OtherRecipesComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'signin', component: SigninComponent},
 ]
 
 @NgModule({

@@ -21,4 +21,13 @@ export class LoginComponent {
   @Input() error: string | null = '';
 
   @Output() submitEM = new EventEmitter();
+
+  dataSave(){
+    let username = this.form.value.username
+    sessionStorage.setItem('username', username);
+  }
+
+  get(){
+    return sessionStorage.getItem('username');
+  }
 }
