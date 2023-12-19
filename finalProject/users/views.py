@@ -23,16 +23,20 @@ def get_all_recipes_by_id(request, id):  # to get all recipes
     return Response(recipes_serializer.data, status=200)
 
 @api_view(["GET"])
-def is_user_exist(request, username):  # check if user exist in db
+def is_user_exist(request, username, password):  # check if user exist in db
     user_username = username
     user = get_object_or_404(User, username = user_username)
-    return Response(status= 200)
+    if user.password == password:
+        return Response('success', status= 200)
+    else:
+        return Response('fail', status=404)
 
 @api_view(["GET"])
 def get_user_username(request, username):  # check if user exist in db
     user_username = username
-    user = get_object_or_404(User, username = user_username)
-    return Response(user, status= 200)
+    user = User.objects.filter(username = user_username).first()
+    user_serializer = UserSerializer(user)
+    return Response(user_serializer.data, status= 200)
 
 @api_view(["PUT"])
 def add_recipe_favorite(request, id_recipe, id_user):  # add a recipe to favorites

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../services/login.services';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +9,37 @@ import { Component } from '@angular/core';
 export class ProfileComponent {
   submit: boolean = false
 
+  profile: any = null;
+
+  username = sessionStorage.getItem('username')
+
+  constructor(private profileService: LoginService) {}
+
+  getUser():void {
+    if (this.username){
+      this.profileService.getProfile(this.username).subscribe((data: any) => {
+        this.profile = data
+        console.log(this.profile)
+      });
+    }
+    else{
+      console.error('Username is null.'); 
+    }
+  }
+
   isConnected(){
     return sessionStorage.getItem('username')
   }
 
   dataRemove(){
     sessionStorage.removeItem('username');
+  }
+
+  ngOnInit(): void {
+    this.getUser();
+
+    setInterval(() => {
+      this.getUser();
+    }, 100000);
   }
 }

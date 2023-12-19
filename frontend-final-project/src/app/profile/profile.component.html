@@ -3,7 +3,31 @@
 </div>
 
 <div *ngIf="isConnected()">
-    ergfer
+    <div>
+        <mat-card>
+            <mat-card-title>PROFILE</mat-card-title>
+            <br><br>
+            <mat-card-content>
+                Username : {{profile.username}}
+            </mat-card-content>
+            <br><br>
+            <mat-card-content>
+                Birthday: {{profile.birthday}}
+            </mat-card-content>
+            <br><br>
+            <mat-card-content>
+                Email : {{profile.email}}
+            </mat-card-content>
+            <br><br>
+            <mat-card-content>
+                ID : {{profile.id}}
+            </mat-card-content>
+            <br><br><br><br>
+            <mat-card-content>
+                Enjoy the FOOD LIFE!
+            </mat-card-content>
+        </mat-card>
+    </div>
     <br><br><br><br>
     <div>
         <button type="submit" mat-button (click)="dataRemove()">LOGOUT</button>

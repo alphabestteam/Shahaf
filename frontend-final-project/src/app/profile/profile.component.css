@@ -16,7 +16,48 @@
 }
 
 button {
+    margin: auto;
     display: flex;
     justify-content: center;
     color: #967E76 !important;
   }
+
+  :host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+
+mat-card{
+    background-color: #FDFDF6 !important;
+    border-radius: 25px;
+    margin: 40px;
+    opacity: 80%;
+    border-color: #F1C376;
+    border-width: thin;
+  }
+
+mat-card-title {
+    font-size: 28px;
+    opacity: 1.0 !important;
+}
+
+mat-card-content {
+    font-size: 20px;
+    opacity: 1.0 !important;
+}
+
+mat-card-title, mat-card-content {
+    display: flex;
+    justify-content: center;
+    color: #606C5D;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+.overline{
+    text-decoration: underline;
+    text-underline-offset: -2.5em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #F1C376;
+}

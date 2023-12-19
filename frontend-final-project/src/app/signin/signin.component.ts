@@ -29,9 +29,11 @@ export class SigninComponent {
         email = this.form.get('email')?.value,
         id = this.form.get('id')?.value
 
-        await this.signinService.signin(username, password, birthday, email, id);
-        this.dataSave()
-        this.form.reset();
+        let res = await this.signinService.signin(username, password, birthday, email, id);
+        res.subscribe((data:any) => {
+          this.dataSave()
+          this.form.reset();
+        });
       }
 
       catch (error){
@@ -39,6 +41,7 @@ export class SigninComponent {
       }
     }
   }
+
   @Input() error: string | null = '';
 
   @Output() submitEM = new EventEmitter();

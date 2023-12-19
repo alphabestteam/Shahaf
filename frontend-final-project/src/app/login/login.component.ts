@@ -22,10 +22,18 @@ export class LoginComponent {
     if (this.form.valid) {
       try{
         const submit_username = this.form.get('username')?.value;
-
-        await this.loginServ.login(submit_username);
-        this.dataSave()
-        this.form.reset();
+        const submit_password = this.form.get('password')?.value;
+        
+        let res = await this.loginServ.login(submit_username, submit_password);
+        res.subscribe((data:any) => {
+          if (data == 'success'){
+            this.dataSave()
+            this.form.reset();
+          }
+        },
+        (error: any) => {
+          alert('User not found, please signin')
+        })
       }
 
       catch (error){
