@@ -1,0 +1,57 @@
+<div class="loader-gif" role="status" *ngIf="loader">
+  <img src="../assets/images/gif.gif"/>
+</div>
+
+<nav *ngIf="!loader">
+  <div class="wrapper">
+    <a class="side" routerLink="profile"><img class="profile" src="../assets/images/profile-icon-removebg-preview.png"/></a>
+    <ul class="nav-links">
+      <li><a class="nav-hover" routerLink="about">ABOUT</a></li>
+      <li><a class="nav-hover" routerLink="contact">CONTACT</a></li>
+      <li><a routerLink="home"><img style="height: 90px; width: 180px;" src="../assets/images/CREATIVE_STUDIO-removebg-preview.png"/></a></li>
+      <li>
+        <a class="nav-hover" routerLink="category">CATEGORY</a>
+        <div class="mega-box">
+          <div class="content">
+            <div class="row">
+              <a routerLink="asian-recipe"><header>
+                ASIAN
+              </header></a>
+              <ul class="mega-links"></ul>
+            </div>
+            <div class="row">
+              <a routerLink="medit-recipe"><header>
+                MEDITERRANEAN
+              </header></a>
+              <ul class="mega-links"></ul>
+            </div>
+            <div class="row">
+              <a routerLink="italian-recipe"><header>
+                ITALIAN
+              </header></a>
+              <ul class="mega-links"></ul>
+            </div>
+            <div class="row">
+              <a routerLink="dessert-recipe"><header>
+                DESSERT
+              </header></a>
+              <ul class="mega-links"></ul>
+            </div>
+            <div class="row">
+              <a routerLink="other-recipe"><header>
+                OTHER
+              </header></a>
+              <ul class="mega-links"></ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a class="nav-hover" routerLink="browse">BROWSE</a></li>
+    </ul>
+    <div class="welcome side">WELCOME<br>{{ get() }}</div>
+  </div>
+</nav>
+<br><br><br><br><br>
+<div *ngIf="!loader">
+  <router-outlet></router-outlet>
+</div>

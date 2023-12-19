@@ -1,0 +1,80 @@
+<div>
+    <mat-card>
+        <mat-card-title>CONTACT US</mat-card-title>
+        <br><br>
+        <mat-card-content>
+            The Living The Food Life website is happy to be at your service, contact us!
+            <br><br><br><br>
+            Email : shahaf.gressel@gmail.com
+            <br><br><br><br>
+            Phone number: +972 54 617 1474
+            <br><br><br><br>
+            We will reply as fast as we can! In the meantime enjoy the FOOD LIFE!
+            <br><br><br><br>
+            If you are contacting the FOOD LIFE about adding a recipe, you can submit one below :)
+        </mat-card-content>
+    </mat-card>
+</div>
+<br>
+<br>
+<div>
+    <mat-card-title class="overline">SUBMIT A RECIPE</mat-card-title>
+</div>
+<mat-card>
+        <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                <input type="text" matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                <textarea matInput placeholder="Ingredients Instructions"></textarea>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                <textarea matInput placeholder="Preparation Instructions"></textarea>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Cuisine type</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let type of types" [value]="type.value">
+                          {{ type.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                <input type="time" matInput placeholder="Preparation Time" formControlName="time">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Difficulty level</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let level of levels" [value]="level.value">
+                          {{ level.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+
+            <div class="button">
+                <button type="submit" mat-button>SUBMIT</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+<mat-card-title>now we can all enjoy it...</mat-card-title>
+<br><br>
