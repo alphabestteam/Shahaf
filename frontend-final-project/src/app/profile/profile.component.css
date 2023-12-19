@@ -14,3 +14,9 @@
     flex-direction: column;
     gap: 20px;
 }
+
+button {
+    display: flex;
+    justify-content: center;
+    color: #967E76 !important;
+  }

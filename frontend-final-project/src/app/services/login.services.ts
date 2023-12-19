@@ -18,4 +18,8 @@ export class LoginService {
         let data = {'username': username, 'password': password, 'birthday': birthday, 'email': email, 'id': id}
         return this.http.post(url, data)
     }
+
+    getProfile(username: string): Observable<any> {
+        return this.http.get(`http://127.0.0.1:8000/getUser/${username}`)
+    }
 }

@@ -28,6 +28,12 @@ def is_user_exist(request, username):  # check if user exist in db
     user = get_object_or_404(User, username = user_username)
     return Response(status= 200)
 
+@api_view(["GET"])
+def get_user_username(request, username):  # check if user exist in db
+    user_username = username
+    user = get_object_or_404(User, username = user_username)
+    return Response(user, status= 200)
+
 @api_view(["PUT"])
 def add_recipe_favorite(request, id_recipe, id_user):  # add a recipe to favorites
     recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
