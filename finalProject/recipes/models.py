@@ -2,11 +2,10 @@ from django.db import models
 from django import forms 
 
 RECIPE_TYPE = (
-    ('cake', 'Cake'),
-    ('pie', 'Pie'),
-    ('cookie', 'Cookie'),
-    ('cupcakes', 'Cupcakes'),
-    ('pastries', 'Pastries'),
+    ('asian', 'Asian'),
+    ('mediterranean', 'Mediterranean'),
+    ('italian', 'Italian'),
+    ('dessert', 'Dessert'),
     ('other', 'Other')
 )
 

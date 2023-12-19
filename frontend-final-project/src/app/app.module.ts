@@ -41,7 +41,7 @@ const appRoute: Routes = [
   {path: 'dessert-recipe', component: DessertsRecipesComponent},
   {path: 'other-recipe', component: OtherRecipesComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signin', component: SigninComponent},
+  {path: 'profile/signin', component: SigninComponent},
 ]
 
 @NgModule({

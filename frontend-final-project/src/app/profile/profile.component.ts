@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  submit: boolean = false
+
+  isConnected(){
+    return sessionStorage.getItem('username')
+  }
+
   dataRemove(){
     sessionStorage.removeItem('username');
   }

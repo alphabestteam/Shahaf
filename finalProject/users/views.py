@@ -23,9 +23,9 @@ def get_all_recipes_by_id(request, id):  # to get all recipes
     return Response(recipes_serializer.data, status=200)
 
 @api_view(["GET"])
-def is_user_exist(request, id):  # check if user exist in db
-    user_id = id
-    user = get_object_or_404(User, id=user_id)
+def is_user_exist(request, username):  # check if user exist in db
+    user_username = username
+    user = get_object_or_404(User, username = user_username)
     return Response(status= 200)
 
 @api_view(["PUT"])

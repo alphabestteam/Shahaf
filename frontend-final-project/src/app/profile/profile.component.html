@@ -1,1 +1,11 @@
-<button onclick="dataRemove()">LOGOUT</button>
+<div class="container" *ngIf="!isConnected()">
+    <app-login style="border-right: 1px solid #606C5D; padding-right: 140px;" class="column"></app-login><app-signin class="column"></app-signin>
+</div>
+
+<div *ngIf="isConnected()">
+ergfer
+</div>
+
+<!-- <div>
+    <button onclick="dataRemove()">LOGOUT</button>
+</div> -->

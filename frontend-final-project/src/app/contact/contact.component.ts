@@ -13,17 +13,17 @@ interface Types {
 })
 export class ContactComponent {
   types: Types[] = [
-    {value: 'asian-0', viewValue: 'Asian'},
-    {value: 'italian-1', viewValue: 'Italian'},
-    {value: 'mediterranean-2', viewValue: 'Mediterranean'},
-    {value: 'desserts-2', viewValue: 'Desserts'},
-    {value: 'other-2', viewValue: 'Other'},
+    {value: 'asian', viewValue: 'Asian'},
+    {value: 'italian', viewValue: 'Italian'},
+    {value: 'mediterranean', viewValue: 'Mediterranean'},
+    {value: 'desserts', viewValue: 'Desserts'},
+    {value: 'other', viewValue: 'Other'},
   ];
 
   levels: Types[] = [
-    {value: 'beginner-0', viewValue: 'Beginner'},
-    {value: 'intermediate-1', viewValue: 'Intermediate'},
-    {value: 'advanced-2', viewValue: 'Advanced'},
+    {value: 'beginner', viewValue: 'Beginner'},
+    {value: 'intermediate', viewValue: 'Intermediate'},
+    {value: 'advanced', viewValue: 'Advanced'},
   ];
 
   form: FormGroup = new FormGroup({

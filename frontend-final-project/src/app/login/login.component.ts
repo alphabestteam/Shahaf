@@ -1,6 +1,7 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from '../services/login.services';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,28 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  form: FormGroup = new FormGroup({
+    form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
 
-  submit() {
+  submit: boolean = false
+
+  constructor(private loginServ: LoginService) {}
+
+  async onSubmit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      try{
+        const submit_username = this.form.get('username')?.value;
+
+        await this.loginServ.login(submit_username);
+        this.dataSave()
+        this.form.reset();
+      }
+
+      catch (error){
+        console.log('submit failed');
+      }
     }
   }
   @Input() error: string | null = '';

@@ -6,7 +6,11 @@
 
 mat-card{
     background-color: #D7C0AE !important;
-  }F7E6C4
+    border-color: #967E76;
+    border-width: thin;
+    height: 600px;
+    width: 400px;
+  }
 
 .mat-form-field {
     width: 100%;
