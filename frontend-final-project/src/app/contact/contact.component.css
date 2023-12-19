@@ -2,7 +2,7 @@
     text-decoration: underline;
     text-underline-offset: -2em;
     text-decoration-thickness: 1px;
-    text-decoration-color: #606C5D;
+    text-decoration-color: #F1C376;
 }
 
 :host {
@@ -11,27 +11,27 @@
   }
 
 mat-card{
-    background-color: #D7C0AE !important;
+    background-color: #FDFDF6 !important;
     border-radius: 25px;
     margin-top: 40px;
     margin-bottom: 40px;
-    margin-left: 240px;
-    margin-right: 240px;
-    border-color: #967E76;
+    margin: auto;
+    border-color: #F1C376;
     border-width: thin;
+    width: 800px;
     opacity: 80%;
   }
 
 .mat-form-field {
     width: 100%;
     min-width: 300px;
-    color: #967E76;
+    color: #606C5D;
   }
 
 mat-card-title, mat-card-content {
     display: flex;
     justify-content: center;
-    color: #967E76;
+    color: #606C5D;
     margin-top: 20px;
   }
 

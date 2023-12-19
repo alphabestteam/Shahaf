@@ -40,6 +40,11 @@ const appRoute: Routes = [
   {path: 'italian-recipe', component: ItalianRecipesComponent},
   {path: 'dessert-recipe', component: DessertsRecipesComponent},
   {path: 'other-recipe', component: OtherRecipesComponent},
+  {path: 'browse/asian-recipe', component: AsianRecipesComponent},
+  {path: 'browse/medit-recipe', component: MeditRecipesComponent},
+  {path: 'browse/italian-recipe', component: ItalianRecipesComponent},
+  {path: 'browse/dessert-recipe', component: DessertsRecipesComponent},
+  {path: 'browse/other-recipe', component: OtherRecipesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile/signin', component: SigninComponent},
 ]
