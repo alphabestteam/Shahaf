@@ -21,26 +21,41 @@ def get_all_comments_by_id(request, id):  # to get all comments
 @api_view(["GET"])
 def get_all_asian(request):  # to get all asian recipes
     try:
-        asian_recipes = Recipe.objects.filter(type = 'asian')
-        return Response(asian_recipes, status=200)
+        asian_recipes = Recipe.objects.filter(type = 'asian').all()
+        if len(asian_recipes) > 0:
+            asian_serializer = RecipeSerializer(asian_recipes, many=True)
+            return Response(asian_serializer.data, status=200)
+        else:
+            print(asian_recipes)
+            return Response(asian_recipes, status=200)
     except:
-        return Response(asian_recipes.error, status=404)
+        return Response('No asian', status=404)
     
 @api_view(["GET"])
 def get_all_medit(request):  # to get all mediterranean recipes
     try:
-        medit_recipes = Recipe.objects.filter(type = 'mediterranean')
-        return Response(medit_recipes, status=200)
+        medit_recipes = Recipe.objects.filter(type = 'mediterranean').all()
+        if len(medit_recipes) > 0:
+            medit_serializer = RecipeSerializer(medit_recipes, many=True)
+            return Response(medit_serializer.data, status=200)
+        else:
+            print(medit_recipes)
+            return Response(medit_recipes, status=200)
     except:
-        return Response(medit_recipes.error, status=404)
+        return Response('No mediterranean', status=404)
     
 @api_view(["GET"])
-def get_all_italian(request):  # to get all italian recipes
+def get_all_italian(request):  # to get all italian recipes 
     try:
-        italian_recipes = Recipe.objects.filter(type = 'italian')
-        return Response(italian_recipes, status=200)
+        italian_recipes = Recipe.objects.filter(type = 'italian').all()
+        if len(italian_recipes) > 0:
+            italian_serializer = RecipeSerializer(italian_recipes, many=True)
+            return Response(italian_serializer.data, status=200)
+        else:
+            print(italian_recipes)
+            return Response(italian_recipes, status=200)
     except:
-        return Response(italian_recipes.error, status=404)
+        return Response('No italian', status=404)
     
 @api_view(['GET'])
 def get_all_dessert(request):  # to get all dessert recipes
@@ -58,7 +73,12 @@ def get_all_dessert(request):  # to get all dessert recipes
 @api_view(["GET"])
 def get_all_other(request):  # to get all other recipes
     try:
-        other_recipes = Recipe.objects.filter(type = 'other')
-        return Response(other_recipes, status=200)
+        other_recipes = Recipe.objects.filter(type = 'other').all()
+        if len(other_recipes) > 0:
+            other_serializer = RecipeSerializer(other_recipes, many=True)
+            return Response(other_serializer.data, status=200)
+        else:
+            print(other_recipes)
+            return Response(other_recipes, status=200)
     except:
-        return Response(other_recipes.error, status=404)
+        return Response('No other', status=404)

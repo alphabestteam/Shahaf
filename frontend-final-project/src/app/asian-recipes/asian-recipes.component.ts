@@ -7,28 +7,29 @@ import { recipesService } from '../services/recipes.services';
   styleUrls: ['./asian-recipes.component.css']
 })
 export class AsianRecipesComponent {
-  asianRecipes = []
+  asianRecipes: any = []
 
-  constructor(private asianService: recipesService) {}
+  constructor(private asianrecipes: recipesService) {}
 
-  async getAsianRecipes() {
+  async getAllRecipes() {
     try{
-      let res = await this.asianService.getAsian();
+      let res = await this.asianrecipes.getDessert();
       res.subscribe((data:any) => {
-        this.getAsianRecipes = data
+        this.asianRecipes = data
+        console.log(this.asianRecipes)
       });
     }
 
     catch (error){
-      console.log('get failed');
+      console.log('submit failed');
     }
   }
 
   ngOnInit(): void {
-    this.getAsianRecipes();
+    this.getAllRecipes();
 
     setInterval(() => {
-      this.getAsianRecipes();
-    }, 100000);
+      this.getAllRecipes();
+    }, 10000);
   }
 }
