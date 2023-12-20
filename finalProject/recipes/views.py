@@ -6,7 +6,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
@@ -42,13 +42,18 @@ def get_all_italian(request):  # to get all italian recipes
     except:
         return Response(italian_recipes.error, status=404)
     
-@api_view(["GET"])
+@api_view(['GET'])
 def get_all_dessert(request):  # to get all dessert recipes
     try:
-        dessert_recipes = Recipe.objects.filter(type = 'dessert')
-        return Response(dessert_recipes, status=200)
+        dessert_recipes = Recipe.objects.filter(type = 'dessert').all()
+        if len(dessert_recipes) > 0:
+            dessert_serializer = RecipeSerializer(dessert_recipes, many=True)
+            return Response(dessert_serializer.data, status=200)
+        else:
+            print(dessert_recipes)
+            return Response(dessert_recipes, status=200)
     except:
-        return Response(dessert_recipes.error, status=404)
+        return Response('No desserts', status=404)
     
 @api_view(["GET"])
 def get_all_other(request):  # to get all other recipes

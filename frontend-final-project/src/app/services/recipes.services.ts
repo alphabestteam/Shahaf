@@ -14,23 +14,23 @@ export class recipesService {
     }
 
     getAsian(): Observable<any> {
-        return this.http.get(`http://127.0.0.1:8000/recipes/getAsian/`)
+        return this.http.get(`http://127.0.0.1:8000/recipes/getAsian`)
     }
 
     getMedit(): Observable<any> {
-        return this.http.get(`http://127.0.0.1:8000/recipes/getMedit/`)
+        return this.http.get(`http://127.0.0.1:8000/recipes/getMedit`)
     }
 
     getItalian(): Observable<any> {
-        return this.http.get(`http://127.0.0.1:8000/recipes/getItalian/`)
+        return this.http.get(`http://127.0.0.1:8000/recipes/getItalian`)
     }
 
     getDessert(): Observable<any> {
-        return this.http.get(`http://127.0.0.1:8000/recipes/getDessert/`)
+        return this.http.get(`http://127.0.0.1:8000/recipes/getDessert`)
     }
 
     getOther(): Observable<any> {
-        return this.http.get(`http://127.0.0.1:8000/recipes/getOther/`)
+        return this.http.get(`http://127.0.0.1:8000/recipes/getOther`)
     }
 
     submit(name: string, ingredients:string, preparation:string, type:string, time: string, level:string): Observable<any> {
