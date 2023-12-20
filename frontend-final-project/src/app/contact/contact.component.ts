@@ -1,5 +1,6 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { recipesService } from '../services/recipes.services';
 
 interface Types {
   value: string;
@@ -26,14 +27,37 @@ export class ContactComponent {
     {value: 'advanced', viewValue: 'Advanced'},
   ];
 
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+  form: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    ingredients: ['', Validators.required],
+    preparation: ['', Validators.required],
+    cuisine: new FormControl(''),
+    time: ['', Validators.required],
+    level: new FormControl(''),
   });
 
-  submit() {
+  constructor(private recipeService: recipesService, private fb: FormBuilder) {}
+
+  async onSubmit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      try{
+        let name = this.form.get('name')?.value,
+        ingredients = this.form.get('ingredients')?.value,
+        preparation = this.form.get('preparation')?.value,
+        cuisine = this.form.get('cuisine')?.value,
+        time = this.form.get('time')?.value,
+        level = this.form.get('level')?.value
+
+        let res = await this.recipeService.submit(name, ingredients, preparation, cuisine, time, level);
+        res.subscribe((data:any) => {
+
+          this.form.reset();
+        });
+      }
+
+      catch (error){
+        console.log('submit failed');
+      }
     }
   }
   @Input() error: string | null = '';

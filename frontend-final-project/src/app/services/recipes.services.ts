@@ -32,4 +32,10 @@ export class recipesService {
     getOther(): Observable<any> {
         return this.http.get(`http://127.0.0.1:8000/recipes/getOther/`)
     }
+
+    submit(name: string, ingredients:string, preparation:string, type:string, time: string, level:string): Observable<any> {
+        let url = 'http://127.0.0.1:8000/recipes/'
+        let data = {name, ingredients, preparation, type, time, level}
+        return this.http.post(url, data)
+    }
 }
