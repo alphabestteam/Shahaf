@@ -1,75 +1,10 @@
-<div *ngIf="otherRecipes?.length > 0">
-    <div class="row-img">
-        <img style="height: 180px;" class="column-img" src="../../assets/images/other/other1.jpeg"/>
-        <img style="height: 180px;" class="column-img" src="../../assets/images/other/other2.jpeg"/>
-        <img style="height: 180px;" class="column-img" src="../../assets/images/other/other3.jpeg"/>
-        <img style="height: 180px;" class="column-img" src="../../assets/images/other/other4.avif"/>
-    </div>
-    <div class="gallery" *ngFor="let recipe of otherRecipes">
-        <mat-card>
-            <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
-            <br><br>
-            <mat-card-title class="overline">ingredients :</mat-card-title>
-            <mat-card-content>{{recipe.ingredients}}</mat-card-content>
-            <br><br>
-            <mat-card-title class="overline">preparation :</mat-card-title>
-            <mat-card-content>{{recipe.preparation}}</mat-card-content>
-            <br><br>
-            <mat-card-title class="overline">type :</mat-card-title>
-            <mat-card-content>{{recipe.type}}</mat-card-content>
-            <br><br>
-            <mat-card-title class="overline">preparation time :</mat-card-title>
-            <mat-card-content>{{recipe.time}}</mat-card-content>
-            <br><br>
-            <mat-card-title class="overline">level :</mat-card-title>
-            <mat-card-content>{{recipe.level}}</mat-card-content>
-            <br><br>
-            <mat-card-title class="overline">avg starts :</mat-card-title>
-            <mat-card-content *ngIf="recipe.comments_number != null">{{recipe.sum_stars / recipe.comments_number}}</mat-card-content>
-            <mat-card-content *ngIf="recipe.comments_number == null">No rating yet..</mat-card-content>
-        </mat-card> 
-        <div class="column"> 
-            <mat-card class="comment">
-                <mat-card-content>
-                <form [formGroup]="form" (ngSubmit)="onSubmit(recipe.recipe_id)">
-                    <p>
-                        <mat-form-field>
-                        <input type="number" matInput placeholder="Rating" formControlName="rating">
-                        </mat-form-field>
-                    </p>
-        
-                    <p>
-                        <mat-form-field>
-                        <input type="string" matInput placeholder="Text" formControlName="text">
-                        </mat-form-field>
-                    </p>
-                    <br>
-                    <div class="button">
-                        <button mat-button [disabled]='!username' type="submit">Submit comment :)</button>
-                    </div>
-        
-                </form>
-                </mat-card-content>
-            </mat-card>
-            <div style="overflow-y: scroll; height: 400px;" *ngIf="recipe.recipe_comments?.length != 0">
-                <div *ngFor="let comment_id of recipe.recipe_comments">
-                    <app-comment [recipe_comment_id] = 'comment_id' [recipe_id] = 'recipe.recipe_id'></app-comment>
-                </div>
-            </div>
-            <div *ngElse>
-                <mat-card>
-                    No comments yet...
-                </mat-card>
-            </div>
-        </div>    
-    </div>
+<div class="row-img">
+    <img style="height: 180px;" class="column-img" src="../../assets/images/other/other1.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/other/other2.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/other/other3.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/other/other4.avif"/>
 </div>
-<div *ngIf="otherRecipes?.length === 0">
-    <mat-card>
-        <mat-card-title>No recipes yet ...</mat-card-title>
-        <br>
-    </mat-card>
-</div>
+<app-recipe [recipes] = 'otherRecipes'></app-recipe>
 <div class="row-img">
     <img style="height: 180px;" class="column-img" src="../../assets/images/other/other4.jpeg"/>
     <img style="height: 180px;" class="column-img" src="../../assets/images/other/other6.jpeg"/>

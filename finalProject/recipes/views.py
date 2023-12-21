@@ -29,7 +29,7 @@ def get_all_asian(request):  # to get all asian recipes
             print(asian_recipes)
             return Response(asian_recipes, status=200)
     except:
-        return Response('No asian', status=404)
+        return Response('No', status=404)
     
 @api_view(["GET"])
 def get_all_medit(request):  # to get all mediterranean recipes
@@ -42,7 +42,7 @@ def get_all_medit(request):  # to get all mediterranean recipes
             print(medit_recipes)
             return Response(medit_recipes, status=200)
     except:
-        return Response('No mediterranean', status=404)
+        return Response('No', status=404)
     
 @api_view(["GET"])
 def get_all_italian(request):  # to get all italian recipes 
@@ -55,7 +55,7 @@ def get_all_italian(request):  # to get all italian recipes
             print(italian_recipes)
             return Response(italian_recipes, status=200)
     except:
-        return Response('No italian', status=404)
+        return Response('No', status=404)
     
 @api_view(['GET'])
 def get_all_dessert(request):  # to get all dessert recipes
@@ -68,7 +68,7 @@ def get_all_dessert(request):  # to get all dessert recipes
             print(dessert_recipes)
             return Response(dessert_recipes, status=200)
     except:
-        return Response('No desserts', status=404)
+        return Response('No', status=404)
     
 @api_view(["GET"])
 def get_all_other(request):  # to get all other recipes
@@ -81,4 +81,4 @@ def get_all_other(request):  # to get all other recipes
             print(other_recipes)
             return Response(other_recipes, status=200)
     except:
-        return Response('No other', status=404)
+        return Response('No', status=404)

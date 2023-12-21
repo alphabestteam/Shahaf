@@ -16,4 +16,8 @@ export class commentService {
     postComment(username: any, recipe_id:number, text: string, stars: number): Observable<any> {
         return this.http.post(`http://127.0.0.1:8000/comments/`, {'username': username, 'recipe_id': recipe_id, 'text': text, 'stars': stars})
     }
+
+    addFav(username: any, recipe_id:number): Observable<any> {
+        return this.http.put(`http://127.0.0.1:8000/users/addfav/${recipe_id}/${username}/`, {})
+    }
 }

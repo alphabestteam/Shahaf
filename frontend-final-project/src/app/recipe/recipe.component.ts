@@ -16,11 +16,18 @@ export class RecipeComponent {
 
   @Input() recipes: any
 
-  recipe_id: any
+  // recipe_id: any
 
   username = sessionStorage.getItem('username');
 
   constructor(private comment_service: commentService) {}
+
+  async addFav(recipe_id: any){
+    let res = await this.comment_service.addFav(this.username, recipe_id);
+        res.subscribe((data:any) => {
+          alert('Recipe was added to favorites')
+        });
+  }
 
   async onSubmit(recipe_id: any){
     if (this.form.valid) {
