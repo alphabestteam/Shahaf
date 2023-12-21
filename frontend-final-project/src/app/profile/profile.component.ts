@@ -36,10 +36,11 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('username')
     this.getUser();
 
     setInterval(() => {
       this.getUser();
-    }, 100000);
+    }, 10000);
   }
 }

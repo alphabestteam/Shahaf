@@ -38,7 +38,7 @@
 
 
             <mat-form-field>
-            <textarea matInput placeholder="Ingredients Instructions" formControlName="ingredients"></textarea>
+            <textarea matInput placeholder="Ingredients" formControlName="ingredients"></textarea>
             </mat-form-field>
             <br>
             <div *ngIf="form.get('ingredients')!.hasError('required')">

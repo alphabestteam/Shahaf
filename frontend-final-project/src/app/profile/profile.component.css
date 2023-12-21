@@ -35,6 +35,7 @@ mat-card{
     opacity: 80%;
     border-color: #F1C376;
     border-width: thin;
+    width: 500px;
   }
 
 mat-card-title {

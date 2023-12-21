@@ -30,6 +30,6 @@ export class AllRecipesComponent {
 
     setInterval(() => {
       this.getAllRecipes();
-    }, 100000);
+    }, 10000);
   }
 }

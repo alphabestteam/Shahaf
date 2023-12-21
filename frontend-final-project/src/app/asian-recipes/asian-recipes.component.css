@@ -44,12 +44,22 @@ mat-card-title, mat-card-content {
 
 .gallery{
   display: flex;
-  gap: 20px;
-  margin: auto;
+  margin-right: 100px;
+  justify-content: space-between;
 }
 
 .column{
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.comment{
+  width: 400px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  color: #967E76 !important;
 }

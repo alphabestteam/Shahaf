@@ -5,8 +5,8 @@
   }
 
 mat-card{
-    background-color: #D7C0AE !important;
-    border-color: #967E76;
+    background-color: #FDFDF6 !important;
+    border-color: #F1C376;
     border-width: thin;
     height: 600px;
     width: 400px;
@@ -15,13 +15,13 @@ mat-card{
 .mat-form-field {
     width: 100%;
     min-width: 300px;
-    color: #967E76;
+    color: #606C5D;
   }
 
 mat-card-title, mat-card-content {
     display: flex;
     justify-content: center;
-    color: #967E76;
+    color: #606C5D;
     margin-top: 20px;
   }
 

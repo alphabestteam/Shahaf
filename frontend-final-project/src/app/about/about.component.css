@@ -11,6 +11,7 @@ mat-card{
     opacity: 80%;
     border-color: #F1C376;
     border-width: thin;
+    padding: 60px;
   }
 
 mat-card-title {
@@ -36,4 +37,10 @@ mat-card-title, mat-card-content {
     text-underline-offset: -2.5em;
     text-decoration-thickness: 1px;
     text-decoration-color: #F1C376;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  color: #967E76 !important;
 }

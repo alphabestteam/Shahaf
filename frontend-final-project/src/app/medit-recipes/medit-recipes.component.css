@@ -41,3 +41,25 @@ mat-card-title, mat-card-content {
     text-decoration-thickness: 1px;
     text-decoration-color: #F1C376;
 }
+
+gallery{
+  display: flex;
+  margin-right: 100px;
+  justify-content: space-between;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment{
+  width: 400px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  color: #967E76 !important;
+}

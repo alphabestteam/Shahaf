@@ -60,7 +60,7 @@ def get_all_italian(request):  # to get all italian recipes
 @api_view(['GET'])
 def get_all_dessert(request):  # to get all dessert recipes
     try:
-        dessert_recipes = Recipe.objects.filter(type = 'dessert').all()
+        dessert_recipes = Recipe.objects.filter(type = 'desserts').all()
         if len(dessert_recipes) > 0:
             dessert_serializer = RecipeSerializer(dessert_recipes, many=True)
             return Response(dessert_serializer.data, status=200)
