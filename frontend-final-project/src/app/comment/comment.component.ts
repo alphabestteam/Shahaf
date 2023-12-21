@@ -32,8 +32,10 @@ export class CommentComponent {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit($event: any): void {
     this.getAllRecipes();
+
+    this.recipe_comment_id = $event
 
     setInterval(() => {
       this.getAllRecipes();
