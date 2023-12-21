@@ -41,6 +41,6 @@ export class ProfileComponent {
 
     setInterval(() => {
       this.getUser();
-    }, 10000);
+    }, 1000);
   }
 }

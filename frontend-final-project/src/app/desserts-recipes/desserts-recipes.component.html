@@ -1,4 +1,10 @@
 <div *ngIf="dessertRecipes?.length > 0">
+    <div class="row-img">
+        <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts1.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts6.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts3.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts4.jpeg"/>
+    </div>
     <div class="gallery" *ngFor="let recipe of dessertRecipes">
         <mat-card>
             <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
@@ -63,5 +69,11 @@
         <mat-card-title>No recipes yet ...</mat-card-title>
         <br>
     </mat-card>
+</div>
+<div class="row-img">
+    <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts2.png"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts5.webp"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts6.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts7.jpeg"/>
 </div>
 <br><br><br><br>

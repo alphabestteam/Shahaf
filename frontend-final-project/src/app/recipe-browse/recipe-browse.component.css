@@ -14,6 +14,10 @@
     margin-bottom: 2rem;
     text-align: center;
     color: #606C5D;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #F1C376;
 }
 
 .photo-gallery{

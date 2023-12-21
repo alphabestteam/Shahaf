@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.services';
 
 @Component({
@@ -9,14 +9,14 @@ import { LoginService } from '../services/login.services';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    form: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
   });
 
   submit: boolean = false
 
-  constructor(private loginServ: LoginService) {}
+  constructor(private loginServ: LoginService, private fb: FormBuilder) {}
 
   async onSubmit() {
     if (this.form.valid) {
@@ -42,8 +42,6 @@ export class LoginComponent {
     }
   }
   @Input() error: string | null = '';
-
-  @Output() submitEM = new EventEmitter();
 
   dataSave(){
     let username = this.form.value.username

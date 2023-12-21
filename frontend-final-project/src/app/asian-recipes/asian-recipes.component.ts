@@ -23,7 +23,7 @@ export class AsianRecipesComponent {
 
   async getAllRecipes() {
     try{
-      let res = await this.asianrecipes.getDessert();
+      let res = await this.asianrecipes.getAsian();
       res.subscribe((data:any) => {
         this.asianRecipes = data
         console.log(this.asianRecipes)

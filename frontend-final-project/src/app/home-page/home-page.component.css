@@ -52,8 +52,19 @@
 
 .btn{
     width: 30px;
+    height: 40px;
+    border-color: #F1C376;
+    border-width: thin;
     text-align: center;
-    background-color: #FFF4F4;
-    color: #606C5D;
+    background-color: #F1C376;
+    color: #FFF4F4;
     border-color: #606C5D;
+}
+
+button{
+    width: 30px;
+    height: 40px;
+    border-color: #F1C376;
+    border-width: thin;
+    color: #FFF4F4;
 }

@@ -63,3 +63,24 @@ button {
   justify-content: center;
   color: #967E76 !important;
 }
+
+.column-img{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  margin: auto;
+
+}
+
+.row-img{
+  display: flex;
+  gap: 20px;
+  max-width: 1224px;
+  width: 100%;
+  margin: auto;
+  padding: 10px 0;
+}

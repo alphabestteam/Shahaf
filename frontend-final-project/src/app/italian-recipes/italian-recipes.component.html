@@ -1,4 +1,10 @@
 <div *ngIf="italianRecipes?.length > 0">
+    <div class="row-img">
+        <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian1.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian2.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian3.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian4.webp"/>
+    </div>
     <div class="gallery" *ngFor="let recipe of italianRecipes">
         <mat-card>
             <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
@@ -63,6 +69,12 @@
         <mat-card-title>No recipes yet ...</mat-card-title>
         <br>
     </mat-card>
+</div>
+<div class="row-img">
+    <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian5.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian6.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian7.webp"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian8.png"/>
 </div>
 <br><br><br><br>
 

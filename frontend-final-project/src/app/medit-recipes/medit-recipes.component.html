@@ -1,4 +1,10 @@
 <div *ngIf="meditRecipes?.length > 0">
+    <div class="row-img">
+        <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit1.webp"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit2.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit3.webp"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit4.jpeg"/>
+    </div>
     <div class="gallery" *ngFor="let recipe of meditRecipes">
         <mat-card>
             <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
@@ -63,6 +69,12 @@
         <mat-card-title>No recipes yet ...</mat-card-title>
         <br>
     </mat-card>
+</div>
+<div class="row-img">
+    <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit5.webp"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit6.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit7.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit8.jpeg"/>
 </div>
 <br><br><br><br>
 

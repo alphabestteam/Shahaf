@@ -1,4 +1,10 @@
 <div *ngIf="recipes.length != 'No'">
+    <div class="row-img">
+        <img style="height: 180px;" class="column-img" src="../../assets/images/asian8.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/italian/italian4.webp"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts1.jpeg"/>
+        <img style="height: 180px;" class="column-img" src="../../assets/images/other/other8.png"/>
+    </div>
     <div class="gallery" *ngFor="let recipe of recipes">
         <mat-card class="column">
             <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
@@ -60,5 +66,11 @@
 </div>
 <div *ngIfElse>
     No recipes yet ...
+</div>
+<div class="row-img">
+    <img style="height: 180px;" class="column-img" src="../../assets/images/medit/medit3.webp"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/desserts/desserts6.jpeg"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/other/other7.png"/>
+    <img style="height: 180px;" class="column-img" src="../../assets/images/asian1.png"/>
 </div>
 <br><br><br><br>

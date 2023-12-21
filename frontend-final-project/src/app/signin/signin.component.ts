@@ -1,5 +1,5 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.services';
 
 @Component({
@@ -10,15 +10,15 @@ import { LoginService } from '../services/login.services';
 
 
 export class SigninComponent {
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    birthday: new FormControl(''),
-    email: new FormControl(''),
-    id: new FormControl(''),
+  form: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    birthday: ['', Validators.required],
+    email: ['', Validators.required],
+    id: ['', Validators.required],
   });
 
-  constructor(private signinService: LoginService) {}
+  constructor(private signinService: LoginService, private fb: FormBuilder) {}
 
   async onSubmit() {
     if (this.form.valid) {

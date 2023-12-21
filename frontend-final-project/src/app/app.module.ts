@@ -26,11 +26,13 @@ import { OtherRecipesComponent } from './other-recipes/other-recipes.component';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { recipeGuard } from './components.guard'
+import { authGuard } from './auth.guard';
 
 const appRoute: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
-  {path: 'contact', component: ContactComponent},
+  {path: 'contact', component: ContactComponent, canActivate: [authGuard]},
   {path: 'home', component: HomePageComponent},
   {path: 'category', component: AllRecipesComponent},
   {path: 'browse', component: RecipeBrowseComponent},
@@ -47,6 +49,10 @@ const appRoute: Routes = [
   {path: 'browse/other-recipe', component: OtherRecipesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile/signin', component: SigninComponent},
+  {path: 'profile/signin', component: SigninComponent},
+
+  {path: 'child-recipe', component: RecipeComponent, canActivate: [recipeGuard]},
+  // {path: 'child-comment', component: RecipeComponent, canActivate: [authGuard]},
 ]
 
 @NgModule({
