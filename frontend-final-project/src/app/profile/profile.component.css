@@ -31,7 +31,7 @@ button {
 mat-card{
     background-color: #FDFDF6 !important;
     border-radius: 25px;
-    margin: 40px;
+    margin: auto;
     opacity: 80%;
     border-color: #F1C376;
     border-width: thin;

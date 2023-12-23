@@ -13,7 +13,6 @@ class RecipeSerializer(serializers.ModelSerializer):
         instance.type = validated_data.get('type', instance.type)
         instance.time = validated_data.get('time', instance.time)
         instance.level = validated_data.get('level', instance.level)
-        instance.avg_starts = validated_data.get('avg_starts', instance.avg_starts)
         if instance.recipe_comments is not None:
             instance.recipe_comments.set(validated_data.get('recipe_comments', instance.recipe_comments))
         else:

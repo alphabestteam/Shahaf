@@ -39,6 +39,7 @@ export class RecipeComponent {
         let res = await this.comment_service.postComment(this.username, recipe_id, text, rating);
         res.subscribe((data:any) => {
           this.form.reset();
+          alert("Thank you for commenting!")
         });
 
         (error: any) => {

@@ -50,7 +50,7 @@ export class ContactComponent {
 
         let res = await this.recipeService.submit(name, ingredients, preparation, cuisine, time, level);
         res.subscribe((data:any) => {
-
+          alert('Thank you for submitting a recipe!')
           this.form.reset();
         });
       }

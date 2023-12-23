@@ -28,6 +28,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { recipeGuard } from './components.guard'
 import { authGuard } from './auth.guard';
+import { FavRecipeComponent } from './fav-recipe/fav-recipe.component';
 
 const appRoute: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -52,7 +53,6 @@ const appRoute: Routes = [
   {path: 'profile/signin', component: SigninComponent},
 
   {path: 'child-recipe', component: RecipeComponent, canActivate: [recipeGuard]},
-  // {path: 'child-comment', component: RecipeComponent, canActivate: [authGuard]},
 ]
 
 @NgModule({
@@ -73,6 +73,7 @@ const appRoute: Routes = [
     OtherRecipesComponent,
     AllRecipesComponent,
     HomePageComponent,
+    FavRecipeComponent,
   ],
   imports: [
     BrowserModule,

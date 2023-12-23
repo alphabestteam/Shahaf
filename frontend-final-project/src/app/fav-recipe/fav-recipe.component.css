@@ -1,0 +1,44 @@
+.overline{
+    text-decoration: underline;
+    text-underline-offset: -1.5em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #F1C376;
+}
+
+:host {
+    /* display: flex; */
+    justify-content: center;
+    /* margin: 100px 0px; */
+  }
+
+mat-card{
+    background-color: #FDFDF6 !important;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    opacity: 80%;
+    border-color: #F1C376;
+    border-width: thin;
+    width: 1000px;
+    padding: 40px;
+    justify-content: center;
+  }
+
+mat-card-title {
+    font-size: 28px;
+    opacity: 1.0 !important;
+}
+
+mat-card-content {
+    font-size: 20px;
+    opacity: 1.0 !important;
+}
+
+mat-card-title, mat-card-content {
+    display: flex;
+    justify-content: center;
+    color: #606C5D;
+    margin-top: 20px;
+    text-align: center;
+  }

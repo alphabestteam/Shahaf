@@ -19,8 +19,8 @@
             <mat-card-content>{{recipe.level}}</mat-card-content>
             <br><br>
             <mat-card-title class="overline">rating :</mat-card-title>
-            <mat-card-content *ngIf="recipe.comments_number != null">{{recipe.sum_stars / recipe.comments_number}}</mat-card-content>
-            <mat-card-content *ngIf="recipe.comments_number == null">No rating yet..</mat-card-content>
+            <mat-card-content *ngIf="recipe.comments_number >= 1">{{recipe.sum_stars / recipe.comments_number}}</mat-card-content>
+            <mat-card-content *ngIf="recipe.comments_number == 0">No rating yet..</mat-card-content>
         </mat-card>  
         <div class="column"> 
             <img id="fav" (click)="addFav(recipe.recipe_id)" style="height: 40px; width: 40px; margin-right: auto; margin-left: auto; margin-top: 80px;" src="../../assets/images/3-removebg-preview (1).png">

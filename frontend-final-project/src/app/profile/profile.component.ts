@@ -11,6 +11,8 @@ export class ProfileComponent {
 
   profile: any = null;
 
+  recipe: any = null;
+
   username = sessionStorage.getItem('username')
 
   constructor(private profileService: LoginService) {}

@@ -28,6 +28,13 @@
             </mat-card-content>
         </mat-card>
     </div>
+    <br><br><br>
+    <div *ngIf="profile.my_recipes?.length != 0">
+        <mat-card-title class="overline">My Favorite Recipes</mat-card-title>
+        <div *ngFor="let recipe_id of profile.my_recipes">
+            <app-fav-recipe [recipe_id] = 'recipe_id'></app-fav-recipe>
+        </div>
+    </div>
     <br><br><br><br>
     <div>
         <button type="submit" mat-button (click)="dataRemove()">LOGOUT</button>
