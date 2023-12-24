@@ -42,3 +42,19 @@ mat-card-title, mat-card-content {
     margin-top: 20px;
     text-align: center;
   }
+
+.gallery-item{
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  max-width: 900px;
+  padding: 0px;
+}
+
+.item{
+  width: 20%;
+  height: 200px;
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-content: center;
+}

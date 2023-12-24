@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { recipeGuard } from './components.guard'
 import { authGuard } from './auth.guard';
 import { FavRecipeComponent } from './fav-recipe/fav-recipe.component';
+import { RatingModule, RatingConfig } from 'ngx-bootstrap/rating';
 
 const appRoute: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -86,11 +87,14 @@ const appRoute: Routes = [
     MatCardModule,
     MatInputModule,
     HttpClientModule,
+    RatingModule.forRoot(),
     MatButtonModule,
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoute),
 
   ],
-  providers: [],
+  providers: [
+    RatingConfig
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

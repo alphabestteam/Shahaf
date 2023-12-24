@@ -11,12 +11,12 @@
 <br><br><br>
 <div style="font-weight: bold;" class="overline">SOME OF OUR CONTENT</div>
 <br><br>
-<div class="row">
+<div class="row-img">
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/other2.jpeg"/>
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/desset4.jpeg"/>
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/asiancuisine1.webp"/>
 </div>
-<div class="row">
+<div class="row-img">
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/other3.jpg"/>
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/italian2.jpeg"/>
     <img style="height: 180px;" class="column" src="../../assets/images/photo-gallery/dessert2.jpeg"/>
@@ -25,15 +25,15 @@
 <div style="font-weight: bold;" class="overline">HAPPY USERS</div>
 <br><br>
 <div class="container">
-    <button mat-button class="btn column" (click)="getPreRandomQuote()"> <</button>
+    <button mat-button style="color: #FFF4F4;" class="btn column" (click)="getPreRandomQuote()"> <</button>
     <div class="column">
-        <p>
+        <p style="margin-left: 20px; margin-right: 20px;">
             {{quote.quote}}
             <br><br>
             - {{quote.name}}
         </p>
     </div>
-    <button mat-button class="btn column" (click)="getNextRandomQuote()"> ></button>
+    <button mat-button style="color: #FFF4F4;" class="btn column" (click)="getNextRandomQuote()"> ></button>
 </div>
 <br><br><br>
 <h6 class="overline">Copyright © 2004 - 2023 <span class="underline">Built by Shahaf Gressel</span> Limited. All rights reserved.<br></h6>

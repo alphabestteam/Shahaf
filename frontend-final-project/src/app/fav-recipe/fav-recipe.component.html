@@ -1,22 +1,28 @@
 <mat-card>
     <mat-card-title style="font-size: 35px;">{{recipe.name}}</mat-card-title>
-    <br><br>
+    <mat-card-content class="gallery-item">
+        <mat-card class="column item">
+            <mat-card-title>type</mat-card-title>
+            <mat-card-content>{{recipe.type}}</mat-card-content>
+        </mat-card>
+        <mat-card class="column item">
+            <mat-card-title>preparation time</mat-card-title>
+            <mat-card-content>{{recipe.time}}</mat-card-content>
+        </mat-card>
+        <mat-card class="column item">
+            <mat-card-title>level</mat-card-title>
+            <mat-card-content>{{recipe.level}}</mat-card-content>
+        </mat-card>
+        <mat-card class="column item">
+            <mat-card-title>rating</mat-card-title>
+            <mat-card-content *ngIf="recipe.comments_number >= 1"><rating [max]="max" [(ngModel)]="recipe.sum_stars / recipe.comments_number" [readonly]="true"></rating></mat-card-content>
+            <mat-card-content *ngIf="recipe.comments_number == 0">No rating yet..</mat-card-content>
+        </mat-card>
+    </mat-card-content>
     <mat-card-title class="overline">ingredients :</mat-card-title>
     <mat-card-content>{{recipe.ingredients}}</mat-card-content>
     <br><br>
     <mat-card-title class="overline">preparation :</mat-card-title>
     <mat-card-content>{{recipe.preparation}}</mat-card-content>
     <br><br>
-    <mat-card-title class="overline">type :</mat-card-title>
-    <mat-card-content>{{recipe.type}}</mat-card-content>
-    <br><br>
-    <mat-card-title class="overline">preparation time :</mat-card-title>
-    <mat-card-content>{{recipe.time}}</mat-card-content>
-    <br><br>
-    <mat-card-title class="overline">level :</mat-card-title>
-    <mat-card-content>{{recipe.level}}</mat-card-content>
-    <br><br>
-    <mat-card-title class="overline">rating :</mat-card-title>
-    <mat-card-content *ngIf="recipe.comments_number >= 1">{{recipe.sum_stars / recipe.comments_number}}</mat-card-content>
-    <mat-card-content *ngIf="recipe.comments_number == 0">No rating yet..</mat-card-content>
 </mat-card>  

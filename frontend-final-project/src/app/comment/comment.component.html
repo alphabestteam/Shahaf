@@ -1,6 +1,6 @@
 
 <mat-card>
-    <mat-card-content>rating: {{comment.stars}} / 5</mat-card-content>
+    <mat-card-content class="ratings"><rating [max]="max" [(ngModel)]="comment.stars" [readonly]="true"></rating></mat-card-content>
     <br>
     <mat-card-content class="overline">{{comment.text}}</mat-card-content>
     <mat-card-content>- {{comment.username}} -</mat-card-content>

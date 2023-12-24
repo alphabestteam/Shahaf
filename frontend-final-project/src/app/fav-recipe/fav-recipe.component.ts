@@ -7,6 +7,13 @@ import { recipesService } from '../services/recipes.services';
   styleUrls: ['./fav-recipe.component.css']
 })
 export class FavRecipeComponent {
+
+  rate: number = 1;
+
+  max: number = 5;
+  
+  isReadOnly: boolean = true;
+  
   recipe: any = null
 
   @Input() recipe_id: any = null

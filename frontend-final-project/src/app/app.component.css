@@ -91,25 +91,25 @@ nav .wrapper{
     height: 150px;
 }
 
-.content .row{
+.content .row-title{
     width: calc(25% -30px);
     line-height: 45px;
 }
 
-.content .row .mega-links{
+.content .row-title .mega-links{
     margin-left: -40px;
     border-left: 1px solid #606C5D;
 }
 
-.row .mega-links li{
+.row-title .mega-links li{
     padding: 0 20px;
 }
 
-.row .mega-links li a{
+.row-title .mega-links li a{
     padding: 0 20px;
 }
 
-.row header{
+.row-title header{
     font-weight: bold;
 }
 

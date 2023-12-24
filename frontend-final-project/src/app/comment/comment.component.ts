@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { commentService } from '../services/comment.services';
 import { FormGroup, FormControl } from '@angular/forms';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @Component({
   selector: 'app-comment',
@@ -8,6 +9,12 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent {
+
+  rate: number = 1;
+
+  max: number = 5;
+  
+  isReadOnly: boolean = true;
 
   @Input() recipe_comment_id: any
 

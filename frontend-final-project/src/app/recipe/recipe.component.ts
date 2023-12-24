@@ -9,6 +9,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RecipeComponent {
 
+  value!: number;
+
+  rate: number = 1;
+
+  max: number = 5;
+  
+  isReadOnly: boolean = true;
+
   form: FormGroup = new FormGroup({
     rating: new FormControl(''),
     text: new FormControl(''),
