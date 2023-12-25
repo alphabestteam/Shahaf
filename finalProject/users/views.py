@@ -40,7 +40,6 @@ def get_user_username(request, username):  # check if user exist in db
 
 @api_view(["PUT"])
 def add_recipe_favorite(request, id_recipe, username_user):  # add a recipe to favorites
-    print('fver')
     recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
     user = get_object_or_404(User, username = username_user)
     user.my_recipes.add(recipe)
@@ -48,9 +47,9 @@ def add_recipe_favorite(request, id_recipe, username_user):  # add a recipe to f
     return Response(user_serializer.data, status=200)
 
 @api_view(["PUT"])
-def remove_recipe_favorite(request, id_recipe, id_user):  # remove a recipe from  favorites
+def remove_recipe_favorite(request, id_recipe, username_user):  # remove a recipe from  favorites
     recipe = get_object_or_404(Recipe, recipe_id=id_recipe)
-    user = get_object_or_404(User, id = id_user)
+    user = get_object_or_404(User, username = username_user)
     user.my_recipes.remove(recipe)
     user_serializer = UserSerializer(user)
     return Response(user_serializer.data, status=200)

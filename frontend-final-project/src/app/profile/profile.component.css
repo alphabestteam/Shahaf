@@ -62,3 +62,7 @@ mat-card-title, mat-card-content {
     text-decoration-thickness: 1px;
     text-decoration-color: #F1C376;
 }
+
+mat-card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

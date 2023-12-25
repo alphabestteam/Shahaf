@@ -74,3 +74,7 @@ button{
 mat-button{
     color: #FFF4F4;
 }
+
+.column:hover {
+    box-shadow: 0 0 11px rgba(169, 169, 169, 0.5); 
+  }

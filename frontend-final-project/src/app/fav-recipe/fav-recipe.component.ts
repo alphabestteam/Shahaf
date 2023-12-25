@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { recipesService } from '../services/recipes.services';
+import { commentService } from '../services/comment.services';
 
 @Component({
   selector: 'app-fav-recipe',
@@ -13,12 +14,21 @@ export class FavRecipeComponent {
   max: number = 5;
   
   isReadOnly: boolean = true;
-  
+
   recipe: any = null
 
   @Input() recipe_id: any = null
 
-  constructor(private recipe_service: recipesService) {}
+  username = sessionStorage.getItem('username');
+
+  constructor(private comment_service: commentService, private recipe_service: recipesService) {}
+
+  async removeFav(recipe_id: any){
+    let res = await this.comment_service.removeFav(this.username, recipe_id);
+        res.subscribe((data:any) => {
+          alert('Recipe was removed from favorites')
+        });
+  }
 
   async getRecipe() {
     try{

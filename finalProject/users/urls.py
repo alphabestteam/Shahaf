@@ -12,5 +12,5 @@ urlpatterns = [
     path('login/<str:username>/<str:password>/', views.is_user_exist),
     path('getUser/<str:username>/', views.get_user_username),
     path('addfav/<int:id_recipe>/<str:username_user>/', views.add_recipe_favorite),
-    path('removefav/<int:id_recipe>/<int:id_user>/', views.remove_recipe_favorite),
+    path('removefav/<int:id_recipe>/<str:username_user>/', views.remove_recipe_favorite),
 ]

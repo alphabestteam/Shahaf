@@ -26,3 +26,4 @@
     <mat-card-content>{{recipe.preparation}}</mat-card-content>
     <br><br>
 </mat-card>  
+<button mat-button [disabled]='!username' (click)="removeFav(recipe.recipe_id)">remove</button>

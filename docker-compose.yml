@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mongoDB:
+    image: mongo:latest
+    container_name: mongoDB
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "27017:27017" 
+    restart: always
+    volumes:
+      - type: volume
+        source: mongo-data
+        target: /data/db
+        
+  angular:
+    build: ./frontend-final-project
+    container_name: 
+    restart: always
+    ports:
+      - "3000:3000" 
+
+  django:
+    build: ./finalProject
+    container_name: 
+    restart: always
+    ports:
+      - "3000:3000" 
+
+volumes:
+  mongo-data:
+    name: mongo-data
+
+# networks:
+#   api:
+#     driver: bridge

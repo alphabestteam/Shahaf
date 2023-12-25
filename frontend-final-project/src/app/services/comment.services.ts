@@ -20,4 +20,8 @@ export class commentService {
     addFav(username: any, recipe_id:number): Observable<any> {
         return this.http.put(`http://127.0.0.1:8000/users/addfav/${recipe_id}/${username}/`, {})
     }
+
+    removeFav(username: any, recipe_id:number): Observable<any> {
+        return this.http.put(`http://127.0.0.1:8000/users/removefav/${recipe_id}/${username}/`, {})
+    }
 }
