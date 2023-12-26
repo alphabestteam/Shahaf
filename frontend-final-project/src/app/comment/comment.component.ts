@@ -39,6 +39,18 @@ export class CommentComponent {
     }
   }
 
+  async deleteComment() {
+    try{
+      let res = await this.comment_service.removeComment(this.username, this.comment.comment_id);
+      res.subscribe((data:any) => {
+      });
+    }
+
+    catch (error){
+      console.log('delete failed');
+    }
+  }
+
   ngOnInit($event: any): void {
     this.getAllRecipes();
 

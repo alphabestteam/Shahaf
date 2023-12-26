@@ -8,5 +8,5 @@ comment_router.register(r'', CommentViewSet)
 
 urlpatterns = [
     path('', include(comment_router.urls)),
-    path('delete/<int:comment_id>/<int:user_id>/', views.delete_comment_by_id),
+    path('delete/<int:comment_id>/<str:username>/', views.delete_comment_by_id),
 ]

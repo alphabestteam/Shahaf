@@ -43,7 +43,11 @@ mat-card-title, mat-card-content {
 }
 
 button {
-    display: flex;
-    justify-content: center;
-    color: #967E76 !important;
-  }
+  display: flex;
+  justify-content: center;
+  color: #967E76 !important;
+}
+
+mat-card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

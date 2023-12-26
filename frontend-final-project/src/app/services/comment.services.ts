@@ -24,4 +24,8 @@ export class commentService {
     removeFav(username: any, recipe_id:number): Observable<any> {
         return this.http.put(`http://127.0.0.1:8000/users/removefav/${recipe_id}/${username}/`, {})
     }
+
+    removeComment(username: any, comment_id:number): Observable<any> {
+        return this.http.delete(`http://127.0.0.1:8000/comments/delete/${comment_id}/${username}/`, {})
+    }
 }

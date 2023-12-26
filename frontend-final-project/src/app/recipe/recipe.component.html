@@ -50,7 +50,7 @@
                 </form>
                 </mat-card-content>
             </mat-card>
-            <div style="overflow-y: scroll; height: 400px;" *ngIf="recipe.recipe_comments?.length != 0">
+            <div style="overflow-y: scroll; height: 500px;" *ngIf="recipe.recipe_comments?.length != 0">
                 <div *ngFor="let comment_id of recipe.recipe_comments">
                     <app-comment [recipe_comment_id] = 'comment_id' [recipe_id] = 'recipe.recipe_id'></app-comment>
                 </div>
