@@ -13,7 +13,7 @@ export class ProfileComponent {
 
   recipe: any = null;
 
-  username = sessionStorage.getItem('username')
+  username :any = null
 
   constructor(private profileService: LoginService) {}
 

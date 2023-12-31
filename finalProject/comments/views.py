@@ -38,7 +38,3 @@ def delete_comment_by_id(request, comment_id, username):  # to delete recipe by 
     
     else:
         return Response("Cant delete a comment you didn't created!", status = 404)
-
-# sushi rice Seaweed fillings as you like
-
-# put a thin layer of rice on the seaweed put fillings as you like on one side of the seaweed (not too much) roll tight
